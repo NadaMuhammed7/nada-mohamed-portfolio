@@ -2,7 +2,7 @@
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Nada_Mohamed-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/nada-mohamed17/)
 [![Email](https://img.shields.io/badge/Email-nadaamuhamed17%40gmail.com-EA4335?style=flat&logo=gmail)](mailto:nadaamuhamed17@gmail.com)
-[![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-22c55e?style=flat&logo=github)](https://nada-mohamed17.github.io/portfolio)
+[![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-22c55e?style=flat&logo=github)](https://nadamuhammed7.github.io/nada-mohamed-portfolio/)
 
 > **Enterprise Decision Intelligence • Industrial Edge Computer Vision • Data Engineering Pipelines • Low-Code Automation**
 
@@ -76,20 +76,16 @@ Enterprise low-code solutions digitizing paper workflows and shopfloor logistics
 To host this portfolio live on your own GitHub account:
 
 ### Step 1: Create a GitHub Repository
-1. Log in to [GitHub](https://github.com) and click **New Repository**.
-2. Name it `portfolio` (or `nadamohamed.github.io`).
-3. Set visibility to **Public** and click **Create repository**.
+1. Log in to [GitHub](https://github.com) and navigate to your repository [nada-mohamed-portfolio](https://github.com/NadaMuhammed7/nada-mohamed-portfolio).
+2. Set visibility to **Public**.
 
 ### Step 2: Push Your Code
-Open your terminal or command prompt in this project directory and run:
+Open PowerShell in this project directory and run:
 
 ```bash
-git init
 git add .
-git commit -m "Deploy Nada Mohamed Engineering & Analytics Portfolio"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git push -u origin main
+git commit -m "Update Nada Mohamed Engineering & Analytics Portfolio"
+git push origin main
 ```
 
 ### Step 3: Turn on GitHub Pages
@@ -100,9 +96,9 @@ git push -u origin main
    - **Folder**: `/(root)`
 3. Click **Save**.
 
-Your portfolio will be live at:
+Your portfolio is live at:
 ```
-https://<your-username>.github.io/<repo-name>/
+https://nadamuhammed7.github.io/nada-mohamed-portfolio/
 ```
 
 ---
