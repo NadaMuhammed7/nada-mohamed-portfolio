@@ -1,0 +1,1481 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "od-analysis",
+    "url": "/d/rC7qsS9Hk/od-analysis",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-09-02T13:31:05+03:00",
+    "updated": "2025-11-24T12:10:31+02:00",
+    "updatedBy": "st1mohamna",
+    "createdBy": "st1mohamna",
+    "version": 168,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 267,
+    "folderUid": "_joRgLRvz",
+    "folderTitle": "HR",
+    "folderUrl": "/dashboards/f/_joRgLRvz/hr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "publicDashboardAccessToken": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 244,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 18,
+        "options": {
+          "content": "<div id=\"panel-1\" style=\"display: flex; flex-direction: row; align-items: center; justify-content: flex-start; margin: 0; padding: 5;\"> <!-- Logo --> <div class=\"logo-group\" style=\"margin: 0 0.2rem 0 0; padding: 0;\"> <img src=\"https://www.prometeon.com/people-images/prometeon-white-video-section.svg\" width=\"260\" height=\"160\" style=\"display: block; margin: 0; padding: 0; max-width: 100%; height: auto;\" /> </div> <!-- Title + Icon --> <div style=\"display: flex; align-items: center; gap: 0.2rem; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 2rem; color: #f8fafc; margin: 0; padding: 0;\"> <svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"#3b82f6\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" focusable=\"false\"> <path d=\"M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2 0-6 1-6 3v2h12v-2c0-2-4-3-6-3zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2-4-3-6-3z\"/> </svg> <span>HR Dashboard</span> </div> </div>",
+          "mode": "html"
+        },
+        "pluginVersion": "9.1.6",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "aliasColors": {},
+        "css_data": "",
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "doInit": {},
+        "format": "short",
+        "gridPos": {
+          "h": 3,
+          "w": 24,
+          "x": 0,
+          "y": 2
+        },
+        "handleMetric": {},
+        "html_data": "<div id=\"navigation-panel\"\r\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\r\n  <style>\r\n    /* Styles for the navigation panel cards */\r\n    #navigation-panel .dashboard-grid {\r\n      display: grid;\r\n      grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));\r\n      gap: 1rem;\r\n      max-width: 100%;\r\n      margin: 0 auto;\r\n      padding: 0 rem;\r\n      height: 10%;\r\n    }\r\n\r\n    #navigation-panel .card {\r\n      background: linear-gradient(145deg, #1f2937, #162029);\r\n      border-radius: 10px;\r\n      padding: 1rem;\r\n      border: 1px solid #334155;\r\n      display: flex;\r\n      flex-direction: column;\r\n      justify-content: center;\r\n      align-items: center;\r\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\r\n      cursor: pointer;\r\n      position: relative;\r\n      user-select: none;\r\n      text-decoration: none;\r\n      color: inherit;\r\n    }\r\n\r\n    #navigation-panel .card:hover {\r\n      transform: translateY(-6px);\r\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\r\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\r\n    }\r\n\r\n    #navigation-panel .card-title {\r\n      font-size: 1.2rem;\r\n      font-weight: 600;\r\n      margin: 0;\r\n      color: #e0e7ff;\r\n      text-transform: none;\r\n      letter-spacing: 1.2px;\r\n      text-align: center;\r\n      display: flex;\r\n      align-items: center;\r\n      gap: 0.5rem;\r\n      user-select: none;\r\n    }\r\n\r\n    #navigation-panel .icon {\r\n      width: 24px;\r\n      height: 24px;\r\n      fill: #3b82f6; /* blue accent */\r\n      user-select: none;\r\n      flex-shrink: 0;\r\n    }\r\n  </style>\r\n  <div class=\"dashboard-grid\">\r\n\r\n\r\n\r\n    <a href=\"https://pwwwappeg297-01.ptg.local:3000/d/RuQAZLgvk/training-kpis?orgId=1\" class=\"card\" title=\"Navigate to Training KPIs\">\r\n      <h2 class=\"card-title\">\r\n        <!-- Book icon for Training -->\r\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <path d=\"M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z\"/>\r\n        </svg>\r\n        OD\r\n      </h2>\r\n    </a>\r\n\r\n    <a href=\"https://pwwwappeg297-01.ptg.local:3000/d/I8xvnYgvz/employee-relations-kpis?orgId=1\" class=\"card\" title=\"Navigate to Employee Relations KPIs\">\r\n      <h2 class=\"card-title\">\r\n        <!-- Handshake icon for Employee Relations -->\r\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <path d=\"M10.59 5.95l-1.41-1.41L6 8.59 3.82 6.41 2.41 7.82 6 11.41l4.59-4.46zM17 7h-4v2h4v-2zm0 4h-4v2h4v-2zm0 4h-4v2h4v-2zM7 7H3v2h4V7zm0 4H3v2h4v-2zm0 4H3v2h4v-2z\"/>\r\n        </svg>\r\n        Employee Relations\r\n      </h2>\r\n    </a>\r\n\r\n    <a href=\"https://pwwwappeg297-01.ptg.local:3000/d/M-GrMLRvz/security-kpis?orgId=1\" class=\"card\" title=\"Navigate to Security KPIs\">\r\n      <h2 class=\"card-title\">\r\n        <!-- Shield icon for Security -->\r\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z\"/>\r\n        </svg>\r\n        Security\r\n      </h2>\r\n    </a>\r\n\r\n    <a href=\"https://pwwwappeg297-01.ptg.local:3000/d/TiERG7zvz/legal-kpis?orgId=1\" class=\"card\" title=\"Navigate to Legal KPIs\">\r\n      <h2 class=\"card-title\">\r\n        <!-- Scales icon for Legal -->\r\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <path d=\"M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z\"/>\r\n        </svg>\r\n        Legal\r\n      </h2>\r\n    </a>\r\n\r\n    <a href=\"https://pwwwappeg297-01.ptg.local:3000/d/OURBmYRDk/hr-kpis?orgId=1\" class=\"card\" title=\"Navigate to Conbasiation Benifits\">\r\n      <h2 class=\"card-title\">\r\n        <!-- Bar chart icon for Conbasiation Benifits -->\r\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <path d=\"M3 3v18h18V3H3zm16 16H5V5h14v14zM7 9h2v8H7V9zm4-4h2v12h-2V5zm4 2h2v10h-2V7z\"/>\r\n        </svg>\r\n        compensation & benefits\r\n      </h2>\r\n    </a>\r\n\r\n    <h1 class=\"panel-title\" style=\"\r\n  font-size: 1.3rem;\r\n  font-weight: 600;\r\n  border-left: 5px solid #3b82f6;\r\n  padding-left: 10px;\r\n  margin-bottom: 1rem;\r\n\">\r\n  Departments KPIs\r\n</h1>\r\n  </div>\r\n  \r\n</div>\r\n",
+        "id": 34,
+        "js_code": "",
+        "js_init_code": "",
+        "links": [],
+        "maxDataPoints": 3,
+        "nullPointMode": "connected",
+        "transparent": true,
+        "type": "aidanmountford-html-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 0,
+          "y": 5
+        },
+        "id": 26,
+        "options": {
+          "content": "<div id=\"participation-rate-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    /* Reuse the same styles as interns-outsource panel cards */\n    #participation-rate-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: 1fr;\n      max-width: 350px; /* similar to one card width */\n      margin: 0 auto;\n      padding: 0;\n      height: 70%;\n    }\n\n    #participation-rate-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: 0.6rem 1rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n      cursor: default;\n      position: relative;\n      user-select: none;\n    }\n\n    #participation-rate-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n    }\n\n    #participation-rate-panel .card-title {\n      font-size: 1rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      text-align: center;\n      display: flex;\n      align-items: center;\n      gap: 0.5rem;\n      user-select: none;\n    }\n\n    #participation-rate-panel .icon {\n      width: 22px;\n      height: 22px;\n      fill: #3b82f6; /* blue accent */\n      user-select: none;\n      flex-shrink: 0;\n    }\n\n    #participation-rate-panel .metric-value {\n      font-size: 2.2rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #10b981;\n      user-select: text;\n    }\n\n    #participation-rate-panel .metric-label {\n      font-size: .9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n      user-select: text;\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <div class=\"card\" title=\"Global Engagement Survey Participation Rate\">\n      <h2 class=\"card-title\">\n        <!-- Survey clipboard icon -->\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M16 2H8a2 2 0 0 0-2 2v1H5a1 1 0 0 0-1 1v15a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a1 1 0 0 0-1-1h-1V4a2 2 0 0 0-2-2zm0 3v1H8V5h8zM9.707 13.293l-2-2a1 1 0 0 0-1.414 1.414l2.707 2.707a1 1 0 0 0 1.414 0l5.293-5.293a1 1 0 0 0-1.414-1.414L9.707 13.293z\"/>\n        </svg>\n        GLOBAL ENGAGEMENT SURVEY\n      </h2>\n      <div class=\"metric-value\">92%</div>\n      <div class=\"metric-label\">PARTICIPATION RATE</div>\n    </div>\n  </div>\n</div>\n",
+          "mode": "html"
+        },
+        "pluginVersion": "9.1.6",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "doInit": {},
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 8,
+          "x": 4,
+          "y": 5
+        },
+        "handleMetric": {},
+        "id": 6,
+        "links": [],
+        "maxDataPoints": 3,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"hired-left-arrows-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #hired-left-arrows-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(2, 1fr);\n      gap: 1.5rem;\n      height: 100%;\n      max-width: 700px;\n      margin: 0 auto;\n    }\n\n    #hired-left-arrows-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: .8rem 1.7rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n      cursor: default;\n      position: relative;\n    }\n\n    #hired-left-arrows-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n    }\n\n    #hired-left-arrows-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n    }\n\n    #hired-left-arrows-panel .metric-value {\n      font-size: 2.1rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.6rem;\n    }\n\n    #hired-left-arrows-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n    }\n\n    @keyframes pulse {\n\n      0%,\n      100% {\n        opacity: 1;\n        transform: translateY(0);\n      }\n\n      50% {\n        opacity: 0.7;\n        transform: translateY(-4px);\n      }\n    }\n\n    @media (max-width: 768px) {\n      #hired-left-arrows-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Hired 2025 -->\n    <div class=\"card\" title=\"Hired in 2025\">\n      <h2 class=\"card-title\">HIRED 2025</h2>\n      <div class=\"metric-value\">\n        {{#if Joiners_2025}}{{Joiners_2025}}{{else}}-{{/if}}\n        <span aria-label=\"Increase\" style=\"\n          color: #10b981;\n          font-size: 1.8rem;\n          line-height: 1;\n          user-select: none;\n          animation: pulse 2s infinite;\n          display: inline-block;\n        \">&#9650;</span>\n      </div>\n      <div class=\"metric-label\">Employees Joined in 2025</div>\n    </div>\n\n    <!-- Left 2025 -->\n    <div class=\"card\" title=\"Left in 2025\">\n      <h2 class=\"card-title\">LEFT 2025</h2>\n      <div class=\"metric-value\">\n        {{#if Leavers_2025}}{{Leavers_2025}}{{else}}-{{/if}}\n        <span aria-label=\"Decrease\" style=\"\n          color: #ef4444;\n          font-size: 1.8rem;\n          line-height: 1;\n          user-select: none;\n          animation: pulse 2s infinite;\n          display: inline-block;\n        \">&#9660;</span>\n      </div>\n      <div class=\"metric-label\">Employees Left in 2025</div>\n    </div>\n  </div>\n</div>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "html"
+          },
+          "editors": [
+            "styles",
+            "afterRender"
+          ],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n    COUNT(DISTINCT CASE WHEN YEAR(Last_Working_Day) = 2025 THEN EmployeeID END) AS Leavers_2025,\r\n    COUNT(DISTINCT CASE WHEN YEAR(Entry_Date) = 2025 THEN EmployeeID END) AS Joiners_2025\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nwhere Department in ($Department)\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "doInit": {},
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 12,
+          "x": 12,
+          "y": 5
+        },
+        "handleMetric": {},
+        "id": 10,
+        "links": [],
+        "maxDataPoints": 3,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"headcount-analysis-panel\"\n  style=\"background-color:transparent; color:#f8fafc; font-family:'Inter',sans-serif; height:95%;\">\n  <style>\n    #headcount-analysis-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(3, 1fr);\n      gap: 1.5rem;\n      height: 100%;\n      width: 100% max-width: 700px;\n      margin: 0 auto;\n    }\n\n    #headcount-analysis-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: 0.5rem 1.5rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n      cursor: default;\n      position: relative;\n      user-select: none;\n    }\n\n    #headcount-analysis-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n    }\n\n    #headcount-analysis-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      text-align: center;\n      white-space: nowrap;\n      display: flex;\n      align-items: center;\n      gap: 0.4rem;\n    }\n\n    #headcount-analysis-panel .icon {\n      width: 24px;\n      height: 24px;\n      fill: #ef4444;\n      opacity: 0.9;\n      flex-shrink: 0;\n    }\n\n    #headcount-analysis-panel .metric-value {\n      font-size: 1.7rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.6rem;\n      justify-content: center;\n      min-height: 2rem;\n    }\n\n    #headcount-analysis-panel .metric-label {\n      font-size: 0.8rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n      user-select: text;\n    }\n\n    #headcount-analysis-panel .progress-bar {\n      position: relative;\n      height: 10px;\n      background: #334155;\n      border-radius: 8px;\n      overflow: hidden;\n      margin-top: 0.6rem;\n      width: 100%;\n    }\n\n    #headcount-analysis-panel .progress-fill {\n      height: 100%;\n      background: linear-gradient(90deg, #3b82f6, #2563eb);\n      border-radius: 8px 0 0 8px;\n      transition: width 0.5s ease;\n    }\n\n    /* New style for clickable turnover card */\n    #headcount-analysis-panel .turnover-card {\n      cursor: pointer;\n    }\n\n    @media (max-width: 768px) {\n      #headcount-analysis-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Turnover Rate -->\n    <div class=\"card turnover-card\" title=\"Turnover Rate 2025\"\n      onclick=\"window.location.href='https://pwwwappeg297-01.ptg.local:3000/d/OURBmYRDk/hr-kpis?orgId=1';\">\n      <h2 class=\"card-title\">\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path\n            d=\"M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2 0-6 1-6 3v2h12v-2c0-2-4-3-6-3zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2-4-3-6-3z\" />\n        </svg>\n        TURNOVER RATE\n      </h2>\n      <div class=\"metric-value\" style=\"color:#ffff;\">\n        {{#if turnover_rate}}{{turnover_rate}}%{{else}}-{{/if}}\n      </div>\n      <div class=\"metric-label\">Turnover Rate for 2025</div>\n    </div>\n\n    <!-- Average Age -->\n    <div class=\"card\" title=\"Average Age\">\n      <h2 class=\"card-title\">AVERAGE AGE</h2>\n      <div class=\"metric-value\">{{#if avg_age}}{{avg_age}}{{else}}-{{/if}}</div>\n      <div class=\"progress-bar\" aria-label=\"Average age progress bar\" role=\"progressbar\" aria-valuemin=\"0\"\n        aria-valuemax=\"65.5\" aria-valuenow=\"{{avg_age}}\">\n        <div class=\"progress-fill\" style=\"width: calc(({{avg_age}} / {{max_age}}) * 100%);\"></div>\n      </div>\n      <div class=\"metric-label\">Max: {{max_age}} years</div>\n    </div>\n\n    <!-- Average Seniority -->\n    <div class=\"card\" title=\"Average Seniority\">\n      <h2 class=\"card-title\">AVERAGE SENIORITY</h2>\n      <div class=\"metric-value\">{{#if avg_seniority}}{{avg_seniority}}{{else}}-{{/if}}</div>\n      <div class=\"progress-bar\" aria-label=\"Average seniority progress bar\" role=\"progressbar\" aria-valuemin=\"0\"\n        aria-valuemax=\"32.5\" aria-valuenow=\"{{avg_seniority}}\">\n        <div class=\"progress-fill\" style=\"width: calc(({{avg_seniority}} / {{max_seniority}}) * 100%);\"></div>\n      </div>\n      <div class=\"metric-label\">Max: {{max_seniority}} years</div>\n    </div>\n  </div>\n</div>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "html"
+          },
+          "editors": [
+            "styles",
+            "afterRender"
+          ],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    -- Turnover Rate\r\n    ROUND(\r\n        COUNT(DISTINCT CASE WHEN EXTRACT(YEAR FROM \"Last_Working_Day\") = 2025 THEN \"EmployeeID\" END) * 1.0\r\n        / NULLIF(COUNT(DISTINCT \"EmployeeID\"), 0) * 100, \r\n        1\r\n    ) AS turnover_rate,\r\n\r\n    -- Average Age (active employees only)\r\n    (\r\n        SELECT ROUND(AVG(age), 2)\r\n        FROM (\r\n            SELECT DISTINCT \"EmployeeID\", age\r\n            FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n            WHERE \"Last_Working_Day\" IS NULL\r\n            and  Department in ($Department)\r\n\r\n        ) sub_age\r\n    ) AS avg_age,\r\n    \r\n    (\r\n        SELECT ROUND(MAX(age), 1)\r\n        FROM (\r\n            SELECT DISTINCT \"EmployeeID\", age\r\n            FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n            WHERE \"Last_Working_Day\" IS NULL\r\n            and  Department in ($Department)\r\n\r\n\r\n        ) sub_age\r\n    ) AS max_age,\r\n\r\n    -- Average Seniority\r\n    (\r\n        SELECT ROUND(AVG(CAST(\"Seniority\" AS FLOAT)), 2)\r\n        FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n        where Department in ($Department)\r\n\r\n    ) AS avg_seniority,\r\n\r\n    (\r\n        SELECT ROUND(MAX(CAST(\"Seniority\" AS FLOAT)), 1)\r\n        FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n        WHERE  Department in ($Department)\r\n\r\n    ) AS max_seniority\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nwhere Department in ($Department)\r\n\r\n\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "doInit": {},
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 31,
+          "w": 4,
+          "x": 0,
+          "y": 10
+        },
+        "handleMetric": {},
+        "id": 2,
+        "links": [],
+        "maxDataPoints": 3,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"employee-panel\" style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #employee-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(1, 4fr);\n      gap: 1rem;\n      height: auto;\n      max-width: 700px;\n      margin: 0 auto;\n    }\n\n    #employee-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: 0.7rem 2rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      box-shadow:\n        4px 4px 8px rgba(0, 0, 0, 0.6),\n        -4px -4px 8px rgba(40, 50, 70, 0.8);\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n      cursor: default;\n    }\n\n    #employee-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow:\n        6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n    }\n\n    #employee-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      text-align: center;\n      display: flex;\n      align-items: center;\n      gap: 0.5rem;\n      user-select: none;\n    }\n\n    #employee-panel .card-title svg {\n      flex-shrink: 0;\n      width: 20px;\n      height: 20px;\n    }\n\n    #employee-panel .metric-value {\n      font-size: 2.2rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      user-select: text;\n    }\n\n    #employee-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n      user-select: text;\n    }\n\n    #employee-panel .gauge-container {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      margin: 1rem 0 0.75rem 0;\n      height: 100px;\n      width: 100%;\n    }\n\n    #employee-panel .gauge {\n      width: 95px;\n      height: 95px;\n      border-radius: 50%;\n      position: relative;\n      background: conic-gradient(var(--gauge-color) 0deg,\n          var(--gauge-color) var(--gauge-pct),\n          #1e293b var(--gauge-pct) 360deg);\n      box-shadow:\n        0 0 20px var(--gauge-color),\n        inset 0 0 15px rgba(0, 0, 0, 0.6);\n      transition: background 0.5s ease;\n    }\n\n    #employee-panel .gauge-inner {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      width: 80%;\n      height: 80%;\n      background-color: #0f172a;\n      border-radius: 50%;\n      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);\n    }\n\n    #employee-panel .gauge-value {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      font-size: 1.1rem;\n      font-weight: 700;\n      color: #f8fafc;\n      user-select: none;\n    }\n\n    #employee-panel .female-value {\n      color: #ec4899;\n    }\n\n    #employee-panel .male-value {\n      color: #3b82f6;\n    }\n\n    @media (max-width: 768px) {\n      #employee-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n\n      #employee-panel .card {\n        padding: 1.25rem 1.5rem;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Total Employees -->\n    <div class=\"card\" title=\"Active Headcount 2025\">\n      <h2 class=\"card-title\">Total Fulltime Employees</h2>\n      <div class=\"metric-value total-value\">{{#if total_employees}}{{total_employees}}{{else}}-{{/if}}</div>\n      <div class=\"metric-label\">Active Headcount 2025</div>\n    </div>\n    <div\n      style=\"display: flex; align-items: center; gap: 0.6rem; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.5rem; color: #f8fafc; padding-top: 1rem; padding-left:2.5rem;\">\n      <!-- Example SVG icon: people group -->\n      <path\n        d=\"M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2 0-6 1-6 3v2h12v-2c0-2-4-3-6-3zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2-4-3-6-3z\" />\n      </svg>\n      <span>Demographics</span>\n    </div>\n    <!-- Female Employees from WC -->\n    <div class=\"card\" title=\"Female Employees from WC\">\n      <h2 class=\"card-title\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\">\n          <circle cx=\"12\" cy=\"9\" r=\"3.5\" stroke=\"#ec4899\" stroke-width=\"1.5\" />\n          <path d=\"M12 12.5v7m-2.5-4h5\" stroke=\"#ec4899\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n        </svg>\n        FEMALE EMPLOYEES % FROM WC\n      </h2>\n      <div class=\"gauge-container\">\n        <div class=\"gauge\"\n          style=\"--gauge-color:#ec4899; --gauge-pct: calc({{#if female_pct}}{{female_pct}} * 3.6deg{{else}}0deg{{/if}});\">\n          <div class=\"gauge-inner\"></div>\n          <div class=\"gauge-value\">{{#if female_pct}}{{female_pct}}{{else}}0{{/if}}%</div>\n        </div>\n      </div>\n      <div class=\"metric-value female-value\">{{#if female_count}}{{female_count}}{{else}}-{{/if}}</div>\n      <div class=\"metric-label\">Female Count (WC)</div>\n    </div>\n\n    <!-- Female Employees Total -->\n    <div class=\"card\" title=\"Total Female Employees\">\n      <h2 class=\"card-title\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\">\n          <circle cx=\"12\" cy=\"9\" r=\"3.5\" stroke=\"#ec4899\" stroke-width=\"1.5\" />\n          <path d=\"M12 12.5v7m-2.5-4h5\" stroke=\"#ec4899\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n        </svg>\n        FEMALE EMPLOYEES % FROM TOTAL HC\n      </h2>\n      <div class=\"gauge-container\">\n        <div class=\"gauge\"\n          style=\"--gauge-color:#db2777; --gauge-pct: calc({{#if female_count_total_pct}}{{female_count_total_pct}} * 3.6deg{{else}}0deg{{/if}});\">\n          <div class=\"gauge-inner\"></div>\n          <div class=\"gauge-value\">{{#if female_count_total_pct}}{{female_count_total_pct}}{{else}}0{{/if}}%</div>\n        </div>\n      </div>\n      <div class=\"metric-value female-value\">{{#if female_count_total}}{{female_count_total}}{{else}}-{{/if}}</div>\n      <div class=\"metric-label\">Female Count (Total)</div>\n    </div>\n\n    <!-- Male Employees -->\n    <div class=\"card\" title=\"Male Employees Percentage\">\n      <h2 class=\"card-title\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"#3b82f6\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"\n          aria-hidden=\"true\" focusable=\"false\">\n          <circle cx=\"9\" cy=\"15\" r=\"4\" />\n          <line x1=\"13\" y1=\"11\" x2=\"19\" y2=\"5\" stroke=\"#3b82f6\" stroke-width=\"2\" />\n          <polyline points=\"16,5 19,5 19,8\" fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"2\" />\n        </svg>\n        MALE EMPLOYEES FROM TOTAL HC\n      </h2>\n      <div class=\"gauge-container\">\n        <div class=\"gauge\"\n          style=\"--gauge-color:#3b82f6; --gauge-pct: calc({{#if male_pct}}{{male_pct}} * 3.6deg{{else}}0deg{{/if}});\">\n          <div class=\"gauge-inner\"></div>\n          <div class=\"gauge-value\">{{#if male_pct}}{{male_pct}}{{else}}0{{/if}}%</div>\n        </div>\n      </div>\n      <div class=\"metric-value male-value\">{{#if male_count}}{{male_count}}{{else}}-{{/if}}</div>\n      <div class=\"metric-label\">Male Count</div>\n    </div>\n  </div>\n</div>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "html"
+          },
+          "editors": [
+            "styles",
+            "afterRender"
+          ],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    COUNT(DISTINCT \"EmployeeID\") AS total_employees,\r\n\r\n    COUNT(DISTINCT CASE WHEN \"Gender\" = 'Female' and Employee_Type = 'WC' THEN \"EmployeeID\" END) AS female_count,\r\n    COUNT(DISTINCT CASE WHEN \"Gender\" = 'Female'  THEN \"EmployeeID\" END) AS female_count_total,\r\n\r\n    COUNT(DISTINCT CASE WHEN \"Gender\" = 'Male' THEN \"EmployeeID\" END) AS male_count,\r\n\r\n    ROUND(\r\n        (COUNT(DISTINCT CASE WHEN \"Gender\" = 'Female' THEN \"EmployeeID\" END) * 100.0) \r\n        / NULLIF(COUNT(DISTINCT CASE WHEN Employee_Type = 'WC' THEN \"EmployeeID\" END), 0), 2\r\n    ) AS female_pct,\r\n\r\n    ROUND(\r\n        (COUNT(DISTINCT CASE WHEN \"Gender\" = 'Male' THEN \"EmployeeID\" END) * 100.0) \r\n        / NULLIF(COUNT(DISTINCT \"EmployeeID\"), 0), 2\r\n    ) AS male_pct,\r\n\r\n    ROUND(\r\n        (COUNT(DISTINCT CASE WHEN \"Gender\" = 'Female' THEN \"EmployeeID\" END) * 100.0)\r\n        / NULLIF(COUNT(DISTINCT \"EmployeeID\"), 0), 2\r\n    ) AS female_count_total_pct\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nWHERE \"Last_Working_Day\" IS NULL\r\nand Department in ($Department)\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "doInit": {},
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 8,
+          "x": 4,
+          "y": 10
+        },
+        "handleMetric": {},
+        "id": 24,
+        "links": [],
+        "maxDataPoints": 3,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"interns-outsource-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #interns-outsource-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(3, 1fr);\n      gap: 1.5rem;\n      height: 100%;\n      max-width: 900px;\n      margin: 0 auto;\n    }\n\n    #interns-outsource-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: 0.8rem 1.7rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n      cursor: default;\n      position: relative;\n    }\n\n    #interns-outsource-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n    }\n\n    #interns-outsource-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      text-align: center;\n    }\n\n    #interns-outsource-panel .metric-value {\n      font-size: 1.9rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.6rem;\n      user-select: text;\n    }\n\n    #interns-outsource-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n      user-select: text;\n    }\n\n    @keyframes pulse {\n\n      0%,\n      100% {\n        opacity: 1;\n        transform: translateY(0);\n      }\n\n      50% {\n        opacity: 0.7;\n        transform: translateY(-4px);\n      }\n    }\n\n    /* Optional: pulse arrow styles */\n    .pulse-arrow-up {\n      color: #10b981;\n      font-size: 1.8rem;\n      line-height: 1;\n      user-select: none;\n      animation: pulse 2s infinite;\n      display: inline-block;\n    }\n\n    .pulse-arrow-down {\n      color: #ef4444;\n      font-size: 1.8rem;\n      line-height: 1;\n      user-select: none;\n      animation: pulse 2s infinite;\n      display: inline-block;\n    }\n\n    @media (max-width: 768px) {\n      #interns-outsource-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Interns Headcount -->\n    <div class=\"card\" title=\"Interns Headcount Actual\">\n      <h2 class=\"card-title\">INTERNS HC</h2>\n      <div class=\"metric-value\">\n        {{#if interns_count}}{{interns_count}}{{else}}-{{/if}}\n        <!-- Optional arrow, remove if not needed -->\n        <!-- <span aria-label=\"Increase\" class=\"pulse-arrow-up\">&#9650;</span> -->\n      </div>\n      <div class=\"metric-label\">Actual YTD</div>\n    </div>\n\n    <!-- Outsource WC Headcount -->\n    <div class=\"card\" title=\"Outsource WC Headcount Actual\">\n      <h2 class=\"card-title\">OUTSOURCE WC HC</h2>\n      <div class=\"metric-value\">\n        {{#if outsource_count_wc}}{{outsource_count_wc}}{{else}}-{{/if}}\n        <!-- Optional arrow, remove if not needed -->\n        <!-- <span aria-label=\"Increase\" class=\"pulse-arrow-up\">&#9650;</span> -->\n      </div>\n      <div class=\"metric-label\">Actual YTD</div>\n    </div>\n\n    <!-- Outsource BC Headcount -->\n    <div class=\"card\" title=\"Outsource BC Headcount Actual\">\n      <h2 class=\"card-title\">OUTSOURCE BC HC</h2>\n      <div class=\"metric-value\">\n        {{#if outsource_count_bc}}{{outsource_count_bc}}{{else}}-{{/if}}\n        <!-- Optional arrow, remove if not needed -->\n        <!-- <span aria-label=\"Increase\" class=\"pulse-arrow-up\">&#9650;</span> -->\n      </div>\n      <div class=\"metric-label\">Actual YTD</div>\n    </div>\n  </div>\n</div>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "html"
+          },
+          "editors": [
+            "styles",
+            "afterRender"
+          ],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n  max(CASE WHEN KPI = 'INTERNS HC' AND Type = 'Actual' THEN \"Value\" END) AS interns_count,\r\n  max(CASE WHEN KPI = 'OUTSOURCE WC HC' AND Type = 'Actual' THEN \"Value\" END) AS outsource_count_wc,\r\n  max(CASE WHEN KPI = 'OUTSOURCE BC HC' AND Type = 'Actual' THEN \"Value\" END) AS outsource_count_bc\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"  \r\nWHERE TO_DATE(\"month\", 'Month') = (\r\n  SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n  FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n  WHERE \"year\" = YEAR(CURRENT_DATE())\r\n  and Area = 'OD / Recruitment'\r\n);",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 12,
+          "x": 12,
+          "y": 10
+        },
+        "id": 22,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"employee-meals-trips-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #employee-meals-trips-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(2, 1fr);\n      gap: 1.5rem;\n      height: 100%;\n      max-width: 800px;\n      margin: 0 auto;\n    }\n\n    #employee-meals-trips-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: .6rem 1.7rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n      cursor: Pointer;\n      position: relative;\n    }\n\n    #employee-meals-trips-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n    }\n\n    #employee-meals-trips-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n    }\n\n    #employee-meals-trips-panel .metric-value {\n      font-size: 2.1rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.8rem;\n    }\n\n    #employee-meals-trips-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n    }\n\n    #employee-meals-trips-panel svg.icon {\n      width: 28px;\n      height: 28px;\n      fill: #3b82f6;\n      opacity: 0.85;\n      flex-shrink: 0;\n      transition: transform 0.3s ease, opacity 0.3s ease;\n    }\n\n    #employee-meals-trips-panel .card:hover svg.icon {\n      transform: scale(1.1);\n      opacity: 1;\n    }\n   \n    @media (max-width: 768px) {\n      #employee-meals-trips-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Employee Meals Actual -->\n    <div class=\"card\" title=\"Employee Meals Actual for July\" onclick=\"window.location.href='https://pwwwappeg297-01.ptg.local:3000/d/I8xvnYgvz/employee-relations-kpis?orgId=1'\">\n      <h2 class=\"card-title\">Employees Meals Provided</h2>\n      <div class=\"metric-value\" aria-label=\"Employee Meals Actual Value\">\n        {{#if employee_meals_actual}}{{employee_meals_actual}}{{else}}-{{/if}}\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" >\n          <!-- Plate with fork and knife icon -->\n          <circle cx=\"12\" cy=\"12\" r=\"9\" stroke=\"#3b82f6\" stroke-width=\"2\" fill=\"none\"/>\n          <rect x=\"7\" y=\"7\" width=\"1.5\" height=\"10\" fill=\"#3b82f6\" rx=\"0.3\" ry=\"0.3\"/>\n          <rect x=\"15.5\" y=\"7\" width=\"1.5\" height=\"10\" fill=\"#3b82f6\" rx=\"0.3\" ry=\"0.3\"/>\n          <circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#3b82f6\" opacity=\"0.3\"/>\n        </svg>\n      </div>\n      <div class=\"metric-label\">Actual YTD</div>\n    </div>\n\n    <!-- Total Trips Actual -->\n    <div class=\"card\" title=\"Total Trips Actual for July\" onclick=\"window.location.href='https://pwwwappeg297-01.ptg.local:3000/d/M-GrMLRvz/security-kpis?orgId=1'\">\n\n      <h2 class=\"card-title\">TOTAL Transportation TRIPS</h2>\n      <div class=\"metric-value\" aria-label=\"Total Trips Actual Value\">\n        {{#if trips_actual}}{{trips_actual}}{{else}}-{{/if}}\n        <svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" >\n          <!-- Location pin icon -->\n          <path fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"2\" d=\"M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z\"/>\n          <circle cx=\"12\" cy=\"9\" r=\"2.5\" fill=\"#3b82f6\"/>\n        </svg>\n      </div>\n      <div class=\"metric-label\">Actual YTD</div>\n    </div>\n  </div>\n</div>\n",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [
+            "styles"
+          ],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \n  max(CASE WHEN KPI = 'Employee Meals Provided' AND Type = 'Actual' then concat(round(\"Value\"/1000.0,0),'K') end) as employee_meals_actual,\n  max(CASE WHEN KPI = 'Total Trips Transportation \" Annually\"' AND Type = 'Actual' then concat(round(\"Value\"/1000.0,0),'K') end) as trips_actual\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"  \nWHERE TO_DATE(\"month\", 'Month') = (\n  SELECT MAX(TO_DATE(\"month\", 'Month'))\n  FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\n  where \"year\" = Year(Current_date())\n  and Area in ('Security','Employee Relations')\n) \n\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-YlBl"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 9,
+          "x": 15,
+          "y": 14
+        },
+        "id": 13,
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [],
+            "fields": "",
+            "values": true
+          },
+          "showUnfilled": true
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  COUNT(DISTINCT EmployeeID) AS employee_count,\r\n  CASE\r\n    WHEN age < 20.0 THEN 'Under 20'\r\n    WHEN age >= 20.0 AND age <= 29.0 THEN '20-29'\r\n    WHEN age >= 30.0 AND age <= 39.0 THEN '30-39'\r\n    WHEN age >= 40.0 AND age <= 49.0 THEN '40-49'\r\n    WHEN age >=  50.0 AND age <= 60.0 THEN '50-60'\r\n    when age > 60.0 then '60+'\r\n  END AS age_range\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n  where Last_Working_Day is  null\r\nand Department in ($Department)\r\n\r\nGROUP BY age_range\r\nORDER BY age_range;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Employees Age Distribution",
+        "transparent": true,
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 11,
+          "x": 4,
+          "y": 15
+        },
+        "id": 21,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"combined-kpi-panel\" style=\"background: linear-gradient(145deg, #1f2937, #162029); border-radius: 16px; padding: .5rem 3rem; border: 1px solid #334155; max-width: 720px; margin: 0 auto; font-family: 'Inter', sans-serif; color: #f8fafc; user-select: none; cursor: default; box-shadow: 8px 8px 16px #121b26, -8px -8px 16px #273544; transition: transform 0.3s ease, box-shadow 0.3s ease;\">\n  <style>\n    #combined-kpi-panel:hover {\n      transform: translateY(-8px);\n      box-shadow: 12px 12px 24px #0d1520, -12px -12px 24px #2f4258;\n    }\n    .card {\n      /* Add styles for the card to make it visually distinct and clickable */\n      background: inherit; /* Inherit from parent or set a subtle background if needed */\n      border-radius: 12px;\n      padding: 1rem;\n      cursor: pointer; /* Indicate it's clickable */\n      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover */\n      text-decoration: none; /* For the <a> tag */\n      color: inherit; /* Inherit text color */\n      display: block; /* Make the <a> behave like a block */\n    }\n    .card:hover {\n      transform: translateY(-4px); /* Subtle lift on hover */\n      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);\n    }\n    .card-title {\n      font-size: 1.4rem;\n      font-weight: 900;\n      margin-bottom: 2rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.5px;\n      text-align: center;\n      user-select: none;\n    }\n    .kpi-container {\n      display: flex;\n      justify-content: space-around;\n      width: 100%;\n      max-width: 700px;\n      gap: 3rem;\n    }\n    .kpi-block {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      flex: 1;\n      gap: 1.5rem;\n    }\n    .kpi-label {\n      font-size: 1.1rem;\n      font-weight: 700;\n      color: #94a3b8;\n      text-transform: uppercase;\n      letter-spacing: 0.1em;\n      margin-bottom: 1rem;\n      text-align: center;\n      user-select: text;\n    }\n    .values-container {\n      display: flex;\n      justify-content: space-around;\n      width: 100%;\n      gap: 2.5rem;\n    }\n    .value-block {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      gap: 0.8rem;\n      flex: 1;\n    }\n    .value-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      text-transform: uppercase;\n      letter-spacing: 0.05em;\n      display: flex;\n      align-items: center;\n      gap: 0.5rem;\n      user-select: text;\n    }\n    .value-label svg {\n      width: 22px;\n      height: 22px;\n      fill: #3b82f6;\n      opacity: 0.9;\n      flex-shrink: 0;\n    }\n    .progress-ring {\n      position: relative;\n      width: 110px;\n      height: 110px;\n    }\n    .progress-ring svg {\n      transform: rotate(-90deg);\n      width: 110px;\n      height: 110px;\n    }\n    .progress-ring .progress-bg {\n      fill: transparent;\n      stroke: #334155;\n      stroke-width: 10;\n    }\n    .value-number {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      font-size: 1.4rem;\n      font-weight: 900;\n      color: #f8fafc;\n      user-select: text;\n      min-width: 80px;\n      text-align: center;\n      white-space: nowrap;\n    }\n  </style>\n\n  <!-- Use <a> for better accessibility instead of onclick on div -->\n  <a href=\"https://pwwwappeg297-01.ptg.local:3000/d/RuQAZLgvk/training-kpis?orgId=1\" class=\"card\" title=\"Training and Coverage KPIs for July\" role=\"link\" aria-label=\"Navigate to Training KPIs Dashboard\">\n    <h2 class=\"card-title\">Training & Learning KPIs</h2>\n    <div class=\"kpi-container\">\n      <!-- Total Training Hours YTD -->\n      <div class=\"kpi-block\" aria-label=\"Total Training Hours YTD KPI\">\n        <div class=\"kpi-label\">Total Training Hours YTD</div>\n        <div class=\"values-container\">\n          <!-- Actual -->\n          <div class=\"value-block\" aria-label=\"Actual Training Hours\">\n            <div class=\"value-label\">\n              <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"/>\n              </svg>\n              Actual\n            </div>\n            <div class=\"progress-ring\" role=\"img\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{training_actual_percent}}\">\n              <svg>\n                <circle class=\"progress-bg\" r=\"50\" cx=\"55\" cy=\"55\"></circle>\n                <circle r=\"50\" cx=\"55\" cy=\"55\"\n                  style=\"stroke:#22c55e; stroke-width:10; stroke-linecap:round; fill:none; stroke-dasharray:314; stroke-dashoffset: calc(314 - (314 * {{training_actual_percent}} / 100)); transition: stroke-dashoffset 1s ease-out;\"></circle>\n              </svg>\n              <div class=\"value-number\">{{#if training_actual}}{{training_actual}}{{else}}-{{/if}}</div>\n            </div>\n          </div>\n\n          <!-- Target -->\n          <div class=\"value-block\" aria-label=\"Target Training Hours\">\n            <div class=\"value-label\">\n              <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\">\n                <circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"#3b82f6\" stroke-width=\"2\" fill=\"none\"/>\n                <circle cx=\"12\" cy=\"12\" r=\"6\" fill=\"#3b82f6\"/>\n                <circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#1e40af\"/>\n              </svg>\n              Target\n            </div>\n            <div class=\"progress-ring\" role=\"img\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{training_target_percent}}\">\n              <svg>\n                <circle class=\"progress-bg\" r=\"50\" cx=\"55\" cy=\"55\"></circle>\n                <circle r=\"50\" cx=\"55\" cy=\"55\"\n                  style=\"stroke:#3b82f6; stroke-width:10; stroke-linecap:round; fill:none; stroke-dasharray:314; stroke-dashoffset: calc(314 - (314 * {{training_target_percent}} / 100)); transition: stroke-dashoffset 1s ease-out;\"></circle>\n              </svg>\n              <div class=\"value-number\">{{#if training_target}}{{training_target}}{{else}}-{{/if}}</div>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <!-- Employees Covered from Total HC -->\n      <div class=\"kpi-block\" aria-label=\"Employees Covered KPI\">\n        <div class=\"kpi-label\">Employees Coverage</div>\n        <div class=\"values-container\">\n          <!-- Actual -->\n          <div class=\"value-block\" aria-label=\"Actual Employees Covered\">\n            <div class=\"value-label\">\n              <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"#3b82f6\" opacity=\"0.9\">\n                <path d=\"M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2 0-6 1-6 3v2h12v-2c0-2-4-3-6-3zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2-4-3-6-3z\"/>\n              </svg>\n              Actual\n            </div>\n            <div class=\"progress-ring\" role=\"img\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{employees_covered_actual_percent}}\">\n              <svg>\n                <circle class=\"progress-bg\" r=\"50\" cx=\"55\" cy=\"55\"></circle>\n                <circle r=\"50\" cx=\"55\" cy=\"55\"\n                  style=\"stroke:#22c55e; stroke-width:10; stroke-linecap:round; fill:none; stroke-dasharray:314; stroke-dashoffset: calc(314 - (314 * {{employees_covered_actual_percent}} / 100)); transition: stroke-dashoffset 1s ease-out;\"></circle>\n              </svg>\n              <div class=\"value-number\">{{#if employees_covered_actual}}{{employees_covered_actual}}%{{else}}-{{/if}}</div>\n            </div>\n          </div>\n\n          <!-- Target -->\n          <div class=\"value-block\" aria-label=\"Target Employees Covered\">\n            <div class=\"value-label\">\n              <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"#3b82f6\" opacity=\"0.9\">\n                <circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"#3b82f6\" stroke-width=\"2\" fill=\"none\"/>\n                <circle cx=\"12\" cy=\"12\" r=\"6\" fill=\"#3b82f6\"/>\n                <circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"#1e40af\"/>\n              </svg>\n              Target\n            </div>\n            <div class=\"progress-ring\" role=\"img\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"{{employees_covered_target_percent}}\">\n              <svg>\n                <circle class=\"progress-bg\" r=\"50\" cx=\"55\" cy=\"55\"></circle>\n                <circle r=\"50\" cx=\"55\" cy=\"55\"\n                  style=\"stroke:#3b82f6; stroke-width:10; stroke-linecap:round; fill:none; stroke-dasharray:314; stroke-dashoffset: calc(314 - (314 * {{employees_covered_target_percent}} / 100)); transition: stroke-dashoffset 1s ease-out;\"></circle>\n              </svg>\n              <div class=\"value-number\">{{#if employees_covered_target}}{{employees_covered_target}}%{{else}}-{{/if}}</div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </a>\n</div>\n",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  -- Training Hours\r\n  MAX(CASE WHEN KPI = ' Total Training Hours Annual' AND Type = 'Actual' \r\n      THEN concat(round(\"VALUE\"/1000,0),'K') END) AS training_actual,\r\n\r\n  MAX(CASE WHEN KPI = ' Total Training Hours Annual' AND Type = 'Target' \r\n      THEN concat(round(\"VALUE\"/1000,0),'K') END) AS training_target,\r\n\r\n  ROUND(\r\n    (MAX(CASE WHEN KPI = ' Total Training Hours Annual' AND Type = 'Actual' THEN \"VALUE\" END) * 100.0) /\r\n    NULLIF(MAX(CASE WHEN KPI = ' Total Training Hours Annual' AND Type = 'Target' THEN \"VALUE\" END),0)\r\n  ,0) AS training_actual_percent,\r\n\r\n  100 AS training_target_percent,\r\n\r\n  -- Employees Covered %\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC' AND Type = 'Actual' \r\n      THEN round(\"VALUE\" * 100,0) END) AS employees_covered_actual,\r\n\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC' AND Type = 'Target' \r\n      THEN round(\"VALUE\" * 100,0) END) AS employees_covered_target,\r\n\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC' AND Type = 'Actual' \r\n      THEN round(\"VALUE\" * 100,0) END) AS employees_covered_actual_percent,\r\n\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC' AND Type = 'Target' \r\n      THEN round(\"VALUE\" * 100,0) END) AS employees_covered_target_percent\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nWHERE KPI IN (' Total Training Hours Annual', ' Employees Covered from Total HC')\r\n  AND TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n      and Area = 'OD / Training'\r\n\r\n  );\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 9,
+          "x": 15,
+          "y": 21
+        },
+        "id": 27,
+        "options": {
+          "afterRender": "",
+          "content": "<div style=\"display: flex; justify-content: center; gap: 4.3rem; font-family: 'Inter', sans-serif; color: #f8fafc; background: #1f2937; padding: .3rem; border-radius: 12px; max-width: 900px; margin: 0rem auto;\">\n  \n  <div style=\"text-align: center;\">\n    <div style=\"font-weight: 900; font-size: 1rem;\">{{percentage_20_29}}%</div>\n  </div>\n  <div style=\"text-align: center;\">\n    <div style=\"font-weight: 900; font-size: 1rem;\">{{percentage_30_39}}%</div>\n  </div>\n  <div style=\"text-align: center;\">\n    <div style=\"font-weight: 900; font-size: 1rem;\">{{percentage_40_49}}%</div>\n  </div>\n  <div style=\"text-align: center;\">\n    <div style=\"font-weight: 900; font-size: 1rem;\">{{percentage_50_59}}%</div>\n  </div>\n  <div style=\"text-align: center;\">\n    <div style=\"font-weight: 900; font-size: 1rem;\">{{percentage_60_plus}}%</div>\n  </div>\n</div>\n",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": true
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age < 20.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_under_20,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age BETWEEN 20.0 AND 29.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_20_29,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age BETWEEN 30.0 AND 39.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_30_39,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age BETWEEN 40.0 AND 49.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_40_49,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age BETWEEN 50.0 AND 59.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_50_59,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age >= 60.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_60_plus\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nWHERE Last_Working_Day IS NULL;",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transformations": [
+          {
+            "id": "rowsToFields",
+            "options": {
+              "mappings": [
+                {
+                  "fieldName": "percentage",
+                  "handlerKey": "field.value"
+                }
+              ]
+            }
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-green",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "hue",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 18,
+          "w": 10,
+          "x": 4,
+          "y": 23
+        },
+        "id": 11,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.73,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "orientation": "vertical",
+          "showValue": "always",
+          "stacking": "none",
+          "text": {
+            "valueSize": 16
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 15,
+          "xTickLabelSpacing": 0
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  COUNT(DISTINCT EmployeeID) AS \"Total Employees\",\r\n  Employee_Group\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nWHERE Last_Working_Day IS NULL\r\n  AND Employee_Type = 'WC'\r\n  and Department in ($Department)\r\n\r\nGROUP BY Employee_Group\r\nORDER BY CASE Employee_Group\r\n    WHEN 'Junior' THEN 1\r\n    WHEN 'Senior' THEN 2\r\n    WHEN 'Section Head' THEN 3\r\n    WHEN 'Assistant Manager' THEN 4\r\n    WHEN 'Manager' THEN 5\r\n    WHEN 'Director' THEN 6\r\n  END;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "WCs Distribution Per Position",
+        "transparent": true,
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Total Employees"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#1f77b4",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "BC"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "WC"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 10,
+          "x": 14,
+          "y": 23
+        },
+        "id": 8,
+        "options": {
+          "displayLabels": [
+            "value",
+            "percent"
+          ],
+          "legend": {
+            "displayMode": "table",
+            "iconSize": 14,
+            "placement": "right",
+            "showLegend": true,
+            "spacing": 8,
+            "values": []
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "asc"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  count (distinct EmployeeID) as \"Total Employees\" , Employee_Type \n FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\nwhere Last_Working_Day is  null\nand Department in ($Department)\n\ngroup by Employee_Type",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Employees % By Category",
+        "transparent": true,
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 10,
+          "x": 14,
+          "y": 31
+        },
+        "id": 30,
+        "options": {
+          "displayMode": "gradient",
+          "minVizHeight": 10,
+          "minVizWidth": 0,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": true
+          },
+          "showUnfilled": true,
+          "text": {
+            "valueSize": 22
+          }
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT count(DISTINCT EmployeeID),\"ReasonOfLeaving\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nwhere  Last_Working_Day is not null\r\nand Department in ($Department)\r\ngroup by ReasonOfLeaving\r\norder by count(DISTINCT EmployeeID) desc",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  0 AS \" \"\n",
+            "refId": "B",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Reasons Of Leaving",
+        "transparent": true,
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 63,
+              "gradientMode": "hue",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Total Employees"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 41
+        },
+        "id": 32,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.81,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "orientation": "horizontal",
+          "showValue": "auto",
+          "stacking": "none",
+          "text": {
+            "valueSize": 18
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 0
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  count (distinct EmployeeID) as \"Total Employees\" , Sub_Department \n FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\n  where Last_Working_Day is  null\n  and Department in ($Department)\nand Employee_Type = 'BC'\ngroup by Sub_Department \norder by \"Total Employees\" desc\nlimit 5",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "BC Distribution Per Department",
+        "transparent": true,
+        "type": "barchart"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#00317c",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 54,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "white",
+                  "value": null
+                },
+                {
+                  "color": "rgba(200,200,200,0.5)",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 11,
+          "x": 13,
+          "y": 41
+        },
+        "id": 9,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.81,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "orientation": "horizontal",
+          "showValue": "auto",
+          "stacking": "none",
+          "text": {
+            "valueSize": 18
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 0
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  count (distinct EmployeeID) as \"Total Employees\" , Department \n FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\n  where Last_Working_Day is  null\nand Employee_Type = 'WC'\ngroup by Department \norder by \"Total Employees\" desc\nlimit 5",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "WC Distribution Per Department",
+        "transparent": true,
+        "type": "barchart"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "definition": "select distinct Department from \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_HIRE\"",
+          "hide": 0,
+          "includeAll": true,
+          "multi": false,
+          "name": "Department",
+          "options": [],
+          "query": "select distinct Department from \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_HIRE\"",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "OD Analysis",
+    "uid": "rC7qsS9Hk",
+    "version": 168,
+    "weekStart": ""
+  }
+}

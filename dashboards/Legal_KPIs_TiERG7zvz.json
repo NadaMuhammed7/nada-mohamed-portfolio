@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "legal-kpis",
+    "url": "/d/TiERG7zvz/legal-kpis",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-11-02T15:22:56+02:00",
+    "updated": "2025-12-16T11:51:59+02:00",
+    "updatedBy": "st1mohamna",
+    "createdBy": "st1mohamna",
+    "version": 4,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 267,
+    "folderUid": "_joRgLRvz",
+    "folderTitle": "HR",
+    "folderUrl": "/dashboards/f/_joRgLRvz/hr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "publicDashboardAccessToken": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 273,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"hr-legal-compliance-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #hr-legal-compliance-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n      gap: 1.5rem;\n      height: 100%;\n      max-width: 1400px;\n      margin: 0 auto;\n      padding: .2rem;\n    }\n\n    #hr-legal-compliance-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: 1rem 1.7rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;\n      cursor: default;\n      position: relative;\n      overflow: hidden;\n    }\n\n    #hr-legal-compliance-panel .card::before {\n      content: '';\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      height: 4px;\n      background: linear-gradient(90deg, #3b82f6, #8b5cf6);\n      opacity: 0;\n      transition: opacity 0.3s ease;\n    }\n\n    #hr-legal-compliance-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n      border-color: #475569;\n    }\n\n    #hr-legal-compliance-panel .card:hover::before {\n      opacity: 1;\n    }\n\n    #hr-legal-compliance-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      text-align: center;\n    }\n\n    #hr-legal-compliance-panel .metric-value {\n      font-size: 2.1rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.6rem;\n      position: relative;\n    }\n\n    #hr-legal-compliance-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n    }\n\n   \n    #hr-legal-compliance-panel .icon {\n      display: inline-block;\n      user-select: none;\n      animation: pulse 2s infinite;\n    }\n\n    @media (max-width: 768px) {\n      #hr-legal-compliance-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Total Investigations -->\n    <div class=\"card\" title=\"Total Investigations\">\n      <h2 class=\"card-title\">Total Investigations</h2>\n      <div class=\"metric-value\">\n        {{#if (or Total_Investigations (eq Total_Investigations 0))}}{{Total_Investigations}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Investigations and inquiries\" style=\"color: #ef4444; font-size: 1.8rem; line-height: 1;\">🕵️</span>\n      </div>\n      <div class=\"metric-label\">Total Number of Investigations</div>\n    </div>\n\n    <!-- Total Contracts -->\n    <div class=\"card\" title=\"Total Contracts\">\n      <h2 class=\"card-title\">Total Contracts</h2>\n      <div class=\"metric-value\">\n        {{#if (or Total_Contracts (eq Total_Contracts 0))}}{{Total_Contracts}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Contracts and agreements\" style=\"color: #06b6d4; font-size: 1.8rem; line-height: 1;\">📄</span>\n      </div>\n      <div class=\"metric-label\">Total Number of Contracts</div>\n    </div>\n\n    <!-- Lawsuit Cost Avoidance -->\n    <div class=\"card\" title=\"Lawsuit Cost Avoidance\">\n      <h2 class=\"card-title\">Lawsuit Avoidance</h2>\n      <div class=\"metric-value\">\n        {{#if (or Lawsuit_Cost_Avoidance (eq Lawsuit_Cost_Avoidance 0))}}MEGP {{Lawsuit_Cost_Avoidance}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Legal cost savings\" style=\"color: #10b981; font-size: 1.8rem; line-height: 1;\">⚖️</span>\n      </div>\n      <div class=\"metric-label\">Won Lawsuits Cost Avoidance</div>\n    </div>\n\n    <!-- Consultants Fees -->\n    <div class=\"card\" title=\"Consultants Fees\">\n      <h2 class=\"card-title\">Consultants Fees</h2>\n      <div class=\"metric-value\">\n        {{#if (or Consultants_Fees (eq Consultants_Fees 0))}}MEGP {{Consultants_Fees}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Consulting expenses\" style=\"color: #f59e0b; font-size: 1.8rem; line-height: 1;\">💼</span>\n      </div>\n      <div class=\"metric-label\">Total Consultants' Fees</div>\n    </div>\n\n    <!-- Total Licenses -->\n    <div class=\"card\" title=\"Total Licenses\">\n      <h2 class=\"card-title\">Total Licenses</h2>\n      <div class=\"metric-value\">\n        {{#if (or Total_Licenses (eq Total_Licenses 0))}}{{Total_Licenses}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Licenses and permits\" style=\"color: #8b5cf6; font-size: 1.8rem; line-height: 1;\">🏷️</span>\n      </div>\n      <div class=\"metric-label\">Total Number of Licenses</div>\n    </div>\n\n    <!-- Total BOD & GA Activities -->\n    <div class=\"card\" title=\"Total BOD & GA Activities\">\n      <h2 class=\"card-title\">BOD & GA Activities</h2>\n      <div class=\"metric-value\">\n        {{#if (or Total_BOD_GA_Activities (eq Total_BOD_GA_Activities 0))}}{{Total_BOD_GA_Activities}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Board and governance activities\" style=\"color: #ec4899; font-size: 1.8rem; line-height: 1;\">👔</span>\n      </div>\n      <div class=\"metric-label\">Total Number of BOD & GA Activities</div>\n    </div>\n  </div>\n</div>\n",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  MAX(CASE WHEN KPI = 'Total Number of investigations'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Total_Investigations,\r\n\r\n  MAX(CASE WHEN KPI = 'Total Number Of contracts'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Total_Contracts,\r\n\r\n  MAX(CASE WHEN KPI = 'Won lawsuits cost avoidance'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Lawsuit_Cost_Avoidance,\r\n\r\n  MAX(CASE WHEN KPI = 'Consultants'' fees'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Consultants_Fees,\r\n\r\n  MAX(CASE WHEN KPI = 'Total number of licenses'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Total_Licenses,\r\n\r\n  MAX(CASE WHEN KPI = 'Total number of BOD&GA'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Total_BOD_GA_Activities\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nWHERE TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = YEAR(Current_date())\r\n    and Area = 'Legal'\r\n);\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Legal KPIs",
+    "uid": "TiERG7zvz",
+    "version": 4,
+    "weekStart": ""
+  }
+}

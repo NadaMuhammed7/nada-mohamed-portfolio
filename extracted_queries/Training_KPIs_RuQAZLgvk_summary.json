@@ -1,0 +1,63 @@
+{
+  "uid": "RuQAZLgvk",
+  "title": "Training KPIs",
+  "category": "HR Analytics",
+  "folder": "HR",
+  "folderUid": "_joRgLRvz",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/RuQAZLgvk/training-kpis",
+  "version": 12,
+  "tags": [],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "refresh": "",
+  "total_panels": 2,
+  "variables": [],
+  "panels": [
+    {
+      "id": 4,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 19,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  MAX(CASE WHEN KPI = ' Total Training Hours Annual'\r\n           AND Type = 'Actual' THEN concat(round(\"Value\"/1000,2), 'K') END) AS Total_Training_Hours_Annual,\r\n\r\n  MAX(CASE WHEN KPI = ' Training Hours Per Month'\r\n           AND Type = 'Actual' THEN concat(round(\"Value\"/1000,2), 'K') END) AS Training_Hours_Per_Month,\r\n\r\n  MAX(CASE WHEN KPI = ' Training Hours Per Day'\r\n           AND Type = 'Actual' THEN round(\"Value\",0) END) AS Training_Hours_Per_Day,\r\n\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC'\r\n           AND Type = 'Actual' THEN \"Value\" * 100 END) AS Employees_Covered_Percentage,\r\n\r\n  MAX(CASE WHEN KPI = ' Training Attendance Rate'\r\n           AND Type = 'Actual' THEN \"Value\" * 100 END) AS Training_Attendance_Rate,\r\n\r\n  MAX(CASE WHEN KPI = ' Training Satisfaction Rate'\r\n           AND Type = 'Actual' THEN \"Value\" * 100 END) AS Training_Satisfaction_Rate\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nWHERE TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n    and Area = 'OD / Training'\r\n);\r\n"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 6,
+        "w": 19,
+        "x": 0,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT\r\n  max(CASE WHEN KPI = ' Candidate Satisfaction Rate' AND Type = 'Actual' THEN \"Value\" * 100 END) AS Candidate_Satisfaction,\r\n  max(CASE WHEN KPI = ' Hiring Manager Satisfaction Rate'AND Type = 'Actual' THEN \"Value\" *100 END) AS Hiring_Manager_Satisfaction,\r\n  max(CASE WHEN KPI = ' Quality Of Hire (% of hires who left during probation Period)' AND Type = 'Actual' THEN \"Value\" *100 END) AS prob_period,\r\n    max(CASE WHEN KPI = ' Time To Hire' AND Type = 'Actual' THEN \"Value\"END) AS time_hire\r\n\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nwhere TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n    and Area = 'OD / Recruitment'\r\n  );\r\n\r\n"
+        }
+      ]
+    }
+  ]
+}

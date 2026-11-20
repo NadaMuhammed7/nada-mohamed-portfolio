@@ -1,0 +1,41 @@
+{
+  "uid": "I8xvnYgvz",
+  "title": "Employee Relations KPIs",
+  "category": "HR Analytics",
+  "folder": "HR",
+  "folderUid": "_joRgLRvz",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/I8xvnYgvz/employee-relations-kpis",
+  "version": 7,
+  "tags": [],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "refresh": "",
+  "total_panels": 1,
+  "variables": [],
+  "panels": [
+    {
+      "id": 4,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 21,
+        "x": 3,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  max(CASE WHEN KPI = 'Employee Meals' AND Type = 'Actual' THEN \"Value\" END) AS Employee_Meals_cost,\r\n  max(CASE WHEN KPI = 'Hotel Nights'AND Type = 'Actual' THEN \"Value\"  END) AS Hotel_Nights_cost,\r\n  max(CASE WHEN KPI = 'Cars Maintenance' AND Type = 'Actual' THEN \"Value\" END) AS Cars_Maintenance_cost,\r\n  max(CASE WHEN KPI = 'Flight Tickets' AND Type = 'Actual' THEN \"Value\"END) AS Flight_Tickets_cost,\r\n  max(CASE WHEN KPI = 'Buffet/ Hospitalities' AND Type = 'Actual' THEN \"Value\"END) AS Buffet_cost,\r\n  max(CASE WHEN KPI = 'Mobile Telephone expenses' AND Type = 'Actual' THEN \"Value\"END) AS Mobile_Telephone_expenses,\r\n  max(CASE WHEN KPI = 'Trips / Entertainment' AND Type = 'Actual' THEN ROUND(\"Value\",2) END) AS Trips_Entertainment  \r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nwhere TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n    and Area = 'Employee Relations'\r\n  );\r\n\r\n"
+        }
+      ]
+    }
+  ]
+}

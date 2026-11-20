@@ -1,0 +1,836 @@
+{
+  "uid": "OURBmYRDk",
+  "title": "C&B",
+  "category": "HR Analytics",
+  "folder": "HR",
+  "folderUid": "_joRgLRvz",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/OURBmYRDk/candb",
+  "version": 75,
+  "tags": [],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "refresh": false,
+  "total_panels": 40,
+  "variables": [
+    {
+      "name": "Department",
+      "type": "query",
+      "label": null,
+      "query": "Select Distinct Department from \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nwhere Area = 'Compensation & Benefits'",
+      "current": [
+        "All"
+      ]
+    },
+    {
+      "name": "Job_Family",
+      "type": "query",
+      "label": "Job Family",
+      "query": "Select Distinct Job_Family from \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nwhere Area = 'Compensation & Benefits'",
+      "current": "All"
+    },
+    {
+      "name": "Month",
+      "type": "query",
+      "label": null,
+      "query": "Select distinct  \"Month\" from \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\n  WHERE Area = 'Compensation & Benefits'",
+      "current": [
+        "All"
+      ]
+    },
+    {
+      "name": "Year",
+      "type": "query",
+      "label": null,
+      "query": "Select distinct  \"year\" from \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE   Area = 'Compensation & Benefits'",
+      "current": [
+        "2024",
+        "2025"
+      ]
+    }
+  ],
+  "panels": [
+    {
+      "id": 20,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "targets": []
+    },
+    {
+      "id": 6,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 3
+      },
+      "targets": []
+    },
+    {
+      "id": 10,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 13,
+        "y": 3
+      },
+      "targets": []
+    },
+    {
+      "id": 12,
+      "title": "Total Headcount",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\ndistinct Job_Family_Value\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Headcount' and Job_Family = 'Total'\n  and UM = 'Numb' \n  AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Total Overtime %",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 6
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\ndistinct Job_Family_Value\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Overtime %' and UM = 'Percent' and Job_Family = 'Total'\n   AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Headcount Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family\n,\n  Job_Family_Value\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Headcount' and UM = 'Numb' \n  AND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family != 'Total'\n  AND Area = 'Compensation & Benefits'\n  and Job_Family_Value != 0\norder by Job_Family_Value desc"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Overtime % Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\nDistinct Job_Family,\n  Job_Family_Value\n  \nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Overtime %' and UM = 'Percent' \n  AND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family != 'Total'\n  AND Area = 'Compensation & Benefits'\n  and Job_Family_Value !=  0\norder by Job_Family_Value desc"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Headcount Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  Department_Value,\n  Department\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Headcount' and UM = 'Numb'\n  AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Department_Value > 0\n  and Job_Family in ($Job_Family)\norder by Department_Value desc"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Overtime % Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Department_Value,\nDepartment \nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Overtime %' and UM = 'Percent' and Department !='Total'\n  AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Department_Value > 0\n    and Job_Family in ($Job_Family)\norder by Department_Value desc"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 26
+      },
+      "targets": []
+    },
+    {
+      "id": 15,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 13,
+        "y": 26
+      },
+      "targets": []
+    },
+    {
+      "id": 16,
+      "title": "Total Sickness %",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 29
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n distinct Job_Family_Value\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Sickness %' and UM = 'Percent' and Job_Family = 'Total'\n  AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  "
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Total Injury %",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 29
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n distinct Job_Family_Value\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Injury %' and UM = 'Percent' and Job_Family = 'Total'\n  AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  "
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "title": "Sickness % Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value,\n  Job_Family\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Sickness %' and UM = 'Percent' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family != 'Total'\n  AND Area = 'Compensation & Benefits'\n  and Job_Family_Value !=  0\norder by Job_Family_Value desc"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "title": "Injury% Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value,\n  Job_Family\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Injury %' and UM = 'Percent' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family != 'Total'\n  AND Area = 'Compensation & Benefits'\nand Job_Family_Value is not null and Job_Family_Value != 0\norder by Job_Family_Value  desc\n"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "title": "Sickness % Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 42
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Department_Value,\n  Department\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Sickness %' and UM = 'Percent' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Department_Value > 0\n    and Job_Family in ($Job_Family)\n\norder by Department_Value desc"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "title": "Injury% Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 42
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Department_Value,\n  Department\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Injury %' and UM = 'Percent' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\nand Department_Value > 0\n  and Job_Family in ($Job_Family)\n\norder by Department_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 51
+      },
+      "targets": []
+    },
+    {
+      "id": 24,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 13,
+        "y": 51
+      },
+      "targets": []
+    },
+    {
+      "id": 22,
+      "title": "Total Other Absence %",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 54
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value\n\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Other Absence %' and UM = 'Percent' and Job_Family = 'Total'\nAND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "Total Absenteeism %",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 54
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value\n\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Total Absenteeism %' and UM = 'Percent' and Job_Family = 'Total'\nAND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "title": "Other Absence % Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 57
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value,\n  Job_Family\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Other Absence %' and UM = 'Percent'\nAND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family != 'Total'\n  AND Area = 'Compensation & Benefits'\n  and Job_Family_Value > 0\norder by Job_Family_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "title": "Total Absenteeism % Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 57
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value,\n  Job_Family\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Total Absenteeism %' and UM = 'Percent' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Job_Family_Value > 0\norder by Job_Family_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "title": "Other Absence % Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 67
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n distinct  Department_Value,\n  Department\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'Other Absence %' and UM = 'Percent'\nAND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Department_Value > 0\n    and Job_Family in ($Job_Family)\norder by Department_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "title": "Total Absenteeism % Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 67
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Department_Value,\n  Department\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Total Absenteeism %' and UM = 'Percent' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Department_Value > 0\norder by Department_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 75
+      },
+      "targets": []
+    },
+    {
+      "id": 39,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 75
+      },
+      "targets": []
+    },
+    {
+      "id": 45,
+      "title": "Total Opening Leaves Days",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 78
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value\n\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Openning leaves' and UM = 'Days' \nAND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family ='Total'\n  AND Area = 'Compensation & Benefits'"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "title": "Total Consumption Leaves Days",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 78
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value\n\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Consumption Leaves' and UM = 'Days' and Job_Family ='Total'\nAND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "title": "Opening Leaves Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 81
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value,\n  Job_Family\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Openning leaves' and UM = 'Days' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family != 'Total'\n  AND Area = 'Compensation & Benefits'\n  and Job_Family_Value > 0\norder by Job_Family_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "title": "Consumption Leaves Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 81
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value,\n  Job_Family\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Consumption Leaves' and UM = 'Days' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family != 'Total'\n  AND Area = 'Compensation & Benefits'\n  and Job_Family_Value > 0\norder by Job_Family_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "title": "Opening Leaves Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 91
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Department_Value,\n  Department\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Openning Leaves' and UM = 'Days' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Department_Value > 0\norder by Department_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "title": "Consumption Leaves Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 91
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Department_Value,\n  Department\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Consumption Leaves' and UM = 'Days' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Department_Value > 0\norder by Department_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 100
+      },
+      "targets": []
+    },
+    {
+      "id": 53,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 100
+      },
+      "targets": []
+    },
+    {
+      "id": 57,
+      "title": "Total Remaining Leaves Days",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 103
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value\n\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Remaining Leaves' and UM = 'Days' \nAND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family ='Total'\n  AND Area = 'Compensation & Benefits'"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "title": "Total R9",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 103
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'R9-Oct Headcount' and Job_Family ='Total'\n--AND \"Month\" in ($Month) \n  --and \"year\" in ($Year)\n"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "title": "Remaining Leaves Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 106
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value,\n  Job_Family\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Remaining Leaves' and UM = 'Days' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year) and Job_Family != 'Total'\n  AND Area = 'Compensation & Benefits'\n  and Job_Family_Value > 0\norder by Job_Family_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "title": "R9 Per Job Family",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 106
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Job_Family_Value,\n  Job_Family\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= 'R9-Oct Headcount'  and Job_Family != 'Total'\n  --and UM = 'Numb' \n-- AND \"Month\" in ($Month) \n--  and \"year\" in ($Year)\n -- AND Area = 'Compensation & Benefits'\n  and Job_Family_Value > 0\norder by Job_Family_Value desc\n"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "title": "Remaining Leaves Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 116
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  distinct Department_Value,\n  Department\nFROM\n  \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\nWHERE\n  KPI= ' Remaining Leaves' and UM = 'Days' \n AND \"Month\" in ($Month) \n  and \"year\" in ($Year)\n  AND Area = 'Compensation & Benefits'\n  and Department_Value > 0\norder by Department_Value desc\n"
+        }
+      ]
+    }
+  ]
+}

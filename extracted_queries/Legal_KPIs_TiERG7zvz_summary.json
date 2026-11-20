@@ -1,0 +1,41 @@
+{
+  "uid": "TiERG7zvz",
+  "title": "Legal KPIs",
+  "category": "HR Analytics",
+  "folder": "HR",
+  "folderUid": "_joRgLRvz",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/TiERG7zvz/legal-kpis",
+  "version": 4,
+  "tags": [],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "refresh": false,
+  "total_panels": 1,
+  "variables": [],
+  "panels": [
+    {
+      "id": 2,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  MAX(CASE WHEN KPI = 'Total Number of investigations'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Total_Investigations,\r\n\r\n  MAX(CASE WHEN KPI = 'Total Number Of contracts'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Total_Contracts,\r\n\r\n  MAX(CASE WHEN KPI = 'Won lawsuits cost avoidance'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Lawsuit_Cost_Avoidance,\r\n\r\n  MAX(CASE WHEN KPI = 'Consultants'' fees'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Consultants_Fees,\r\n\r\n  MAX(CASE WHEN KPI = 'Total number of licenses'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Total_Licenses,\r\n\r\n  MAX(CASE WHEN KPI = 'Total number of BOD&GA'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Total_BOD_GA_Activities\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nWHERE TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = YEAR(Current_date())\r\n    and Area = 'Legal'\r\n);\r\n"
+        }
+      ]
+    }
+  ]
+}

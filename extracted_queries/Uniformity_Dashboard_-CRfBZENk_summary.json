@@ -1,0 +1,435 @@
+{
+  "uid": "-CRfBZENk",
+  "title": "Uniformity Dashboard",
+  "category": "Quality & Uniformity",
+  "folder": "Quality KPIs",
+  "folderUid": "32VeU5-Nk",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/-CRfBZENk/uniformity-dashboard",
+  "version": 66,
+  "tags": [],
+  "time": {
+    "from": "2026-01-14T00:00:00.000Z",
+    "to": "2026-01-14T23:59:59.000Z"
+  },
+  "refresh": false,
+  "total_panels": 16,
+  "variables": [
+    {
+      "name": "MCH",
+      "type": "query",
+      "label": null,
+      "query": "select distinct MCH_CODE FROM  \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\"\nWHERE pp_code ='BU2'",
+      "current": "All"
+    }
+  ],
+  "panels": [
+    {
+      "id": 10,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode) AS \"CLASS  A+B\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A', 'B')\n"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Total Tested",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 5,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A', 'B')\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\n"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 10,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A', 'B')\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\n"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Machines Prod",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count( distinct Barcode) AS \"Hoffman\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND MM_TM_Testing_code IN ('00')\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode) as \"ZF\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND MM_TM_Testing_code IN ('02')\n"
+        },
+        {
+          "refId": "C",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count( distinct Barcode) AS \"D90\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND MM_TM_Testing_code IN ('01')\n"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 0,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode) as \"Class A\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A')\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode) as \"Class B\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('B')\n"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 10,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A')\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\n"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 13,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('B')\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\n"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Raw Data ",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    -- 1. Metadata & Identification\r\n    EPS_CODE AS \"EPS\",\r\n    IP_CODE AS \"IPCODE\",\r\n    EPS_DESC AS \"EPS DESCRIPTION\",\r\n    \"Machine\" AS \"TM\",\r\n    \"Inspection Date\" AS \"TEST DATE\",\r\n    Barcode AS \"BARCODE\",\r\n    \"Final Class\" AS \"CLASS\",\r\n    \r\n    -- 2. Process Dates & Machines\r\n    \"CU Date\" AS \"VULC DATE\",\r\n    \"CU Mch\" AS \"MCH VULC\",\r\n    \"Mould_NO\" AS \"MCH MOULD\",\r\n    MAT_CODE AS \"SPEC CODE\",\r\n    \"BU MCH\" AS \"MCH BUILD\",\r\n    WM_CODE,\r\n    \"BU Date\" AS \"BUILD DATE\",\r\n    CRUDI AS \"TYRE TYPE\",\r\n    \r\n    -- 3. Uniformity & Geometry Metrics (Existing Only)\r\n    RFV, \r\n    RFV_GR, \r\n    H1RFV, \r\n    H1RFV_GR, \r\n    H2RFV, \r\n    H2RFV_GR, \r\n    LFV, \r\n    LFV_GR, \r\n    CONICITY, \r\n    CONICITY_GR, \r\n    RRO, \r\n    RRO_GR, \r\n    LRO, \r\n    LRO_GR, \r\n    BULGES, \r\n    BULGES_GR, \r\n    UNB_DY_LO, \r\n    UNB_DY_LO_GR, \r\n    UNB_DY_UP, \r\n    UNB_DY_UP_GR,\r\n\r\n    -- 4. Extra Columns (Moved to end)\r\n    TEST_ID,\r\n    \"CU Side\"\r\nFROM (\r\n    SELECT \r\n        U.TEST_ID, U.EPS_CODE, U.IP_CODE, U.EPS_DESC,\r\n        U.MM_TM_Testing_code AS \"Machine\",\r\n        U.Data_ora AS \"Inspection Date\",\r\n        U.Barcode,\r\n        B.TRC_TIMESTAMP AS \"BU Date\",\r\n        B.MCH_CODE AS \"BU MCH\",\r\n        B.WM_CODE,\r\n        C.TRC_TIMESTAMP AS \"CU Date\",\r\n        C.MCH_CODE AS \"CU Mch\",\r\n        C.TRC_SIDE AS \"CU Side\", \r\n        MLD.MTO_TOOL_CODE_1 AS \"Mould_NO\",\r\n        U.GR_MISURA AS \"Final Class\",\r\n        U.CONICITY, U.CONICITY_GR, U.H1RFV, U.H1RFV_GR,\r\n        U.H2RFV, U.H2RFV_GR, U.LFV, U.LFV_GR, U.RFV,\r\n        U.RFV_GR, U.RRO, U.RRO_GR, U.UNB_DY_LO,\r\n        U.UNB_DY_LO_GR, U.UNB_DY_UP, U.UNB_DY_UP_GR,\r\n        U.LRO, U.BULGES, U.BULGES_GR, U.LRO_GR,\r\n        M.MAT_CODE,\r\n        V.CRUDI,\r\n        ROW_NUMBER() OVER (PARTITION BY U.Barcode ORDER BY U.Data_ora DESC) AS rn\r\n\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\" U\r\n\r\n    -- Building Join\r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" B\r\n        ON B.TRC_BARCODE = U.Barcode\r\n        AND B.PP_CODE = 'BU2'\r\n\r\n    -- Curing Join\r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" C\r\n        ON C.TRC_BARCODE = U.Barcode\r\n        AND C.PP_CODE = 'CU1'\r\n    \r\n    -- Mould Join\r\n    LEFT JOIN (\r\n        SELECT \r\n            MCH_CODE, MCN_SIDE, MTO_TOOL_CODE_1, MTO_START_DATE, \r\n            COALESCE(MTO_END_DATE, CURRENT_TIMESTAMP()) AS end_date\r\n        FROM EG_CA_TRU_FAC_PCS02.SCH_MACHINE_TOOL_WITH_HIS\r\n        WHERE PP_CODE = 'CU1'\r\n    ) AS MLD\r\n        ON C.MCH_CODE = MLD.MCH_CODE \r\n        AND C.TRC_SIDE = MLD.MCN_SIDE \r\n        AND (C.TRC_TIMESTAMP BETWEEN MLD.MTO_START_DATE AND MLD.end_date)\r\n\r\n    -- Material Data\r\n    LEFT JOIN (\r\n        SELECT * FROM (\r\n            SELECT *, ROW_NUMBER() OVER (PARTITION BY MAT_IP_CODE ORDER BY MAT_IMPORT_TIMESTAMP DESC) AS rn\r\n            FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\r\n        ) M1 WHERE rn = 1\r\n    ) M ON M.MAT_IP_CODE = U.IP_CODE\r\n\r\n    -- Crudi / BOM Calculation\r\n    LEFT JOIN (\r\n        SELECT DISTINCT\r\n            BOM.MAT_SAP_CODE AS SAW,\r\n            A_VAL.MD_PPA_VALUE AS CRUDI\r\n        FROM EG_CA_TRU_FAC_PCS02.MD_BOM BOM\r\n        INNER JOIN EG_CA_TRU_FAC_PCS02.MD_BOM CHILD_BOM\r\n            ON CHILD_BOM.MAT_SAP_CODE = BOM.CHILD_MAT_SAP_CODE\r\n            AND CHILD_BOM.CNT_CODE = BOM.CHILD_CNT_CODE\r\n            AND CHILD_BOM.BV_STATUS = 'P'\r\n        INNER JOIN EG_CA_TRU_FAC_PCS02.MD_PROCESS_PARAMETERS_ACYCLE_VALUE A_VAL\r\n            ON A_VAL.MAT_SAP_CODE = CHILD_BOM.MAT_SAP_CODE\r\n            AND A_VAL.CNT_CODE = CHILD_BOM.CNT_CODE\r\n            AND A_VAL.MT_CODE = CHILD_BOM.MT_CODE\r\n            AND A_VAL.ST_CODE = '001'\r\n    ) V ON M.MAT_SAP_CODE = V.SAW\r\n\r\n    WHERE $__timeFilter(U.Data_ora)\r\n) t\r\nWHERE rn = 1;"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": " Data ",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    SUBSTRING(EPS_CODE, 2, 3) AS \"Short Code\",\r\n    CASE \r\n        WHEN MM_TM_Testing_code = '00' THEN 'Hoffman'\r\n        WHEN MM_TM_Testing_code = '01' THEN 'D9O'\r\n        WHEN MM_TM_Testing_code = '02' THEN 'ZF'\r\n    END AS \"Machine\",\r\n    \r\n    -- Counts\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS \"Class A\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class A %\",\r\n    SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) AS \"Class B\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class B %\",\r\n    SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) AS \"Class C\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class C %\",\r\n    SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) AS \"Class E\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class E %\"\r\n\r\n    -- Percentages\r\n    -- We calculate (Class / Total) * 100\r\n\r\nFROM (\r\n    SELECT \r\n        MM_TM_Testing_code,\r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n    AND Barcode LIKE '811%'\r\n) t\r\nWHERE rn = 1\r\nGROUP BY SUBSTRING(EPS_CODE, 2, 3), MM_TM_Testing_code;"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Building   view",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    MCH_CODE AS \"Building_Mch\",\r\n    -- Class A\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS \"Class A\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class A %\",\r\n    \r\n    -- Class B\r\n    SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) AS \"Class B\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class B %\",\r\n    \r\n    -- Class C\r\n    SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) AS \"Class C\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class C %\",\r\n    \r\n    -- Class E\r\n    SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) AS \"Class E\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class E %\",\r\n        \r\n    COUNT(*) AS \"Total_Tires\"\r\n\r\nFROM (\r\n    SELECT \r\n        U.MM_TM_Testing_code,\r\n        U.EPS_CODE,\r\n        U.GR_MISURA AS Final_Class,\r\n        T.MCH_CODE,\r\n        ROW_NUMBER() OVER (PARTITION BY U.Barcode ORDER BY U.Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\" U \r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\" T\r\n        ON U.Barcode = T.TRC_BARCODE \r\n        AND T.PP_CODE = 'BU2'    \r\n    WHERE $__timeFilter(U.Data_ora)\r\n      AND U.Barcode LIKE '811%'\r\n) FF\r\nWHERE rn = 1\r\nGROUP BY MCH_CODE\r\nORDER BY MCH_CODE ASC;"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    MCH_CODE,\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS Class_A,\r\n    SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) AS Class_B,\r\n    SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) AS Class_C,\r\n    SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) AS Class_E\r\nFROM (\r\n    SELECT \r\n        MM_TM_Testing_code,\r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        T.MCH_CODE,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\" U \r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\" T\r\n        ON U.Barcode = T.TRC_BARCODE \r\n       AND T.PP_CODE = 'BU2'    \r\n    WHERE $__timeFilter(Data_ora)\r\n      AND Barcode LIKE '811%'\r\n) FF\r\nWHERE rn = 1\r\nGROUP BY MCH_CODE;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": " ",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 54
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    MCH_CODE AS \"BU MCH\",\r\n    \"OP Name\",\r\n    WM_PHONE_PREFIX as \"OP BU Num\",\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS \"Class A\",\r\n    SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) AS \"Class B\",\r\n    SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) AS \"Class C\",\r\n    SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) AS \"Class E\"\r\n    \r\nFROM \r\n(\r\n\r\n\r\nSELECT \r\n        MM_TM_Testing_code,\r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        T.MCH_CODE,\r\n        CONCAT(W.WM_NAME,' ', w.WM_SURNAME) AS \"op Name\",\r\n        w.WM_PHONE_PREFIX,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\" U \r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\" T\r\nON (U.Barcode=T.TRC_BARCODE OR U.Barcode=T.TRC_ID ) AND T.PP_CODE = 'BU2'  \r\nLEFT JOIN \"EG_CA_TRU_FAC_CMS39\".\"MD_WORKERS\" W\r\nON T.WM_CODE = W.WM_CODE\r\n    WHERE $__timeFilter(Data_ora)\r\n     AND Barcode like '811%'\r\n     \r\n) FF\r\nwhere rn=1 and \"BU MCH\" in ($MCH)\r\nGROUP BY MCH_CODE,\"op Name\",\"OP BU Num\"\r\n\r\n \r\n   "
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Class E Details",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 65
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    SUBSTRING(EPS_CODE, 2, 3) AS \"Short Code\",\r\n\r\n    SUM(CASE WHEN Final_Class   = 'E' THEN 1 ELSE 0 END) AS \"Class E\",\r\n    SUM(CASE WHEN CONICITY_GR   = 'E' THEN 1 ELSE 0 END) AS \"CONICITY_GR\",\r\n    SUM(CASE WHEN H1RFV_GR      = 'E' THEN 1 ELSE 0 END) AS \"H1RFV_GR\",\r\n    SUM(CASE WHEN H2RFV_GR      = 'E' THEN 1 ELSE 0 END) AS \"H2RFV_GR\",\r\n    SUM(CASE WHEN LFV_GR        = 'E' THEN 1 ELSE 0 END) AS \"LFV_GR\",\r\n    SUM(CASE WHEN RFV_GR        = 'E' THEN 1 ELSE 0 END) AS \"RFV_GR\",\r\n    SUM(CASE WHEN UNB_DY_LO_GR  = 'E' THEN 1 ELSE 0 END) AS \"UNB_DY_LO_GR\",\r\n    SUM(CASE WHEN UNB_DY_UP_GR  = 'E' THEN 1 ELSE 0 END) AS \"UNB_DY_UP_GR\",\r\n    SUM(CASE WHEN RRO_GR        = 'E' THEN 1 ELSE 0 END) AS \"RRO_GR\",\r\n    SUM(CASE WHEN BULGES_GR     = 'E' THEN 1 ELSE 0 END) AS  \"BULGES_GR\", \r\n    SUM(CASE WHEN LRO_GR        = 'E' THEN 1 ELSE 0 END) AS \"LRO_GR\"\r\n\r\nFROM (\r\n    SELECT \r\n        MM_TM_Testing_code,\r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        CONICITY_GR,\r\n        H1RFV_GR,\r\n        H2RFV_GR,\r\n        LFV_GR,\r\n        RFV_GR,\r\n        UNB_DY_LO_GR,\r\n        UNB_DY_UP_GR,\r\n        RRO_GR,\r\n        BULGES_GR,\r\n        LRO_GR,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n      AND Barcode LIKE '811%'\r\n) t\r\nWHERE rn = 1\r\nGROUP BY \r\n    SUBSTRING(EPS_CODE, 2, 3),\r\n    MM_TM_Testing_code\r\nhaving \"Class E\" > 0\r\n"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "OE%",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 74
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select  \"Short_Code\" ,round((Class_A*1.0 / total*1.0 ) *100,2) as OEE \r\nfrom (\r\nSELECT \r\n    SUBSTRING(EPS_CODE, 2, 3) AS \"Short_Code\",\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS Class_A,\r\n    count(Barcode) as total\r\nFROM (\r\n    SELECT \r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn,\r\n        Barcode\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n   and Barcode like '811%'\r\n\r\n) t\r\nWHERE rn = 1\r\nGROUP BY SUBSTRING(EPS_CODE, 2, 3))\r\n"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "title": "C% Before Reclassification ",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 87
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    t.\"Short_Code\",\r\n    ROUND(\r\n        c.c_barcode_count * 1.0\r\n        / t.total_barcode_count * 100.0,\r\n        2\r\n    ) AS \"OEE\"\r\nFROM\r\n(\r\n    -- total DISTINCT barcodes per Short_Code\r\n    SELECT\r\n        SUBSTRING(EPS_CODE, 2, 3) AS \"Short_Code\",\r\n        COUNT(DISTINCT Barcode) AS total_barcode_count\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n      AND Barcode LIKE '811%'\r\n    GROUP BY SUBSTRING(EPS_CODE, 2, 3)\r\n) t\r\nJOIN\r\n(\r\n    -- DISTINCT barcodes that have at least one Class = 'C'\r\n    SELECT\r\n        SUBSTRING(EPS_CODE, 2, 3) AS \"Short_Code\",\r\n        COUNT(DISTINCT Barcode) AS c_barcode_count\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n      AND Barcode LIKE '811%'\r\n      AND Barcode IN (\r\n          SELECT Barcode\r\n          FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n          WHERE GR_MISURA = 'C'\r\n      )\r\n    GROUP BY SUBSTRING(EPS_CODE, 2, 3)\r\n) c\r\nON t.\"Short_Code\" = c.\"Short_Code\";\r\n"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Class Chart",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 100
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT GR_MISURA, COUNT(Barcode) AS total\r\nFROM (\r\n    SELECT *, \r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\r\n) AS last\r\nWHERE $__timeFilter(Data_ora)\r\nAND rn = 1\r\nGROUP BY GR_MISURA"
+        }
+      ]
+    }
+  ]
+}

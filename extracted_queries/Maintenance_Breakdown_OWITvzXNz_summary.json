@@ -1,0 +1,2041 @@
+{
+  "uid": "OWITvzXNz",
+  "title": "Maintenance Breakdown",
+  "category": "Plant Maintenance",
+  "folder": "Maintenance",
+  "folderUid": "8aXEKSzvz",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/OWITvzXNz/maintenance-breakdown",
+  "version": 92,
+  "tags": [
+    "ATCO",
+    "MAINT"
+  ],
+  "time": {
+    "from": "2025-04-05T11:58:55.473Z",
+    "to": "2025-10-02T11:58:55.475Z"
+  },
+  "refresh": false,
+  "total_panels": 83,
+  "variables": [
+    {
+      "name": "Type",
+      "type": "query",
+      "label": null,
+      "query": "select distinct Type from \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\nwhere Type in ('Mechanical problem','Electrical Problem')",
+      "current": "All"
+    },
+    {
+      "name": "Year",
+      "type": "query",
+      "label": null,
+      "query": "SELECT DISTINCT EXTRACT(YEAR FROM CreateDate)\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\";\n ",
+      "current": "2026"
+    }
+  ],
+  "panels": [
+    {
+      "id": 62,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {},
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "title": "Untitled Panel",
+      "type": "aidanmountford-html-panel",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 17,
+        "x": 7,
+        "y": 0
+      },
+      "targets": []
+    },
+    {
+      "id": 96,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 0,
+        "y": 4
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 3,
+        "y": 4
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 6,
+        "y": 4
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 9,
+        "y": 4
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 12,
+        "y": 4
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 15,
+        "y": 4
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 18,
+        "y": 4
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 21,
+        "y": 4
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Breakdown%",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  (\r\n    (SUM(\"Down_time\") * 100.0) /\r\n    (\r\n      (DATEDIFF($__timeTo(), $__timeFrom()) +1 ) * 1400.0 * 6.0\r\n    )\r\n  ) AS \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Breakdown%",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 3,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  (\r\n    (SUM(\"Down_time\") * 100.0) /\r\n    (\r\n      (DATEDIFF($__timeTo(), $__timeFrom()) +1) * 1349.0 * 6.0\r\n    )\r\n  ) AS \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Extrusion'\r\n    and Machine_Line not like 'BeadMaking%'\r\n      AND \"Type\" IN ($Type)\r\n\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Breakdown%",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 6,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  (\r\n    (SUM(\"Down_time\") * 100.0) /\r\n    (\r\n      (DATEDIFF($__timeTo(), $__timeFrom()) +1) * 1372.0\r\n    )\r\n  ) AS \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Calender'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Breakdown%",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  (\r\n    (SUM(\"Down_time\") * 100.0) /\r\n    (\r\n      (DATEDIFF($__timeTo(), $__timeFrom()) +1) * 1402.0 * 14.0\r\n    )\r\n  ) AS \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Bead'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Breakdown%",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 12,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  (\r\n    (SUM(\"Down_time\") * 100.0) /\r\n    (\r\n      (DATEDIFF($__timeTo(), $__timeFrom())+1 ) * 1378.0 * 9.0\r\n    )\r\n  ) AS \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": "Breakdown%",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 15,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  (\r\n    (SUM(\"Down_time\") * 100.0) /\r\n    (\r\n      (DATEDIFF($__timeTo(), $__timeFrom())+1 ) * 1317.0 * 26.0\r\n    )\r\n  ) AS \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Building'  AND \"Type\" IN ($Type)\r\n    and Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Breakdown%",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 18,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  (\r\n    (SUM(\"Down_time\") * 100.0) /\r\n    (\r\n      (DATEDIFF($__timeTo(), $__timeFrom()) +1 ) * 1377.0 * 85.0\r\n    )\r\n  ) AS \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "Breakdown%",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 21,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  (\r\n    (SUM(\"Down_time\") * 100.0) /\r\n    (\r\n      (DATEDIFF($__timeTo(), $__timeFrom()) +1) * 1416.0 * 54.0\r\n    )\r\n  ) AS \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Inspection'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "title": "Breakdown Time",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Breakdown Time",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 3,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Extrusion'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Breakdown Time",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 6,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Calender'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Breakdown Time",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Bead'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Breakdown Time",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 12,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "title": "Breakdown Time",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 15,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Building'\r\n      AND \"Type\" IN ($Type)\r\nand Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')\r\n"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "title": "Breakdown Time",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 18,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "title": "Breakdown Time",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 21,
+        "y": 7
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Inspection'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "title": "MDT",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "title": "MDT",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 3,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Extrusion'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Extrusion'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "title": "MDT",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 6,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Calender'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Calender'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "title": "MDT",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Bead'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Bead'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "title": "MDT",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 12,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "title": "MDT",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 15,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Building'\r\n      AND \"Type\" IN ($Type)\r\nand Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Building'\r\n      AND \"Type\" IN ($Type)\r\n\r\nand Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "title": "MDT",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 18,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "title": "MDT",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 21,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Inspection'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Inspection'  AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "title": "MTTR",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 11
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "title": "MTTR",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 3,
+        "y": 11
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Extrusion'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Extrusion'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "title": "MTTR",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 6,
+        "y": 11
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Calender'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Calender'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "title": "MTTR",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 11
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Bead'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Bead'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "title": "MTTR",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 12,
+        "y": 11
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "title": "MTTR",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 15,
+        "y": 11
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Building'\r\n      AND \"Type\" IN ($Type)\r\nand Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Building'\r\n      AND \"Type\" IN ($Type)\r\n\r\nand Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "title": "MTTR",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 18,
+        "y": 11
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "title": "MTTR",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 21,
+        "y": 11
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Inspection'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Inspection'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "title": "MTBF",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "title": "MTBF",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 3,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Extrusion'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Extrusion'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "title": "MTBF",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 6,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Calender'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Calender'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "title": "MTBF",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Bead'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Bead'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "title": "MTBF",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 12,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "title": "MTBF",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 15,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Building'\r\n      AND \"Type\" IN ($Type)\r\nand Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Building'\r\n      AND \"Type\" IN ($Type)\r\n\r\nand Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "title": "MTBF",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 18,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "title": "MTBF",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 21,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    SUM(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Inspection'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    Count(\"Down_time\") as \"MTD_KPI\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\nWHERE\r\n    \"CreateDate\" BETWEEN $__timeFrom() AND $__timeTo()\r\n    AND \"Section\" = 'Inspection'\r\n      AND \"Type\" IN ($Type)\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "title": "Monthly Breakdown %",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    TO_CHAR(month_start, 'Mon') AS month_name,\r\n    SUM(Down_time) as \"Total Down Time\", \r\n    ROUND(\r\n        (SUM(\"Down_time\") * 100.0) /\r\n        (EXTRACT(DAY FROM LAST_DAY(month_start)) * 1400.0 * 6.0),\r\n        2\r\n    ) AS kpi_percent\r\nFROM (\r\n    SELECT\r\n        DATE_TRUNC('month', \"CreateDate\") AS month_start,\r\n        \"Down_time\"\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\n    WHERE \"Section\" = 'Mixer'\r\n      AND \"Type\" IN ($Type)\r\n      and EXTRACT(YEAR FROM CreateDate) in ($Year)\r\n) t\r\nGROUP BY month_start\r\nORDER BY month_start\r\n"
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "title": "Monthly Breakdown %",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    TO_CHAR(month_start, 'Mon') AS month_name,\r\n    SUM(Down_time) as \"Total Down Time\", \r\n    ROUND(\r\n        (SUM(\"Down_time\") * 100.0) /\r\n        (EXTRACT(DAY FROM LAST_DAY(month_start)) * 1349.0 * 21.0),\r\n        2\r\n    ) AS kpi_percent\r\nFROM (\r\n    SELECT\r\n        DATE_TRUNC('month', \"CreateDate\") AS month_start,\r\n        \"Down_time\"\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\n    WHERE Section in ('Extrusion','Calender','Bead')\r\n      AND \"Type\" IN ($Type)\r\n      and EXTRACT(YEAR FROM CreateDate) in ($Year)\r\n) t\r\nGROUP BY month_start\r\nORDER BY month_start\r\n"
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "title": "Top 5 Machines",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 0,
+        "y": 26
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Mixer'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "title": "Top 5 Stations",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 6,
+        "y": 26
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Station\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\n--WHERE Station IN ($station)\r\nwhere $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nand Section  = 'Mixer'\r\nGROUP BY Station\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "title": "Top 5 Machines",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 12,
+        "y": 26
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section in ('Extrusion','Calender','Bead')\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "title": "Top 5  Stations",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 18,
+        "y": 26
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Station\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\n--WHERE Station IN ($station)\r\nwhere $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nand  Section in ('Extrusion','Calender','Bead')\r\nGROUP BY Station\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "title": "MTBF Per Machine",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 37
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select (((1400*30) - Total_Breakdown_Time) / Total_Breakdown ) as \"result\", A.Machine_Line\r\nfrom \r\n\r\n(SELECT sum(Down_time) as Total_Breakdown_Time, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Mixer'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line ) A \r\n\r\ninner join \r\n(\r\nSELECT Count(Down_time) as Total_Breakdown, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Mixer'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\n\r\n) B\r\non A.Machine_Line = B.Machine_Line\r\norder by \"result\" asc\r\nlimit 5"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "title": "MTBF Per Machine",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 37
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select (((1349*30) - Total_Breakdown_Time) / Total_Breakdown ) as \"result\", A.Machine_Line\r\nfrom \r\n\r\n(SELECT sum(Down_time) as Total_Breakdown_Time, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section in ('Extrusion','Calender','Bead')\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line ) A \r\n\r\ninner join \r\n(\r\nSELECT Count(Down_time) as Total_Breakdown, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section in ('Extrusion','Calender','Bead')\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\n\r\n) B\r\non A.Machine_Line = B.Machine_Line\r\norder by \"result\" asc\r\nlimit 5"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 45
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 45
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "title": "Monthly Breakdown %",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 46
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    TO_CHAR(month_start, 'Mon') AS month_name,\r\n    SUM(Down_time) as \"Total Down Time\", \r\n    ROUND(\r\n        (SUM(\"Down_time\") * 100.0) /\r\n        (EXTRACT(DAY FROM LAST_DAY(month_start)) * 1317.0 * 26.0),\r\n        2\r\n    ) AS kpi_percent\r\nFROM (\r\n    SELECT\r\n        DATE_TRUNC('month', \"CreateDate\") AS month_start,\r\n        \"Down_time\"\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\n    WHERE \"Section\" = 'Building'\r\n      AND \"Type\" IN ($Type)\r\n       and Machine_Line NOT IN\r\n    ( 'Tot_BD','M','BD_Per','Tot_BD_num','VMI','VMI1','TT902','TTAN','TT901','MODD')\r\n    and EXTRACT(YEAR FROM CreateDate) in ($Year)\r\n) t\r\nGROUP BY month_start\r\nORDER BY month_start\r\n"
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "title": "Monthly Breakdown %",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    TO_CHAR(month_start, 'Mon') AS month_name,\r\n    SUM(Down_time) as \"Total Down Time\", \r\n    ROUND(\r\n        (SUM(\"Down_time\") * 100.0) /\r\n        (EXTRACT(DAY FROM LAST_DAY(month_start)) * 1432.0 * 9.0),\r\n        2\r\n    ) AS kpi_percent\r\nFROM (\r\n    SELECT\r\n        DATE_TRUNC('month', \"CreateDate\") AS month_start,\r\n        \"Down_time\"\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\n    WHERE \"Section\" = 'Cutters'\r\n      AND \"Type\" IN ($Type)\r\n      and EXTRACT(YEAR FROM CreateDate) in ($Year)\r\n) t\r\nGROUP BY month_start\r\nORDER BY month_start\r\n"
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "title": "Top 5 Machines",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 0,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\",\r\nCASE\r\n    WHEN Machine_Line LIKE '%301' THEN 'RM301'\r\n    WHEN Machine_Line LIKE '%26'  THEN 'MES1'\r\n    WHEN Machine_Line LIKE '%25'  THEN 'LCZ25'\r\n    WHEN Machine_Line LIKE '%24'  THEN 'LCZ24'\r\n    WHEN Machine_Line LIKE '%23'  THEN 'LCZ23'\r\n    WHEN Machine_Line LIKE '%22'  THEN 'LCZ22'\r\n    WHEN Machine_Line LIKE '%21'  THEN 'RM301'\r\n    WHEN Machine_Line LIKE '%20'  THEN 'TRGD20'\r\n    WHEN Machine_Line LIKE '%19'  THEN 'TRGD19'\r\n    WHEN Machine_Line LIKE '%18'  THEN 'TRGC18'\r\n    WHEN Machine_Line LIKE '%17'  THEN 'TRGC17'\r\n    WHEN Machine_Line LIKE '%16'  THEN 'TRGC16'\r\n    WHEN Machine_Line LIKE '%15'  THEN 'TRGC15'\r\n    WHEN Machine_Line LIKE '%14'  THEN 'TRGC14'\r\n    WHEN Machine_Line LIKE '%13'  THEN 'TRGC13'\r\n    WHEN Machine_Line LIKE '%12'  THEN 'TRGD12'\r\n    WHEN Machine_Line LIKE '%11'  THEN 'TRGD11'\r\n    WHEN Machine_Line LIKE '%10'  THEN 'TRGD10'\r\n    WHEN Machine_Line LIKE '%9'   THEN 'TRGH9'\r\n    WHEN Machine_Line LIKE '%8'   THEN 'TRGH8'\r\n    WHEN Machine_Line LIKE '%7'   THEN 'TRGH7'\r\n    WHEN Machine_Line LIKE '%6'   THEN 'TRGB6'\r\n    WHEN Machine_Line LIKE '%B5'   THEN 'TRGB5'\r\n    WHEN Machine_Line LIKE '%B4'   THEN 'TRGB4'\r\n    WHEN Machine_Line LIKE '%B3'   THEN 'TRGB3'\r\n    WHEN Machine_Line LIKE '%B2'   THEN 'TRGB2'\r\n    WHEN Machine_Line LIKE '%B1'   THEN 'TRGB1'\r\n    ELSE Machine_Line\r\nEND AS mapped_Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Building'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY mapped_Machine_Line\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "title": "Top 5 Station",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 6,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Station\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Building'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Station\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "title": "Top 5 Machines",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 12,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Cutters'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "title": "Top  5 Stations",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 18,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Station\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\n--WHERE Station IN ($station)\r\nwhere $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nand Section  = 'Cutters'\r\nGROUP BY Station\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "title": "MTBF Per Machine",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 66
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select (((1317*30) - Total_Breakdown_Time) / Total_Breakdown ) as \"result\", \r\nA.Machine_Line\r\nfrom \r\n(SELECT sum(Down_time) as Total_Breakdown_Time, CASE \r\n    WHEN Machine_Line = '26' THEN 'MES1'\r\n    WHEN Machine_Line = '25' THEN 'TRGC25'\r\n    WHEN Machine_Line = '24' THEN 'TRGC24'\r\n    WHEN Machine_Line = '23' THEN 'TRGC23'\r\n    WHEN Machine_Line = '22' THEN 'TRGC22'\r\n    WHEN Machine_Line = '21' THEN 'RM301'\r\n    WHEN Machine_Line = '20' THEN 'TRGD20'\r\n    WHEN Machine_Line = '19' THEN 'TRGD19'\r\n    WHEN Machine_Line = '18' THEN 'TRGC18'\r\n    WHEN Machine_Line = '17' THEN 'TRGC17'\r\n    WHEN Machine_Line = '16' THEN 'TRGC16'\r\n    WHEN Machine_Line = '15' THEN 'TRGC15'\r\n    WHEN Machine_Line = '14' THEN 'TRGC14'\r\n    WHEN Machine_Line = '13' THEN 'TRGC13'\r\n    WHEN Machine_Line = '12' THEN 'TRGD12'\r\n    WHEN Machine_Line = '11' THEN 'TRGD11'\r\n    WHEN Machine_Line = '10' THEN 'TRGD10'\r\n    WHEN Machine_Line = '9' THEN 'TRGH9'\r\n    WHEN Machine_Line = '8' THEN 'TRGH8'\r\n    WHEN Machine_Line = '7' THEN 'TRGH7'\r\n    WHEN Machine_Line = '6' THEN 'TRGB6'\r\n    WHEN Machine_Line = '5' THEN 'TRGB5'\r\n    WHEN Machine_Line = '4' THEN 'TRGB4'\r\n    WHEN Machine_Line = '3' THEN 'TRGB3'\r\n    WHEN Machine_Line = '2' THEN 'TRGB2'\r\n    WHEN Machine_Line = '1' THEN 'TRGB1'\r\n    ELSE Machine_Line\r\nEND AS Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Building'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line ) A \r\ninner join \r\n(\r\nSELECT Count(Down_time) as Total_Breakdown, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Building'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\n\r\n) B\r\non A.Machine_Line = B.Machine_Line\r\norder by \"result\" asc\r\nlimit 5"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "title": "MTBF Per Machine",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 66
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select (((1440*30) - Total_Breakdown_Time) / Total_Breakdown ) as \"result\", A.Machine_Line\r\nfrom \r\n\r\n(SELECT sum(Down_time) as Total_Breakdown_Time, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Cutters'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line ) A \r\n\r\ninner join \r\n(\r\nSELECT Count(Down_time) as Total_Breakdown, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Cutters'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\n\r\n) B\r\non A.Machine_Line = B.Machine_Line\r\norder by \"result\" asc\r\nlimit 5"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 74
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 74
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "title": "Monthly Breakdown %",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 75
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    TO_CHAR(month_start, 'Mon') AS month_name,\r\n    SUM(Down_time) as \"Total Down Time\", \r\n    ROUND(\r\n        (SUM(\"Down_time\") * 100.0) /\r\n        (EXTRACT(DAY FROM LAST_DAY(month_start)) * 1416.0 * 54.0),\r\n        2\r\n    ) AS kpi_percent\r\nFROM (\r\n    SELECT\r\n        DATE_TRUNC('month', \"CreateDate\") AS month_start,\r\n        \"Down_time\"\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\n    WHERE \"Section\" = 'Inspection'\r\n      AND \"Type\" IN ($Type)\r\n      and EXTRACT(YEAR FROM CreateDate) in ($Year)\r\n) t\r\nGROUP BY month_start\r\nORDER BY month_start\r\n"
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "title": "Monthly Breakdown %",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 75
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n    TO_CHAR(month_start, 'Mon') AS month_name,\r\n    SUM(Down_time) as \"Total Down Time\", \r\n    ROUND(\r\n        (SUM(\"Down_time\") * 100.0) /\r\n        (EXTRACT(DAY FROM LAST_DAY(month_start)) * 1377.0 * 85.0),\r\n        2\r\n    ) AS kpi_percent\r\nFROM (\r\n    SELECT\r\n        DATE_TRUNC('month', \"CreateDate\") AS month_start,\r\n        \"Down_time\"\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"Maintenance_KPIs\"\r\n    WHERE \"Section\" = 'Curing'\r\n      AND \"Type\" IN ($Type)\r\n      and EXTRACT(YEAR FROM CreateDate) in ($Year)\r\n) t\r\nGROUP BY month_start\r\nORDER BY month_start\r\n"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "title": "Top 5 Machines",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 0,
+        "y": 84
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Inspection'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "title": "Top  5 Stations",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 6,
+        "y": 84
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Station\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\n--WHERE Station IN ($station)\r\nwhere $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nand Section  = 'Inspection'\r\nGROUP BY Station\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "title": "Top 5  Machines",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 12,
+        "y": 84
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Curing'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "title": "Top  5 Stations",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 18,
+        "y": 84
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT sum(Down_time) as \"Total Breakdown Time\", Station\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\n--WHERE Station IN ($station)\r\nwhere $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nand Section  = 'Curing'\r\nGROUP BY Station\r\nORDER BY \"Total Breakdown Time\" DESC\r\nLIMIT 6;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "title": "MTBF Per Machine",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 95
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select (((1416*30) - Total_Breakdown_Time) / Total_Breakdown ) as \"result\", A.Machine_Line\r\nfrom \r\n\r\n(SELECT sum(Down_time) as Total_Breakdown_Time, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Inspection'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line ) A \r\n\r\ninner join \r\n(\r\nSELECT Count(Down_time) as Total_Breakdown, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Inspection'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\n\r\n) B\r\non A.Machine_Line = B.Machine_Line\r\norder by \"result\" asc\r\nlimit 5"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "title": "MTBF Per Machine",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 95
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "select (((1377*30) - Total_Breakdown_Time) / Total_Breakdown ) as \"result\", A.Machine_Line\r\nfrom \r\n\r\n(SELECT sum(Down_time) as Total_Breakdown_Time, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Curing'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line ) A \r\n\r\ninner join \r\n(\r\nSELECT Count(Down_time) as Total_Breakdown, Machine_Line\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\nwhere Section = 'Curing'\r\nand $__timeFilter(CreateDate)\r\nand \"Type\" in ($Type)\r\nGROUP BY Machine_Line\r\n\r\n) B\r\non A.Machine_Line = B.Machine_Line\r\norder by \"result\" asc\r\nlimit 5"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "title": "All Data",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 103
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\nleft(CreateDate,11) as \"Date\",\r\nSection AS \"Department\",\r\nMachine_Line as \"Machine\",\r\n\"Type\" ,\r\nDown_time as \"Breakdown Time (M)\",\r\nStation\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".TPL.\"Maintenance_KPIs\"\r\n--WHERE Station IN ($station)\r\n--where $__timeFilter(CreateDate)\r\n \r\nwhere \"Type\" in ($Type)\r\n"
+        }
+      ]
+    }
+  ]
+}

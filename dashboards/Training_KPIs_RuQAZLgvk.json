@@ -1,0 +1,259 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "training-kpis",
+    "url": "/d/RuQAZLgvk/training-kpis",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-10-27T11:06:24+03:00",
+    "updated": "2025-12-16T11:49:39+02:00",
+    "updatedBy": "st1mohamna",
+    "createdBy": "st1mohamna",
+    "version": 12,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 267,
+    "folderUid": "_joRgLRvz",
+    "folderTitle": "HR",
+    "folderUrl": "/dashboards/f/_joRgLRvz/hr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "publicDashboardAccessToken": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 269,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 19,
+          "x": 0,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"hr-training-metrics-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #hr-training-metrics-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n      gap: 1.5rem;\n      height: 100%;\n      max-width: 1400px;\n      margin: 0 auto;\n      padding: .2rem;\n    }\n\n    #hr-training-metrics-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: 1rem 1.7rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;\n      cursor: default;\n      position: relative;\n      overflow: hidden;\n    }\n\n    #hr-training-metrics-panel .card::before {\n      content: '';\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      height: 4px;\n      background: linear-gradient(90deg, #3b82f6, #8b5cf6);\n      opacity: 0;\n      transition: opacity 0.3s ease;\n    }\n\n    #hr-training-metrics-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n      border-color: #475569;\n    }\n\n    #hr-training-metrics-panel .card:hover::before {\n      opacity: 1;\n    }\n\n    #hr-training-metrics-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      text-align: center;\n    }\n\n    #hr-training-metrics-panel .metric-value {\n      font-size: 2.1rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.6rem;\n      position: relative;\n    }\n\n    #hr-training-metrics-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n    }\n\n    @keyframes pulse {\n      0%, 100% {\n        opacity: 1;\n        transform: translateY(0) scale(1);\n      }\n      50% {\n        opacity: 0.8;\n        transform: translateY(-4px) scale(1.05);\n      }\n    }\n\n    #hr-training-metrics-panel .icon {\n      display: inline-block;\n      user-select: none;\n      animation: pulse 2s infinite;\n    }\n\n    @media (max-width: 768px) {\n      #hr-training-metrics-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Total Training Hours Annual -->\n    <div class=\"card\" title=\"Total Training Hours Annual\">\n      <h2 class=\"card-title\">Total Training Hours</h2>\n      <div class=\"metric-value\">\n        {{#if (or Total_Training_Hours_Annual (eq Total_Training_Hours_Annual 0))}}{{Total_Training_Hours_Annual}} Hours{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Annual training hours\" style=\"color: #10b981; font-size: 1.8rem; line-height: 1;\">📚</span>\n      </div>\n      <div class=\"metric-label\">Total Annual Training Hours</div>\n    </div>\n\n    <!-- Training Hours Per Month -->\n    <div class=\"card\" title=\"Training Hours Per Month\">\n      <h2 class=\"card-title\">Monthly Training Hours</h2>\n      <div class=\"metric-value\">\n        {{#if (or Training_Hours_Per_Month (eq Training_Hours_Per_Month 0))}}{{Training_Hours_Per_Month}} Hours{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Monthly training hours\" style=\"color: #06b6d4; font-size: 1.8rem; line-height: 1;\">🕒</span>\n      </div>\n      <div class=\"metric-label\">Avg. Training Hours per Month</div>\n    </div>\n\n    <!-- Training Hours Per Day -->\n    <div class=\"card\" title=\"Training Hours Per Day\">\n      <h2 class=\"card-title\">Daily Training Hours</h2>\n      <div class=\"metric-value\">\n        {{#if (or Training_Hours_Per_Day (eq Training_Hours_Per_Day 0))}}{{Training_Hours_Per_Day}} Hours{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Daily training hours\" style=\"color: #f59e0b; font-size: 1.8rem; line-height: 1;\">📅</span>\n      </div>\n      <div class=\"metric-label\">Avg. Training Hours per Day</div>\n    </div>\n\n    <!-- Employees Covered Percentage -->\n    <div class=\"card\" title=\"Employees Covered Percentage\">\n      <h2 class=\"card-title\">Employees Covered</h2>\n      <div class=\"metric-value\">\n        {{#if (or Employees_Covered_Percentage (eq Employees_Covered_Percentage 0))}}{{Employees_Covered_Percentage}}%{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Employee coverage\" style=\"color: #8b5cf6; font-size: 1.8rem; line-height: 1;\">👥</span>\n      </div>\n      <div class=\"metric-label\">Percentage of Employees Covered</div>\n    </div>\n\n    <!-- Training Attendance Rate -->\n    <div class=\"card\" title=\"Training Attendance Rate\">\n      <h2 class=\"card-title\">Attendance Rate</h2>\n      <div class=\"metric-value\">\n        {{#if (or Training_Attendance_Rate (eq Training_Attendance_Rate 0))}}{{Training_Attendance_Rate}}%{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Attendance and participation\" style=\"color: #ef4444; font-size: 1.8rem; line-height: 1;\">📊</span>\n      </div>\n      <div class=\"metric-label\">Training Attendance Rate</div>\n    </div>\n\n    <!-- Training Satisfaction Rate -->\n    <div class=\"card\" title=\"Training Satisfaction Rate\">\n      <h2 class=\"card-title\">Satisfaction Rate</h2>\n      <div class=\"metric-value\">\n        {{#if (or Training_Satisfaction_Rate (eq Training_Satisfaction_Rate 0))}}{{Training_Satisfaction_Rate}}%{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Satisfaction and feedback\" style=\"color: #ec4899; font-size: 1.8rem; line-height: 1;\">👍</span>\n      </div>\n      <div class=\"metric-label\">Training Satisfaction Rate</div>\n    </div>\n  </div>\n</div>\n",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  MAX(CASE WHEN KPI = ' Total Training Hours Annual'\r\n           AND Type = 'Actual' THEN concat(round(\"Value\"/1000,2), 'K') END) AS Total_Training_Hours_Annual,\r\n\r\n  MAX(CASE WHEN KPI = ' Training Hours Per Month'\r\n           AND Type = 'Actual' THEN concat(round(\"Value\"/1000,2), 'K') END) AS Training_Hours_Per_Month,\r\n\r\n  MAX(CASE WHEN KPI = ' Training Hours Per Day'\r\n           AND Type = 'Actual' THEN round(\"Value\",0) END) AS Training_Hours_Per_Day,\r\n\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC'\r\n           AND Type = 'Actual' THEN \"Value\" * 100 END) AS Employees_Covered_Percentage,\r\n\r\n  MAX(CASE WHEN KPI = ' Training Attendance Rate'\r\n           AND Type = 'Actual' THEN \"Value\" * 100 END) AS Training_Attendance_Rate,\r\n\r\n  MAX(CASE WHEN KPI = ' Training Satisfaction Rate'\r\n           AND Type = 'Actual' THEN \"Value\" * 100 END) AS Training_Satisfaction_Rate\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nWHERE TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n    and Area = 'OD / Training'\r\n);\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "doInit": {},
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 19,
+          "x": 0,
+          "y": 9
+        },
+        "handleMetric": {},
+        "id": 6,
+        "links": [],
+        "maxDataPoints": 3,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"hired-left-arrows-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #hired-left-arrows-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(4, 1fr);\n      gap: 1.5rem;\n      height: 100%;\n      max-width: 1300px;\n      margin: 0 auto;\n    }\n\n    #hired-left-arrows-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: .8rem 1.7rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n      cursor: default;\n      position: relative;\n    }\n\n    #hired-left-arrows-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n    }\n\n    #hired-left-arrows-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      justify-content: center text-transform: uppercase;\n      letter-spacing: 1.2px;\n    }\n\n    #hired-left-arrows-panel .metric-value {\n      font-size: 2.1rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.6rem;\n    }\n\n    #hired-left-arrows-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n    }\n\n    @keyframes pulse {\n\n      0%,\n      100% {\n        opacity: 1;\n        transform: translateY(0);\n      }\n\n      50% {\n        opacity: 0.7;\n        transform: translateY(-4px);\n      }\n    }\n\n    @media (max-width: 768px) {\n      #hired-left-arrows-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Candidate Satisfaction Rate -->\n    <div class=\"card\" title=\"Candidate Satisfaction Rate\">\n      <h2 class=\"card-title\">Candidate Satisfaction Rate</h2>\n      <div class=\"metric-value\">\n        {{#if Candidate_Satisfaction}}{{Candidate_Satisfaction}}%{{else}}-{{/if}}\n        <span aria-label=\"Positive feedback\" style=\"\n          color: #10b981;\n          font-size: 1.8rem;\n          line-height: 1;\n          user-select: none;\n          animation: pulse 2s infinite;\n          display: inline-block;\n        \">&#128077;</span> <!-- Thumbs up emoji for candidate satisfaction -->\n      </div>\n      <div class=\"metric-label\">Candidate Satisfaction Rate</div>\n    </div>\n\n    <!-- Hiring Manager Satisfaction Rate -->\n    <div class=\"card\" title=\"Hiring Manager Satisfaction Rate\">\n      <h2 class=\"card-title\">Hiring Manager Satisfaction</h2>\n      <div class=\"metric-value\">\n        {{#if Hiring_Manager_Satisfaction}}{{Hiring_Manager_Satisfaction}}%{{else}}-{{/if}}\n        <span aria-label=\"Rating\" style=\"\n          color: #ef4444;\n          font-size: 1.8rem;\n          line-height: 1;\n          user-select: none;\n          animation: pulse 2s infinite;\n          display: inline-block;\n        \">&#11088;</span> <!-- Star emoji for hiring manager satisfaction -->\n      </div>\n      <div class=\"metric-label\">Hiring Manager Satisfaction Rate</div>\n    </div>\n\n    <!-- Quality of Hire (New KPI) -->\n    <div class=\"card\" title=\"Quality of Hire\">\n      <h2 class=\"card-title\">Quality of Hire</h2>\n      <div class=\"metric-value\">\n        {{#if (or prob_period (eq prob_period 0))}}{{prob_period}}%{{else}}-{{/if}} <span aria-label=\"Increase\" style=\"\n                  color: #10b981;\n                  font-size: 1.8rem;\n                  line-height: 1;\n                  user-select: none;\n                  animation: pulse 2s infinite;\n                  display: inline-block;\n                \">&#9650;</span>\n      </div>\n      <div class=\"metric-label\"> Quality of Hire (% of hires who left)</div>\n    </div>\n    <!-- days to hire-->\n    <div class=\"card\" title=\"Quality of Hire\">\n      <h2 class=\"card-title\">Time To Hire</h2>\n      <div class=\"metric-value\">\n        {{#if time_hire}}{{time_hire}} Days{{else}}-{{/if}}\n        <span aria-label=\"Time Indicator\" style=\"\n        color: #059669;\n        font-size: 1.8rem;\n        line-height: 1;\n        user-select: none;\n        animation: pulse 2s infinite;\n        display: inline-block;\n      \">\n        &#9201;\n      </span>\n      </div>\n      <div class=\"metric-label\">Days To Hire</div>\n    </div>\n  </div>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "html"
+          },
+          "editors": [
+            "styles",
+            "afterRender"
+          ],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  max(CASE WHEN KPI = ' Candidate Satisfaction Rate' AND Type = 'Actual' THEN \"Value\" * 100 END) AS Candidate_Satisfaction,\r\n  max(CASE WHEN KPI = ' Hiring Manager Satisfaction Rate'AND Type = 'Actual' THEN \"Value\" *100 END) AS Hiring_Manager_Satisfaction,\r\n  max(CASE WHEN KPI = ' Quality Of Hire (% of hires who left during probation Period)' AND Type = 'Actual' THEN \"Value\" *100 END) AS prob_period,\r\n    max(CASE WHEN KPI = ' Time To Hire' AND Type = 'Actual' THEN \"Value\"END) AS time_hire\r\n\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nwhere TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n    and Area = 'OD / Recruitment'\r\n  );\r\n\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Training KPIs",
+    "uid": "RuQAZLgvk",
+    "version": 12,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,1911 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "uniformity-dashboard",
+    "url": "/d/-CRfBZENk/uniformity-dashboard",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-06-18T09:41:58+03:00",
+    "updated": "2026-05-14T11:51:15+03:00",
+    "updatedBy": "st1mohamna",
+    "createdBy": "st1ossamah",
+    "version": 66,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 183,
+    "folderUid": "32VeU5-Nk",
+    "folderTitle": "Quality KPIs",
+    "folderUrl": "/dashboards/f/32VeU5-Nk/quality-kpis",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "publicDashboardAccessToken": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 204,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 0,
+          "y": 0
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode) AS \"CLASS  A+B\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A', 'B')\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "light-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 5,
+          "y": 0
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": true,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A', 'B')\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\n",
+            "refId": "B",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "name": "Expression",
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "($A / $B ) *100",
+            "hide": true,
+            "refId": "C",
+            "type": "math"
+          }
+        ],
+        "title": "Total Tested",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 10,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^Total Yield %$/",
+            "values": false
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": true,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A', 'B')\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": true,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\n",
+            "refId": "B",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "name": "Expression",
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "($A / $B ) *100",
+            "hide": false,
+            "refId": "Total Yield %",
+            "type": "math"
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-green",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "id": 15,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count( distinct Barcode) AS \"Hoffman\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND MM_TM_Testing_code IN ('00')\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode) as \"ZF\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND MM_TM_Testing_code IN ('02')\n",
+            "refId": "B",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count( distinct Barcode) AS \"D90\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND MM_TM_Testing_code IN ('01')\n",
+            "refId": "C",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Machines Prod",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#7f8692",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 5,
+          "x": 0,
+          "y": 3
+        },
+        "id": 20,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode) as \"Class A\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A')\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode) as \"Class B\"\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('B')\n",
+            "refId": "B",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 10,
+          "y": 3
+        },
+        "id": 18,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^A Yield%$/",
+            "values": false
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": true,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('A')\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": true,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\n",
+            "refId": "B",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "name": "Expression",
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "($A / $B ) *100",
+            "hide": false,
+            "refId": "A Yield%",
+            "type": "math"
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 13,
+          "y": 3
+        },
+        "id": 19,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^B Yield%$/",
+            "values": false
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": true,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\nAND GR_MISURA IN ('B')\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "hide": true,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select count(Barcode)\nfrom (\nselect * ,\nROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\nfrom \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\n)as last\nwhere $__timeFilter(Data_ora)\nand rn = 1\n",
+            "refId": "B",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          },
+          {
+            "datasource": {
+              "name": "Expression",
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "($A / $B ) *100",
+            "hide": false,
+            "refId": "B Yield%",
+            "type": "math"
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "auto",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inspection Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 244
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 14,
+          "w": 24,
+          "x": 0,
+          "y": 6
+        },
+        "id": 4,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n    -- 1. Metadata & Identification\r\n    EPS_CODE AS \"EPS\",\r\n    IP_CODE AS \"IPCODE\",\r\n    EPS_DESC AS \"EPS DESCRIPTION\",\r\n    \"Machine\" AS \"TM\",\r\n    \"Inspection Date\" AS \"TEST DATE\",\r\n    Barcode AS \"BARCODE\",\r\n    \"Final Class\" AS \"CLASS\",\r\n    \r\n    -- 2. Process Dates & Machines\r\n    \"CU Date\" AS \"VULC DATE\",\r\n    \"CU Mch\" AS \"MCH VULC\",\r\n    \"Mould_NO\" AS \"MCH MOULD\",\r\n    MAT_CODE AS \"SPEC CODE\",\r\n    \"BU MCH\" AS \"MCH BUILD\",\r\n    WM_CODE,\r\n    \"BU Date\" AS \"BUILD DATE\",\r\n    CRUDI AS \"TYRE TYPE\",\r\n    \r\n    -- 3. Uniformity & Geometry Metrics (Existing Only)\r\n    RFV, \r\n    RFV_GR, \r\n    H1RFV, \r\n    H1RFV_GR, \r\n    H2RFV, \r\n    H2RFV_GR, \r\n    LFV, \r\n    LFV_GR, \r\n    CONICITY, \r\n    CONICITY_GR, \r\n    RRO, \r\n    RRO_GR, \r\n    LRO, \r\n    LRO_GR, \r\n    BULGES, \r\n    BULGES_GR, \r\n    UNB_DY_LO, \r\n    UNB_DY_LO_GR, \r\n    UNB_DY_UP, \r\n    UNB_DY_UP_GR,\r\n\r\n    -- 4. Extra Columns (Moved to end)\r\n    TEST_ID,\r\n    \"CU Side\"\r\nFROM (\r\n    SELECT \r\n        U.TEST_ID, U.EPS_CODE, U.IP_CODE, U.EPS_DESC,\r\n        U.MM_TM_Testing_code AS \"Machine\",\r\n        U.Data_ora AS \"Inspection Date\",\r\n        U.Barcode,\r\n        B.TRC_TIMESTAMP AS \"BU Date\",\r\n        B.MCH_CODE AS \"BU MCH\",\r\n        B.WM_CODE,\r\n        C.TRC_TIMESTAMP AS \"CU Date\",\r\n        C.MCH_CODE AS \"CU Mch\",\r\n        C.TRC_SIDE AS \"CU Side\", \r\n        MLD.MTO_TOOL_CODE_1 AS \"Mould_NO\",\r\n        U.GR_MISURA AS \"Final Class\",\r\n        U.CONICITY, U.CONICITY_GR, U.H1RFV, U.H1RFV_GR,\r\n        U.H2RFV, U.H2RFV_GR, U.LFV, U.LFV_GR, U.RFV,\r\n        U.RFV_GR, U.RRO, U.RRO_GR, U.UNB_DY_LO,\r\n        U.UNB_DY_LO_GR, U.UNB_DY_UP, U.UNB_DY_UP_GR,\r\n        U.LRO, U.BULGES, U.BULGES_GR, U.LRO_GR,\r\n        M.MAT_CODE,\r\n        V.CRUDI,\r\n        ROW_NUMBER() OVER (PARTITION BY U.Barcode ORDER BY U.Data_ora DESC) AS rn\r\n\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\" U\r\n\r\n    -- Building Join\r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" B\r\n        ON B.TRC_BARCODE = U.Barcode\r\n        AND B.PP_CODE = 'BU2'\r\n\r\n    -- Curing Join\r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" C\r\n        ON C.TRC_BARCODE = U.Barcode\r\n        AND C.PP_CODE = 'CU1'\r\n    \r\n    -- Mould Join\r\n    LEFT JOIN (\r\n        SELECT \r\n            MCH_CODE, MCN_SIDE, MTO_TOOL_CODE_1, MTO_START_DATE, \r\n            COALESCE(MTO_END_DATE, CURRENT_TIMESTAMP()) AS end_date\r\n        FROM EG_CA_TRU_FAC_PCS02.SCH_MACHINE_TOOL_WITH_HIS\r\n        WHERE PP_CODE = 'CU1'\r\n    ) AS MLD\r\n        ON C.MCH_CODE = MLD.MCH_CODE \r\n        AND C.TRC_SIDE = MLD.MCN_SIDE \r\n        AND (C.TRC_TIMESTAMP BETWEEN MLD.MTO_START_DATE AND MLD.end_date)\r\n\r\n    -- Material Data\r\n    LEFT JOIN (\r\n        SELECT * FROM (\r\n            SELECT *, ROW_NUMBER() OVER (PARTITION BY MAT_IP_CODE ORDER BY MAT_IMPORT_TIMESTAMP DESC) AS rn\r\n            FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\r\n        ) M1 WHERE rn = 1\r\n    ) M ON M.MAT_IP_CODE = U.IP_CODE\r\n\r\n    -- Crudi / BOM Calculation\r\n    LEFT JOIN (\r\n        SELECT DISTINCT\r\n            BOM.MAT_SAP_CODE AS SAW,\r\n            A_VAL.MD_PPA_VALUE AS CRUDI\r\n        FROM EG_CA_TRU_FAC_PCS02.MD_BOM BOM\r\n        INNER JOIN EG_CA_TRU_FAC_PCS02.MD_BOM CHILD_BOM\r\n            ON CHILD_BOM.MAT_SAP_CODE = BOM.CHILD_MAT_SAP_CODE\r\n            AND CHILD_BOM.CNT_CODE = BOM.CHILD_CNT_CODE\r\n            AND CHILD_BOM.BV_STATUS = 'P'\r\n        INNER JOIN EG_CA_TRU_FAC_PCS02.MD_PROCESS_PARAMETERS_ACYCLE_VALUE A_VAL\r\n            ON A_VAL.MAT_SAP_CODE = CHILD_BOM.MAT_SAP_CODE\r\n            AND A_VAL.CNT_CODE = CHILD_BOM.CNT_CODE\r\n            AND A_VAL.MT_CODE = CHILD_BOM.MT_CODE\r\n            AND A_VAL.ST_CODE = '001'\r\n    ) V ON M.MAT_SAP_CODE = V.SAW\r\n\r\n    WHERE $__timeFilter(U.Data_ora)\r\n) t\r\nWHERE rn = 1;",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Raw Data ",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Class A %"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Class B %"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Class C %"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Class E %"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 20
+        },
+        "id": 16,
+        "options": {
+          "footer": {
+            "enablePagination": true,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "Machine"
+            }
+          ]
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    SUBSTRING(EPS_CODE, 2, 3) AS \"Short Code\",\r\n    CASE \r\n        WHEN MM_TM_Testing_code = '00' THEN 'Hoffman'\r\n        WHEN MM_TM_Testing_code = '01' THEN 'D9O'\r\n        WHEN MM_TM_Testing_code = '02' THEN 'ZF'\r\n    END AS \"Machine\",\r\n    \r\n    -- Counts\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS \"Class A\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class A %\",\r\n    SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) AS \"Class B\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class B %\",\r\n    SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) AS \"Class C\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class C %\",\r\n    SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) AS \"Class E\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class E %\"\r\n\r\n    -- Percentages\r\n    -- We calculate (Class / Total) * 100\r\n\r\nFROM (\r\n    SELECT \r\n        MM_TM_Testing_code,\r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n    AND Barcode LIKE '811%'\r\n) t\r\nWHERE rn = 1\r\nGROUP BY SUBSTRING(EPS_CODE, 2, 3), MM_TM_Testing_code;",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": " Data ",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inspection Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 244
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Class A %"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Class B %"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Class C %"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Class E %"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "percent"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 31
+        },
+        "id": 22,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": true
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "Machine"
+            }
+          ]
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    MCH_CODE AS \"Building_Mch\",\r\n    -- Class A\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS \"Class A\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class A %\",\r\n    \r\n    -- Class B\r\n    SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) AS \"Class B\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class B %\",\r\n    \r\n    -- Class C\r\n    SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) AS \"Class C\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class C %\",\r\n    \r\n    -- Class E\r\n    SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) AS \"Class E\",\r\n    ROUND(100.0 * SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) / \r\n        NULLIF(COUNT(*), 0), 2) AS \"Class E %\",\r\n        \r\n    COUNT(*) AS \"Total_Tires\"\r\n\r\nFROM (\r\n    SELECT \r\n        U.MM_TM_Testing_code,\r\n        U.EPS_CODE,\r\n        U.GR_MISURA AS Final_Class,\r\n        T.MCH_CODE,\r\n        ROW_NUMBER() OVER (PARTITION BY U.Barcode ORDER BY U.Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\" U \r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\" T\r\n        ON U.Barcode = T.TRC_BARCODE \r\n        AND T.PP_CODE = 'BU2'    \r\n    WHERE $__timeFilter(U.Data_ora)\r\n      AND U.Barcode LIKE '811%'\r\n) FF\r\nWHERE rn = 1\r\nGROUP BY MCH_CODE\r\nORDER BY MCH_CODE ASC;",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Building   view",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 42
+        },
+        "id": 25,
+        "options": {
+          "afterRender": "",
+          "content": "<div style=\"width: 100%; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 15px; display: flex; align-items: center; justify-content: space-between;\">\n    <h2 style=\"margin: 0; font-size: 26px; color: #fff; font-weight: 700; letter-spacing: -0.5px;\">\n        <span style=\"font-size: 1.2em; vertical-align: middle; margin-right: 10px;\"> </span>\n          Machine Classification Summary\n        <span style=\"background: linear-gradient(to right, #ffae00, #ff4d4d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase;\">\n            {{ variable \"Department\" }}\n        </span>\n    </h2>\n\n    <a href=\"https://pwwwappeg297-01.ptg.local:3000/d/-CRfBZENk/uniformity-dashboard?orgId=1&var-MCH=All&from=now-1d&to=now\"\n       style=\"text-decoration: none;\">\n        <div style=\"background: #333; color: #fff; padding: 12px 20px; border-radius: 6px; font-size: 16px; font-weight: bold; border: 1px solid #555; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.2);\"\n             onmouseover=\"this.style.background='#555'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.4)';\"\n             onmouseout=\"this.style.background='#333'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.2)';\">\n            Show All ↺\n        </div>\n    </a>\n</div>\n\n<div style=\"position: relative; width: 100%;\">\n    <button onclick=\"document.getElementById('machine-scroller').scrollBy({left: -340, behavior: 'smooth'})\"\n        style=\"position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.8); color: white; border: 1px solid #555; border-radius: 50%; width: 50px; height: 50px; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: all 0.3s ease; opacity: 0.7;\"\n        onmouseover=\"this.style.opacity='1'; this.style.background='rgba(255, 174, 0, 0.8)'; this.style.borderColor='#ffae00';\"\n        onmouseout=\"this.style.opacity='0.7'; this.style.background='rgba(0,0,0,0.8)'; this.style.borderColor='#555';\">\n        ❮\n    </button>\n\n    <div id=\"machine-scroller\" style=\"display: flex; gap: 20px; width: 100%; overflow-x: auto; padding: 10px 60px 20px 60px; scroll-behavior: smooth; align-items: flex-start;\">\n        {{#each data}}\n        {{#if MCH_CODE}}\n        <a href=\"javascript:void(0)\" \n           class=\"machine-card-link\"\n           style=\"text-decoration: none; color: inherit; flex: 0 0 300px; display: block;\"\n           onmousedown=\"\n               var u = window.location.href;\n               var set = (url, k, v) => {\n                   var re = new RegExp('([?&])' + k + '=.*?(&|$)', 'i');\n                   return url.match(re) ? url.replace(re, '$1' + k + '=' + v + '$2') : url + (url.indexOf('?')!==-1?'&':'?') + k + '=' + v;\n               };\n               u = set(u, 'var-MCH', encodeURIComponent('{{MCH_CODE}}'.trim()));\n               this.href = u;\n           \">\n\n            <div style=\"background: linear-gradient(135deg, #1f1f20 0%, #2a2a2a 100%); border: 1px solid #333; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.4); transition: all 0.3s ease; position: relative; overflow: hidden;\"\n                 onmouseover=\"this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 24px rgba(0,0,0,0.6)'; this.style.borderColor='#fff';\"\n                 onmouseout=\"this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.4)'; this.style.borderColor='#333';\">\n                \n                <!-- Subtle glow effect on hover -->\n                <div style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255, 174, 0, 0.1) 0%, rgba(255, 77, 77, 0.1) 100%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none;\"\n                     onmouseover=\"this.style.opacity='1';\" onmouseout=\"this.style.opacity='0';\"></div>\n\n                <div style=\"padding: 20px; position: relative; z-index: 1;\">\n                    <div style=\"margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;\">\n                        <div>\n                            <h3 style=\"margin: 0; color: #fff; font-size: 20px; font-weight: bold; line-height: 1.2;\">\n                                {{MCH_CODE}}\n                            </h3>\n                            <span style=\"font-size: 12px; color: #aaa;\">Machine Code</span>\n                        </div>\n                        <span style=\"color: #ffae00; font-size: 18px;\">➔</span>\n                    </div>\n\n                    <div style=\"font-size: 16px;\">\n                        <div style=\"display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding: 4px 0; border-radius: 4px; background: rgba(255, 174, 0, 0.1);\">\n                            <span style=\"color: #aaa;\">Class A</span>\n                            <span style=\"color: #ffae00; font-weight: bold;\">{{Class_A}}</span>\n                        </div>\n                        <div style=\"display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding: 4px 0; border-radius: 4px; background: rgba(76, 175, 80, 0.1);\">\n                            <span style=\"color: #aaa;\">Class B</span>\n                            <span style=\"color: #4CAF50; font-weight: bold;\">{{Class_B}}</span>\n                        </div>\n                        <div style=\"display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding: 4px 0; border-radius: 4px; background: rgba(33, 150, 243, 0.1);\">\n                            <span style=\"color: #aaa;\">Class C</span>\n                            <span style=\"color: #2196F3; font-weight: bold;\">{{Class_C}}</span>\n                        </div>\n                        <div style=\"display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-radius: 4px; background: rgba(244, 67, 54, 0.1);\">\n                            <span style=\"color: #aaa;\">Class E</span>\n                            <span style=\"color: #f44336; font-weight: bold;\">{{Class_E}}</span>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </a>\n        {{else}}\n        <div style=\"width: 100%; padding: 40px; text-align: center; background: linear-gradient(135deg, #1f1f20 0%, #2a2a2a 100%); border: 1px dashed #555; border-radius: 12px; color: #aaa; box-shadow: 0 4px 8px rgba(0,0,0,0.3);\">\n            <div style=\"font-size: 40px; margin-bottom: 10px;\">📭</div>\n            <h3 style=\"margin: 0; color: #fff; font-size: 24px;\">No Classification Data Found</h3>\n            <p style=\"margin-top: 10px; font-size: 16px;\">\n                There is currently no classification data recorded for the\n                <span style=\"color: #ffae00;\">{{ variable \"Department\" }}</span> department.\n            </p>\n        </div>\n        {{/if}}\n        {{/each}}\n    </div>\n\n    <button onclick=\"document.getElementById('machine-scroller').scrollBy({left: 340, behavior: 'smooth'})\"\n        style=\"position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.8); color: white; border: 1px solid #555; border-radius: 50%; width: 50px; height: 50px; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: all 0.3s ease; opacity: 0.7;\"\n        onmouseover=\"this.style.opacity='1'; this.style.background='rgba(255, 174, 0, 0.8)'; this.style.borderColor='#ffae00';\"\n        onmouseout=\"this.style.opacity='0.7'; this.style.background='rgba(0,0,0,0.8)'; this.style.borderColor='#555';\">\n        ❯\n    </button>\n</div>\n\n<style>\n    #machine-scroller::-webkit-scrollbar {\n        height: 12px;\n    }\n    #machine-scroller::-webkit-scrollbar-track {\n        background: #181819;\n        border-radius: 6px;\n    }\n    #machine-scroller::-webkit-scrollbar-thumb {\n        background: #444;\n        border-radius: 6px;\n        border: 2px solid #181819;\n    }\n    #machine-scroller::-webkit-scrollbar-thumb:hover {\n        background: #777;\n    }\n    button:hover { background: rgba(255, 174, 0, 0.8) !important; border-color: #ffae00 !important; color: #000 !important; }\n    \n    .machine-card-link:hover .hover-overlay {\n        opacity: 1 !important;\n    }\n</style>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "allRows",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    MCH_CODE,\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS Class_A,\r\n    SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) AS Class_B,\r\n    SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) AS Class_C,\r\n    SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) AS Class_E\r\nFROM (\r\n    SELECT \r\n        MM_TM_Testing_code,\r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        T.MCH_CODE,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\" U \r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\" T\r\n        ON U.Barcode = T.TRC_BARCODE \r\n       AND T.PP_CODE = 'BU2'    \r\n    WHERE $__timeFilter(Data_ora)\r\n      AND Barcode LIKE '811%'\r\n) FF\r\nWHERE rn = 1\r\nGROUP BY MCH_CODE;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inspection Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 244
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "op Name"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 282
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "OP Name"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 338
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "BU MCH"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 204
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 54
+        },
+        "id": 23,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": true
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    MCH_CODE AS \"BU MCH\",\r\n    \"OP Name\",\r\n    WM_PHONE_PREFIX as \"OP BU Num\",\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS \"Class A\",\r\n    SUM(CASE WHEN Final_Class = 'B' THEN 1 ELSE 0 END) AS \"Class B\",\r\n    SUM(CASE WHEN Final_Class = 'C' THEN 1 ELSE 0 END) AS \"Class C\",\r\n    SUM(CASE WHEN Final_Class = 'E' THEN 1 ELSE 0 END) AS \"Class E\"\r\n    \r\nFROM \r\n(\r\n\r\n\r\nSELECT \r\n        MM_TM_Testing_code,\r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        T.MCH_CODE,\r\n        CONCAT(W.WM_NAME,' ', w.WM_SURNAME) AS \"op Name\",\r\n        w.WM_PHONE_PREFIX,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\" U \r\n    LEFT JOIN \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\" T\r\nON (U.Barcode=T.TRC_BARCODE OR U.Barcode=T.TRC_ID ) AND T.PP_CODE = 'BU2'  \r\nLEFT JOIN \"EG_CA_TRU_FAC_CMS39\".\"MD_WORKERS\" W\r\nON T.WM_CODE = W.WM_CODE\r\n    WHERE $__timeFilter(Data_ora)\r\n     AND Barcode like '811%'\r\n     \r\n) FF\r\nwhere rn=1 and \"BU MCH\" in ($MCH)\r\nGROUP BY MCH_CODE,\"op Name\",\"OP BU Num\"\r\n\r\n \r\n   ",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": " ",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Inspection Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 244
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "op Name"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 282
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 65
+        },
+        "id": 24,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": true
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    SUBSTRING(EPS_CODE, 2, 3) AS \"Short Code\",\r\n\r\n    SUM(CASE WHEN Final_Class   = 'E' THEN 1 ELSE 0 END) AS \"Class E\",\r\n    SUM(CASE WHEN CONICITY_GR   = 'E' THEN 1 ELSE 0 END) AS \"CONICITY_GR\",\r\n    SUM(CASE WHEN H1RFV_GR      = 'E' THEN 1 ELSE 0 END) AS \"H1RFV_GR\",\r\n    SUM(CASE WHEN H2RFV_GR      = 'E' THEN 1 ELSE 0 END) AS \"H2RFV_GR\",\r\n    SUM(CASE WHEN LFV_GR        = 'E' THEN 1 ELSE 0 END) AS \"LFV_GR\",\r\n    SUM(CASE WHEN RFV_GR        = 'E' THEN 1 ELSE 0 END) AS \"RFV_GR\",\r\n    SUM(CASE WHEN UNB_DY_LO_GR  = 'E' THEN 1 ELSE 0 END) AS \"UNB_DY_LO_GR\",\r\n    SUM(CASE WHEN UNB_DY_UP_GR  = 'E' THEN 1 ELSE 0 END) AS \"UNB_DY_UP_GR\",\r\n    SUM(CASE WHEN RRO_GR        = 'E' THEN 1 ELSE 0 END) AS \"RRO_GR\",\r\n    SUM(CASE WHEN BULGES_GR     = 'E' THEN 1 ELSE 0 END) AS  \"BULGES_GR\", \r\n    SUM(CASE WHEN LRO_GR        = 'E' THEN 1 ELSE 0 END) AS \"LRO_GR\"\r\n\r\nFROM (\r\n    SELECT \r\n        MM_TM_Testing_code,\r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        CONICITY_GR,\r\n        H1RFV_GR,\r\n        H2RFV_GR,\r\n        LFV_GR,\r\n        RFV_GR,\r\n        UNB_DY_LO_GR,\r\n        UNB_DY_UP_GR,\r\n        RRO_GR,\r\n        BULGES_GR,\r\n        LRO_GR,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n      AND Barcode LIKE '811%'\r\n) t\r\nWHERE rn = 1\r\nGROUP BY \r\n    SUBSTRING(EPS_CODE, 2, 3),\r\n    MM_TM_Testing_code\r\nhaving \"Class E\" > 0\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Class E Details",
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 74
+        },
+        "id": 17,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"oee-panel\" style=\"\n  background: rgba(255, 255, 255, 0);\n  border-radius: 20px;\n  padding: 1.5rem;\n  border: 1.5px solid rgba(100, 116, 139, 0.3);\n  color: #f8fafc;\n  font-family: 'Inter', sans-serif;\n  height: 400px;\n  overflow-y: auto;\n  box-shadow:\n    0 8px 24px rgba(14, 30, 37, 0.25),\n    inset 0 0 0 1px rgba(255, 255, 255, 0.05);\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n\">\n  <style>\n      #oee-panel:hover {\n      transform: translateY(-3px);\n    }\n\n    #oee-panel .oee-item {\n      display: flex;\n      align-items: center;\n      gap: 1rem;\n      margin-bottom: 1rem;\n      padding: 0.75rem;\n      background: rgba(255, 255, 255, 0.03);\n      border-radius: 12px;\n      border: 1px solid rgba(100, 116, 139, 0.2);\n      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;\n      position: relative;\n    }\n\n    #oee-panel .oee-item:hover {\n      background: rgba(25, 118, 210, 0.15);\n      transform: translateX(4px);\n    }\n\n    #oee-panel .short-code {\n      font-size: 1.3rem;\n      font-weight: 900;\n      color: #dbeafe;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      min-width: 80px;\n      text-align: left;\n    }\n\n    #oee-panel .oee-bar-container {\n      flex: 1;\n      height: 24px;\n      background: rgba(51, 65, 85, 0.8);\n      border-radius: 12px;\n      overflow: hidden;\n      position: relative;\n      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);\n    }\n\n    #oee-panel .oee-bar {\n      height: 100%;\n     background: linear-gradient(90deg, #0a3d91, #0d47a1);      border-radius: 12px;\n      transition: width 0.6s ease;\n      box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);\n    }\n\n    #oee-panel .oee-value {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      font-size: 1rem;\n      font-weight: 800;\n      color: #f8fafc;\n      text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);\n    }\n\n    #oee-panel .no-data {\n      text-align: center;\n      color: #94a3b8;\n      font-size: 1.1rem;\n      margin-top: 2rem;\n      font-weight: 600;\n    }\n\n    /* Custom scrollbar for dark theme */\n    #oee-panel::-webkit-scrollbar {\n      width: 8px;\n    }\n #oee-panel::-webkit-scrollbar-thumb {\n      background: #475569;\n      border-radius: 3px;\n    }\n    #oee-panel::-webkit-scrollbar-thumb:hover {\n      background: #64748b;\n    }\n  \n  </style>\n\n  {{#if data}}\n    {{#each data}}\n      <div class=\"oee-item\">\n        <div class=\"short-code\">{{Short_Code}}</div>\n        <div class=\"oee-bar-container\">\n          <div class=\"oee-bar\" style=\"width: {{OEE}}%;\"></div>\n          <div class=\"oee-value\">{{OEE}}%</div>\n        </div>\n      </div>\n    {{/each}}\n  {{else}}\n    <div class=\"no-data\">No OEE data available.</div>\n  {{/if}}\n</div>\n",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "none",
+            "language": "html"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "allRows",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "select  \"Short_Code\" ,round((Class_A*1.0 / total*1.0 ) *100,2) as OEE \r\nfrom (\r\nSELECT \r\n    SUBSTRING(EPS_CODE, 2, 3) AS \"Short_Code\",\r\n    SUM(CASE WHEN Final_Class = 'A' THEN 1 ELSE 0 END) AS Class_A,\r\n    count(Barcode) as total\r\nFROM (\r\n    SELECT \r\n        EPS_CODE,\r\n        GR_MISURA AS Final_Class,\r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn,\r\n        Barcode\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n   and Barcode like '811%'\r\n\r\n) t\r\nWHERE rn = 1\r\nGROUP BY SUBSTRING(EPS_CODE, 2, 3))\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "OE%",
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 87
+        },
+        "id": 21,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"oee-panel\" style=\"\n  background: rgba(255, 255, 255, 0);\n  border-radius: 20px;\n  padding: 1.5rem;\n  border: 1.5px solid rgba(100, 116, 139, 0.3);\n  color: #f8fafc;\n  font-family: 'Inter', sans-serif;\n  height: 400px;\n  overflow-y: auto;\n  box-shadow:\n    0 8px 24px rgba(14, 30, 37, 0.25),\n    inset 0 0 0 1px rgba(255, 255, 255, 0.05);\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n\">\n  <style>\n      #oee-panel:hover {\n      transform: translateY(-3px);\n    }\n\n    #oee-panel .oee-item {\n      display: flex;\n      align-items: center;\n      gap: 1rem;\n      margin-bottom: 1rem;\n      padding: 0.75rem;\n      background: rgba(255, 255, 255, 0.03);\n      border-radius: 12px;\n      border: 1px solid rgba(100, 116, 139, 0.2);\n      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;\n      position: relative;\n    }\n\n    #oee-panel .oee-item:hover {\n      background: rgba(25, 118, 210, 0.15);\n      transform: translateX(4px);\n    }\n\n    #oee-panel .short-code {\n      font-size: 1.3rem;\n      font-weight: 900;\n      color: #dbeafe;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      min-width: 80px;\n      text-align: left;\n    }\n\n    #oee-panel .oee-bar-container {\n      flex: 1;\n      height: 24px;\n      background: rgba(51, 65, 85, 0.8);\n      border-radius: 12px;\n      overflow: hidden;\n      position: relative;\n      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);\n    }\n\n    #oee-panel .oee-bar {\n      height: 100%;\n     background: linear-gradient(90deg, #0a3d91, #0d47a1);      border-radius: 12px;\n      transition: width 0.6s ease;\n      box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);\n    }\n\n    #oee-panel .oee-value {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      font-size: 1rem;\n      font-weight: 800;\n      color: #f8fafc;\n      text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);\n    }\n\n    #oee-panel .no-data {\n      text-align: center;\n      color: #94a3b8;\n      font-size: 1.1rem;\n      margin-top: 2rem;\n      font-weight: 600;\n    }\n\n    /* Custom scrollbar for dark theme */\n    #oee-panel::-webkit-scrollbar {\n      width: 8px;\n    }\n #oee-panel::-webkit-scrollbar-thumb {\n      background: #475569;\n      border-radius: 3px;\n    }\n    #oee-panel::-webkit-scrollbar-thumb:hover {\n      background: #64748b;\n    }\n  \n  </style>\n\n  {{#if data}}\n    {{#each data}}\n      <div class=\"oee-item\">\n        <div class=\"short-code\">{{Short_Code}}</div>\n        <div class=\"oee-bar-container\">\n          <div class=\"oee-bar\" style=\"width: {{OEE}}%;\"></div>\n          <div class=\"oee-value\">{{OEE}}%</div>\n        </div>\n      </div>\n    {{/each}}\n  {{else}}\n    <div class=\"no-data\">No OEE data available.</div>\n  {{/if}}\n</div>\n",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "none",
+            "language": "html"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "allRows",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n    t.\"Short_Code\",\r\n    ROUND(\r\n        c.c_barcode_count * 1.0\r\n        / t.total_barcode_count * 100.0,\r\n        2\r\n    ) AS \"OEE\"\r\nFROM\r\n(\r\n    -- total DISTINCT barcodes per Short_Code\r\n    SELECT\r\n        SUBSTRING(EPS_CODE, 2, 3) AS \"Short_Code\",\r\n        COUNT(DISTINCT Barcode) AS total_barcode_count\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n      AND Barcode LIKE '811%'\r\n    GROUP BY SUBSTRING(EPS_CODE, 2, 3)\r\n) t\r\nJOIN\r\n(\r\n    -- DISTINCT barcodes that have at least one Class = 'C'\r\n    SELECT\r\n        SUBSTRING(EPS_CODE, 2, 3) AS \"Short_Code\",\r\n        COUNT(DISTINCT Barcode) AS c_barcode_count\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n    WHERE $__timeFilter(Data_ora)\r\n      AND Barcode LIKE '811%'\r\n      AND Barcode IN (\r\n          SELECT Barcode\r\n          FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULTS\"\r\n          WHERE GR_MISURA = 'C'\r\n      )\r\n    GROUP BY SUBSTRING(EPS_CODE, 2, 3)\r\n) c\r\nON t.\"Short_Code\" = c.\"Short_Code\";\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "C% Before Reclassification ",
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "fillOpacity": 80,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineWidth": 1,
+              "scaleDistribution": {
+                "type": "linear"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 100
+        },
+        "id": 13,
+        "options": {
+          "barRadius": 0,
+          "barWidth": 0.97,
+          "groupWidth": 0.7,
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "orientation": "auto",
+          "showValue": "auto",
+          "stacking": "none",
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          },
+          "xTickLabelRotation": 0,
+          "xTickLabelSpacing": 0
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT GR_MISURA, COUNT(Barcode) AS total\r\nFROM (\r\n    SELECT *, \r\n        ROW_NUMBER() OVER (PARTITION BY Barcode ORDER BY Data_ora DESC) AS rn\r\n    FROM \"EG_CA_TRU_FIN_MUL38\".\"MM_RESULT_ALL_VIEW\"\r\n) AS last\r\nWHERE $__timeFilter(Data_ora)\r\nAND rn = 1\r\nGROUP BY GR_MISURA",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Class Chart",
+        "type": "barchart"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "definition": "select distinct MCH_CODE FROM  \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\"\nWHERE pp_code ='BU2'",
+          "hide": 0,
+          "includeAll": true,
+          "multi": false,
+          "name": "MCH",
+          "options": [],
+          "query": "select distinct MCH_CODE FROM  \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\"\nWHERE pp_code ='BU2'",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "2026-01-14T00:00:00.000Z",
+      "to": "2026-01-14T23:59:59.000Z"
+    },
+    "timepicker": {},
+    "timezone": "utc",
+    "title": "Uniformity Dashboard",
+    "uid": "-CRfBZENk",
+    "version": 66,
+    "weekStart": ""
+  }
+}

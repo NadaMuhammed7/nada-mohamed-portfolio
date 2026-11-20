@@ -1,0 +1,360 @@
+{
+  "uid": "rC7qsS9Hk",
+  "title": "OD Analysis",
+  "category": "HR Analytics",
+  "folder": "HR",
+  "folderUid": "_joRgLRvz",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/rC7qsS9Hk/od-analysis",
+  "version": 168,
+  "tags": [],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "refresh": false,
+  "total_panels": 16,
+  "variables": [
+    {
+      "name": "Department",
+      "type": "query",
+      "label": null,
+      "query": "select distinct Department from \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_HIRE\"",
+      "current": "All"
+    }
+  ],
+  "panels": [
+    {
+      "id": 18,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": []
+    },
+    {
+      "id": 34,
+      "title": "Untitled Panel",
+      "type": "aidanmountford-html-panel",
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "targets": []
+    },
+    {
+      "id": 26,
+      "title": "Untitled Panel",
+      "type": "text",
+      "description": "",
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 5
+      },
+      "targets": []
+    },
+    {
+      "id": 6,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 4,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT\r\n    COUNT(DISTINCT CASE WHEN YEAR(Last_Working_Day) = 2025 THEN EmployeeID END) AS Leavers_2025,\r\n    COUNT(DISTINCT CASE WHEN YEAR(Entry_Date) = 2025 THEN EmployeeID END) AS Joiners_2025\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nwhere Department in ($Department)\r\n"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT \r\n    -- Turnover Rate\r\n    ROUND(\r\n        COUNT(DISTINCT CASE WHEN EXTRACT(YEAR FROM \"Last_Working_Day\") = 2025 THEN \"EmployeeID\" END) * 1.0\r\n        / NULLIF(COUNT(DISTINCT \"EmployeeID\"), 0) * 100, \r\n        1\r\n    ) AS turnover_rate,\r\n\r\n    -- Average Age (active employees only)\r\n    (\r\n        SELECT ROUND(AVG(age), 2)\r\n        FROM (\r\n            SELECT DISTINCT \"EmployeeID\", age\r\n            FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n            WHERE \"Last_Working_Day\" IS NULL\r\n            and  Department in ($Department)\r\n\r\n        ) sub_age\r\n    ) AS avg_age,\r\n    \r\n    (\r\n        SELECT ROUND(MAX(age), 1)\r\n        FROM (\r\n            SELECT DISTINCT \"EmployeeID\", age\r\n            FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n            WHERE \"Last_Working_Day\" IS NULL\r\n            and  Department in ($Department)\r\n\r\n\r\n        ) sub_age\r\n    ) AS max_age,\r\n\r\n    -- Average Seniority\r\n    (\r\n        SELECT ROUND(AVG(CAST(\"Seniority\" AS FLOAT)), 2)\r\n        FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n        where Department in ($Department)\r\n\r\n    ) AS avg_seniority,\r\n\r\n    (\r\n        SELECT ROUND(MAX(CAST(\"Seniority\" AS FLOAT)), 1)\r\n        FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n        WHERE  Department in ($Department)\r\n\r\n    ) AS max_seniority\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nwhere Department in ($Department)\r\n\r\n\r\n"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 31,
+        "w": 4,
+        "x": 0,
+        "y": 10
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT \r\n    COUNT(DISTINCT \"EmployeeID\") AS total_employees,\r\n\r\n    COUNT(DISTINCT CASE WHEN \"Gender\" = 'Female' and Employee_Type = 'WC' THEN \"EmployeeID\" END) AS female_count,\r\n    COUNT(DISTINCT CASE WHEN \"Gender\" = 'Female'  THEN \"EmployeeID\" END) AS female_count_total,\r\n\r\n    COUNT(DISTINCT CASE WHEN \"Gender\" = 'Male' THEN \"EmployeeID\" END) AS male_count,\r\n\r\n    ROUND(\r\n        (COUNT(DISTINCT CASE WHEN \"Gender\" = 'Female' THEN \"EmployeeID\" END) * 100.0) \r\n        / NULLIF(COUNT(DISTINCT CASE WHEN Employee_Type = 'WC' THEN \"EmployeeID\" END), 0), 2\r\n    ) AS female_pct,\r\n\r\n    ROUND(\r\n        (COUNT(DISTINCT CASE WHEN \"Gender\" = 'Male' THEN \"EmployeeID\" END) * 100.0) \r\n        / NULLIF(COUNT(DISTINCT \"EmployeeID\"), 0), 2\r\n    ) AS male_pct,\r\n\r\n    ROUND(\r\n        (COUNT(DISTINCT CASE WHEN \"Gender\" = 'Female' THEN \"EmployeeID\" END) * 100.0)\r\n        / NULLIF(COUNT(DISTINCT \"EmployeeID\"), 0), 2\r\n    ) AS female_count_total_pct\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nWHERE \"Last_Working_Day\" IS NULL\r\nand Department in ($Department)\r\n"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 4,
+        "y": 10
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT \r\n  max(CASE WHEN KPI = 'INTERNS HC' AND Type = 'Actual' THEN \"Value\" END) AS interns_count,\r\n  max(CASE WHEN KPI = 'OUTSOURCE WC HC' AND Type = 'Actual' THEN \"Value\" END) AS outsource_count_wc,\r\n  max(CASE WHEN KPI = 'OUTSOURCE BC HC' AND Type = 'Actual' THEN \"Value\" END) AS outsource_count_bc\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"  \r\nWHERE TO_DATE(\"month\", 'Month') = (\r\n  SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n  FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n  WHERE \"year\" = YEAR(CURRENT_DATE())\r\n  and Area = 'OD / Recruitment'\r\n);"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \n  max(CASE WHEN KPI = 'Employee Meals Provided' AND Type = 'Actual' then concat(round(\"Value\"/1000.0,0),'K') end) as employee_meals_actual,\n  max(CASE WHEN KPI = 'Total Trips Transportation \" Annually\"' AND Type = 'Actual' then concat(round(\"Value\"/1000.0,0),'K') end) as trips_actual\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"  \nWHERE TO_DATE(\"month\", 'Month') = (\n  SELECT MAX(TO_DATE(\"month\", 'Month'))\n  FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\n  where \"year\" = Year(Current_date())\n  and Area in ('Security','Employee Relations')\n) \n\n"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Employees Age Distribution",
+      "type": "bargauge",
+      "description": "",
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 15,
+        "y": 14
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  COUNT(DISTINCT EmployeeID) AS employee_count,\r\n  CASE\r\n    WHEN age < 20.0 THEN 'Under 20'\r\n    WHEN age >= 20.0 AND age <= 29.0 THEN '20-29'\r\n    WHEN age >= 30.0 AND age <= 39.0 THEN '30-39'\r\n    WHEN age >= 40.0 AND age <= 49.0 THEN '40-49'\r\n    WHEN age >=  50.0 AND age <= 60.0 THEN '50-60'\r\n    when age > 60.0 then '60+'\r\n  END AS age_range\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\n  where Last_Working_Day is  null\r\nand Department in ($Department)\r\n\r\nGROUP BY age_range\r\nORDER BY age_range;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 11,
+        "x": 4,
+        "y": 15
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  -- Training Hours\r\n  MAX(CASE WHEN KPI = ' Total Training Hours Annual' AND Type = 'Actual' \r\n      THEN concat(round(\"VALUE\"/1000,0),'K') END) AS training_actual,\r\n\r\n  MAX(CASE WHEN KPI = ' Total Training Hours Annual' AND Type = 'Target' \r\n      THEN concat(round(\"VALUE\"/1000,0),'K') END) AS training_target,\r\n\r\n  ROUND(\r\n    (MAX(CASE WHEN KPI = ' Total Training Hours Annual' AND Type = 'Actual' THEN \"VALUE\" END) * 100.0) /\r\n    NULLIF(MAX(CASE WHEN KPI = ' Total Training Hours Annual' AND Type = 'Target' THEN \"VALUE\" END),0)\r\n  ,0) AS training_actual_percent,\r\n\r\n  100 AS training_target_percent,\r\n\r\n  -- Employees Covered %\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC' AND Type = 'Actual' \r\n      THEN round(\"VALUE\" * 100,0) END) AS employees_covered_actual,\r\n\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC' AND Type = 'Target' \r\n      THEN round(\"VALUE\" * 100,0) END) AS employees_covered_target,\r\n\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC' AND Type = 'Actual' \r\n      THEN round(\"VALUE\" * 100,0) END) AS employees_covered_actual_percent,\r\n\r\n  MAX(CASE WHEN KPI = ' Employees Covered from Total HC' AND Type = 'Target' \r\n      THEN round(\"VALUE\" * 100,0) END) AS employees_covered_target_percent\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nWHERE KPI IN (' Total Training Hours Annual', ' Employees Covered from Total HC')\r\n  AND TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n      and Area = 'OD / Training'\r\n\r\n  );\r\n"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 9,
+        "x": 15,
+        "y": 21
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age < 20.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_under_20,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age BETWEEN 20.0 AND 29.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_20_29,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age BETWEEN 30.0 AND 39.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_30_39,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age BETWEEN 40.0 AND 49.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_40_49,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age BETWEEN 50.0 AND 59.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_50_59,\r\n  ROUND(\r\n    100.0 * COUNT(DISTINCT CASE WHEN age >= 60.0 THEN EmployeeID END)\r\n    / COUNT(DISTINCT EmployeeID), 2) AS percentage_60_plus\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nWHERE Last_Working_Day IS NULL;"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "WCs Distribution Per Position",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 18,
+        "w": 10,
+        "x": 4,
+        "y": 23
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  COUNT(DISTINCT EmployeeID) AS \"Total Employees\",\r\n  Employee_Group\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nWHERE Last_Working_Day IS NULL\r\n  AND Employee_Type = 'WC'\r\n  and Department in ($Department)\r\n\r\nGROUP BY Employee_Group\r\nORDER BY CASE Employee_Group\r\n    WHEN 'Junior' THEN 1\r\n    WHEN 'Senior' THEN 2\r\n    WHEN 'Section Head' THEN 3\r\n    WHEN 'Assistant Manager' THEN 4\r\n    WHEN 'Manager' THEN 5\r\n    WHEN 'Director' THEN 6\r\n  END;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Employees % By Category",
+      "type": "piechart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 14,
+        "y": 23
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  count (distinct EmployeeID) as \"Total Employees\" , Employee_Type \n FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\nwhere Last_Working_Day is  null\nand Department in ($Department)\n\ngroup by Employee_Type"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Reasons Of Leaving",
+      "type": "bargauge",
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 10,
+        "x": 14,
+        "y": 31
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT count(DISTINCT EmployeeID),\"ReasonOfLeaving\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\r\nwhere  Last_Working_Day is not null\r\nand Department in ($Department)\r\ngroup by ReasonOfLeaving\r\norder by count(DISTINCT EmployeeID) desc"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  0 AS \" \"\n"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "title": "BC Distribution Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 41
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  count (distinct EmployeeID) as \"Total Employees\" , Sub_Department \n FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\n  where Last_Working_Day is  null\n  and Department in ($Department)\nand Employee_Type = 'BC'\ngroup by Sub_Department \norder by \"Total Employees\" desc\nlimit 5"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "WC Distribution Per Department",
+      "type": "barchart",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 11,
+        "x": 13,
+        "y": 41
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\n  count (distinct EmployeeID) as \"Total Employees\" , Department \n FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"OD_Hire\"\n  where Last_Working_Day is  null\nand Employee_Type = 'WC'\ngroup by Department \norder by \"Total Employees\" desc\nlimit 5"
+        }
+      ]
+    }
+  ]
+}

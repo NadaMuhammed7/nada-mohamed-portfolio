@@ -1,0 +1,41 @@
+{
+  "uid": "M-GrMLRvz",
+  "title": "Security KPIs",
+  "category": "HR Analytics",
+  "folder": "HR",
+  "folderUid": "_joRgLRvz",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/M-GrMLRvz/security-kpis",
+  "version": 7,
+  "tags": [],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "refresh": "",
+  "total_panels": 1,
+  "variables": [],
+  "panels": [
+    {
+      "id": 4,
+      "title": "Untitled Panel",
+      "type": "marcusolsson-dynamictext-panel",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 21,
+        "x": 3,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT\r\n  MAX(CASE WHEN KPI = 'Number of security violations (Aver per month)'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Security_Violations_per_Month,\r\n\r\n  MAX(CASE WHEN KPI LIKE 'Number Of complains received \"transportation\"%'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Transportation_Complaints_per_Month,\r\n\r\n  MAX(CASE WHEN KPI = 'Transportation Cost \"Annualy \"'\r\n           AND Type = 'Actual' THEN \"Value\"/1000000 END) AS Annual_Transportation_Cost,\r\n\r\n  MAX(CASE WHEN KPI = 'Total Trips Transportation \" Annually\"'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Annual_Trips_Count,\r\n\r\n  MAX(CASE WHEN KPI = 'Total number of Visitors \"Foreign\"'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Foreign_Visitors_Count,\r\n\r\n  MAX(CASE WHEN KPI = 'Total number of Travellers'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Travellers_Total\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nWHERE TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n    and Area = 'Security'\r\n);\r\n"
+        }
+      ]
+    }
+  ]
+}

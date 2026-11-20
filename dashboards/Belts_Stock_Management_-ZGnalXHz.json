@@ -1,0 +1,4135 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "belts-stock-management",
+    "url": "/d/-ZGnalXHz/belts-stock-management",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-08-28T10:57:22+03:00",
+    "updated": "2025-12-08T15:22:22+02:00",
+    "updatedBy": "st1mohamna",
+    "createdBy": "st1mohamna",
+    "version": 35,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "publicDashboardAccessToken": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 243,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "Cutters",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "dark-blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 33,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 26
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "TTM901",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#424242",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 0,
+          "y": 1
+        },
+        "id": 8,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "TTM902",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 12,
+          "y": 1
+        },
+        "id": 9,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#2f3d52",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Quantity"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 127
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 0,
+          "y": 2
+        },
+        "id": 17,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n  t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TT901' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#2f3d52",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 12,
+          "y": 2
+        },
+        "id": 24,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TT902' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "TTM903",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 0,
+          "y": 13
+        },
+        "id": 12,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "TTM Angle",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 12,
+          "y": 13
+        },
+        "id": 7,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 0,
+          "y": 14
+        },
+        "id": 25,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TT903' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 12,
+          "y": 14
+        },
+        "id": 26,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TTAN' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "VMI",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 0,
+          "y": 25
+        },
+        "id": 6,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "CTBE",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 12,
+          "y": 25
+        },
+        "id": 13,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#2f3d52",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 0,
+          "y": 26
+        },
+        "id": 27,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'VMC9' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#2f3d52",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 12,
+          "y": 26
+        },
+        "id": 28,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'CTBE' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "COPL",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 0,
+          "y": 37
+        },
+        "id": 29,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "FISHER",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 12,
+          "y": 37
+        },
+        "id": 30,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 0,
+          "y": 38
+        },
+        "id": 31,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n         t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'COPL' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 12,
+          "x": 12,
+          "y": 38
+        },
+        "id": 32,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'FISH' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "Calender",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 49
+        },
+        "id": 36,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#2f3d52",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 50
+        },
+        "id": 35,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '10' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '10' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'CAB1' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "Extrusion",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "dark-blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 24,
+          "x": 0,
+          "y": 62
+        },
+        "id": 34,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 26
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "C1",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 0,
+          "y": 64
+        },
+        "id": 38,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "DUPLEX",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 12,
+          "y": 64
+        },
+        "id": 39,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 0,
+          "y": 65
+        },
+        "id": 37,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"LT Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TRC1' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 12,
+          "y": 65
+        },
+        "id": 40,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'DXC4' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "C4",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 0,
+          "y": 77
+        },
+        "id": 42,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "C5",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 12,
+          "y": 77
+        },
+        "id": 43,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#2f3d52",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 0,
+          "y": 78
+        },
+        "id": 41,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Remaining Quantity"
+            }
+          ]
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"LT Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TRC4' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#2f3d52",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 12,
+          "y": 78
+        },
+        "id": 44,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TRC5' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 0,
+            "displayName": "Rollerhead",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "rgb(66, 66, 66)"
+                }
+              ]
+            },
+            "unit": "locale"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 12,
+          "x": 0,
+          "y": 90
+        },
+        "id": 46,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 16
+          },
+          "textMode": "name"
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "x2fXDwJ7k"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "center",
+              "displayMode": "color-background",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Card"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 131
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "Critical": {
+                          "color": "semi-dark-orange",
+                          "index": 2,
+                          "text": "Critical"
+                        },
+                        "Expired": {
+                          "color": "semi-dark-red",
+                          "index": 1,
+                          "text": "Expired"
+                        },
+                        "Good": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "Good"
+                        },
+                        "Missing": {
+                          "color": "semi-dark-red",
+                          "index": 3,
+                          "text": "Missing"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Prod Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 166
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Short Code"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 121
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Days to Expire"
+              },
+              "properties": [
+                {
+                  "id": "custom.displayMode",
+                  "value": "gradient-gauge"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-RdYlGr"
+                  }
+                },
+                {
+                  "id": "custom.width",
+                  "value": 164
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Exp Date"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 169
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 0,
+          "y": 91
+        },
+        "id": 45,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "count"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": []
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'RHC5' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "table"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "2025-09-04T22:00:00.000Z",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Belts Stock Management",
+    "uid": "-ZGnalXHz",
+    "version": 35,
+    "weekStart": ""
+  }
+}

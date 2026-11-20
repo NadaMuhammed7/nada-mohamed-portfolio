@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "employee-relations-kpis",
+    "url": "/d/I8xvnYgvz/employee-relations-kpis",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-10-27T11:37:25+03:00",
+    "updated": "2025-12-16T11:50:53+02:00",
+    "updatedBy": "st1mohamna",
+    "createdBy": "st1mohamna",
+    "version": 7,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 267,
+    "folderUid": "_joRgLRvz",
+    "folderTitle": "HR",
+    "folderUrl": "/dashboards/f/_joRgLRvz/hr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "publicDashboardAccessToken": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 271,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 21,
+          "x": 3,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"employee-relations-expenses-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #employee-relations-expenses-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n      gap: 1.5rem;\n      height: 100%;\n      max-width: 1400px;\n      margin: 0 auto;\n      padding: .2rem;\n    }\n\n    #employee-relations-expenses-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: 1rem 1.7rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;\n      cursor: default;\n      position: relative;\n      overflow: hidden;\n    }\n\n    #employee-relations-expenses-panel .card::before {\n      content: '';\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      height: 4px;\n      background: linear-gradient(90deg, #3b82f6, #8b5cf6);\n      opacity: 0;\n      transition: opacity 0.3s ease;\n    }\n\n    #employee-relations-expenses-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n      border-color: #475569;\n    }\n\n    #employee-relations-expenses-panel .card:hover::before {\n      opacity: 1;\n    }\n\n    #employee-relations-expenses-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      text-align: center;\n    }\n\n    #employee-relations-expenses-panel .metric-value {\n      font-size: 2.1rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.6rem;\n      position: relative;\n    }\n\n    #employee-relations-expenses-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n    }\n\n    @keyframes pulse {\n\n      0%,\n      100% {\n        opacity: 1;\n        transform: translateY(0) scale(1);\n      }\n\n      50% {\n        opacity: 0.8;\n        transform: translateY(-4px) scale(1.05);\n      }\n    }\n\n\n    #employee-relations-expenses-panel .icon {\n      display: inline-block;\n      user-select: none;\n    }\n\n\n    @media (max-width: 768px) {\n      #employee-relations-expenses-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Employee Meals Cost -->\n    <div class=\"card\" title=\"Employee Meals Cost\">\n      <h2 class=\"card-title\">Employee Meals</h2>\n      <div class=\"metric-value\">\n        {{#if Employee_Meals_cost}}MEGP {{Employee_Meals_cost}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Meals and nourishment\" style=\"color: #f59e0b; font-size: 1.8rem; line-height: 1;\">🍽️</span>\n      </div>\n      <div class=\"metric-label\">Total Cost for Employee Meals</div>\n    </div>\n\n    <!-- Hotel Nights Cost -->\n    <div class=\"card\" title=\"Hotel Nights Cost\">\n      <h2 class=\"card-title\">Hotel Nights</h2>\n      <div class=\"metric-value\">\n        {{#if Hotel_Nights_cost}}MEGP {{Hotel_Nights_cost}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Accommodation and rest\" style=\"color: #8b5cf6; font-size: 1.8rem; line-height: 1;\">🏨</span>\n      </div>\n      <div class=\"metric-label\">Total Cost for Hotel Stays</div>\n    </div>\n\n    <!-- Cars Maintenance Cost -->\n    <div class=\"card\" title=\"Cars Maintenance Cost\">\n      <h2 class=\"card-title\">Cars Maintenance</h2>\n      <div class=\"metric-value\">\n        {{#if Cars_Maintenance_cost}}MEGP {{Cars_Maintenance_cost}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Vehicle maintenance\" style=\"color: #ef4444; font-size: 1.8rem; line-height: 1;\">🚗</span>\n      </div>\n      <div class=\"metric-label\">Total Cost for Car Maintenance </div>\n    </div>\n\n    <!-- Flight Tickets Cost -->\n    <div class=\"card\" title=\"Flight Tickets Cost\">\n      <h2 class=\"card-title\">Flight Tickets</h2>\n      <div class=\"metric-value\">\n        {{#if Flight_Tickets_cost}}MEGP {{Flight_Tickets_cost}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Air travel\" style=\"color: #06b6d4; font-size: 1.8rem; line-height: 1;\">✈️</span>\n      </div>\n      <div class=\"metric-label\">Total Cost for Flight Tickets</div>\n    </div>\n\n    <!-- Buffet/Hospitality Cost -->\n    <div class=\"card\" title=\"Buffet/Hospitality Cost\">\n      <h2 class=\"card-title\">Buffet/Hospitality</h2>\n      <div class=\"metric-value\">\n        {{#if Buffet_cost}}MEGP {{Buffet_cost}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Events and celebrations\" style=\"color: #ec4899; font-size: 1.8rem; line-height: 1;\">🎉</span>\n      </div>\n      <div class=\"metric-label\">Total Cost for Buffet/Hospitality</div>\n    </div>\n\n    <!-- Mobile Telephone Expenses -->\n    <div class=\"card\" title=\"Mobile Telephone Expenses\">\n      <h2 class=\"card-title\">Mobile Expenses</h2>\n      <div class=\"metric-value\">\n        {{#if Mobile_Telephone_expenses}}MEGP {{Mobile_Telephone_expenses}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Communication\" style=\"color: #10b981; font-size: 1.8rem; line-height: 1;\">📱</span>\n      </div>\n      <div class=\"metric-label\">Total Cost for Mobile Telephone</div>\n    </div>\n\n    <!-- Trips/Entertainment Cost -->\n    <div class=\"card\" title=\"Trips/Entertainment Cost\">\n      <h2 class=\"card-title\">Trips/Entertainment</h2>\n      <div class=\"metric-value\">\n        {{#if Trips_Entertainment}}MEGP {{Trips_Entertainment}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Travel and leisure\" style=\"color: #f97316; font-size: 1.8rem; line-height: 1;\">🧳</span>\n      </div>\n      <div class=\"metric-label\">Total Cost for Trips/Entertainment</div>\n    </div>\n  </div>\n</div>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "html"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  max(CASE WHEN KPI = 'Employee Meals' AND Type = 'Actual' THEN \"Value\" END) AS Employee_Meals_cost,\r\n  max(CASE WHEN KPI = 'Hotel Nights'AND Type = 'Actual' THEN \"Value\"  END) AS Hotel_Nights_cost,\r\n  max(CASE WHEN KPI = 'Cars Maintenance' AND Type = 'Actual' THEN \"Value\" END) AS Cars_Maintenance_cost,\r\n  max(CASE WHEN KPI = 'Flight Tickets' AND Type = 'Actual' THEN \"Value\"END) AS Flight_Tickets_cost,\r\n  max(CASE WHEN KPI = 'Buffet/ Hospitalities' AND Type = 'Actual' THEN \"Value\"END) AS Buffet_cost,\r\n  max(CASE WHEN KPI = 'Mobile Telephone expenses' AND Type = 'Actual' THEN \"Value\"END) AS Mobile_Telephone_expenses,\r\n  max(CASE WHEN KPI = 'Trips / Entertainment' AND Type = 'Actual' THEN ROUND(\"Value\",2) END) AS Trips_Entertainment  \r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nwhere TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n    and Area = 'Employee Relations'\r\n  );\r\n\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Employee Relations KPIs",
+    "uid": "I8xvnYgvz",
+    "version": 7,
+    "weekStart": ""
+  }
+}

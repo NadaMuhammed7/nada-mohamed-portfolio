@@ -1,0 +1,1197 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": false,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "daily-mix-monitoring",
+    "url": "/d/V7Q3D6Yvk/daily-mix-monitoring",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-07-19T09:40:56+03:00",
+    "updated": "2026-09-21T12:48:48+03:00",
+    "updatedBy": "st1mohamna",
+    "createdBy": "st1ahmedma",
+    "version": 211,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 54,
+    "folderUid": "aGOuwuVVk",
+    "folderTitle": "1.ON DEVELOPMENT",
+    "folderUrl": "/dashboards/f/aGOuwuVVk/1-on-development",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "publicDashboardAccessToken": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 334,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 11,
+        "options": {
+          "afterRender": "",
+          "content": "<style>\n/* 📦 PANEL CONTAINER: WHITE BODY WITH CYAN BORDER */\n.panel-container, \n[data-testid=\"panel-wrapper\"],\n[data-testid=\"panel-content\"] {\nbackground: #ffffff !important;\nborder: none !important;\nborder-radius: 8px !important;\noverflow: hidden !important;\nbox-shadow: 0 4px 16px rgba(0, 32, 91, 0.15) !important;\n}\n\n/* 🟦 PANEL HEADER: BLUE BACKGROUND */\n.panel-header, \n[data-testid=\"panel-header\"], \n.panel-title-container {\nbackground: #001540 !important;\nborder-bottom: none !important;\npadding: 6px 12px !important;\nmargin: 0 !important;\n}\n\n.panel-title, \n[data-testid=\"panel-title\"], \n.panel-title-text {\ncolor: #ffffff !important;\nfont-weight: 800 !important;\nfont-size: 13px !important;\nletter-spacing: 0.6px !important;\ntext-transform: uppercase !important;\n}\n\n.kpi-container {\nwidth: 100%;\npadding: 4px;\nbackground: #ffffff !important;\nbox-sizing: border-box;\nfont-family: 'Inter', -apple-system, sans-serif;\n}\n\n.kpi-grid {\ndisplay: grid;\ngrid-template-columns: repeat(5, 1fr);\ngap: 10px;\nwidth: 100%;\n}\n\n.kpi-card {\nbackground: #ffffff !important;\nborder-radius: 8px;\npadding: 10px 14px;\nborder: 2px solid #00205b;\nbox-shadow: 0 4px 12px rgba(0, 32, 91, 0.08);\ndisplay: flex;\nflex-direction: column;\njustify-content: space-between;\nposition: relative;\noverflow: hidden;\ntransition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);\ncursor: pointer;\n}\n\n.kpi-card:hover {\ntransform: translateY(-4px) scale(1.02);\nbox-shadow: 0 10px 25px rgba(0, 32, 91, 0.2), 0 0 15px rgba(0, 145, 218, 0.25) !important;\n}\n\n.kpi-curing:hover { border-color: #0091da !important; }\n.kpi-delivery:hover { border-color: #059669 !important; }\n.kpi-press:hover { border-color: #16a34a !important; }\n.kpi-stop:hover { border-color: #dc2626 !important; }\n.kpi-queue:hover { border-color: #7e22ce !important; }\n\n.kpi-card::before {\ncontent: '';\nposition: absolute;\ntop: 0;\nleft: 0;\nright: 0;\nheight: 4px;\n}\n\n.kpi-curing::before { background: #0091da; }\n.kpi-delivery::before { background: #059669; }\n.kpi-press::before { background: #16a34a; }\n.kpi-stop::before { background: #dc2626; }\n.kpi-queue::before { background: #7e22ce; }\n\n.kpi-header {\ndisplay: flex;\nalign-items: center;\njustify-content: space-between;\ncolor: #00205b;\nfont-size: 11px;\nfont-weight: 800;\ntext-transform: uppercase;\nletter-spacing: 0.5px;\nmargin-bottom: 4px;\n}\n\n.kpi-val {\nfont-size: 24px;\nfont-weight: 900;\nfont-family: 'JetBrains Mono', 'Consolas', monospace;\nline-height: 1.1;\nmargin-bottom: 2px;\n}\n\n.val-curing-text { color: #0284c7; }\n.val-delivery-text { color: #059669; }\n.val-press-text { color: #16a34a; }\n.val-stop-text { color: #dc2626; }\n.val-queue-text { color: #7e22ce; }\n\n.kpi-sub {\nfont-size: 10.5px;\ncolor: #475569;\nfont-weight: 600;\n}\n</style>\n\n<div class=\"kpi-container\">\n<div class=\"kpi-grid\">\n{{#each data}}\n<div class=\"kpi-card kpi-curing\">\n<div class=\"kpi-header\">\n<span>Plant Curing CI</span>\n<span>🔥</span>\n</div>\n<div class=\"kpi-val val-curing-text\">{{lookup this \"Plant Curing CI\"}}%</div>\n<div class=\"kpi-sub\">Curing vs Plan Target</div>\n</div>\n\n<div class=\"kpi-card kpi-delivery\">\n<div class=\"kpi-header\">\n<span>Plant Delivery CI</span>\n<span>🚚</span>\n</div>\n<div class=\"kpi-val val-delivery-text\">{{lookup this \"Plant Delivery CI\"}}%</div>\n<div class=\"kpi-sub\">Delivered vs Plan Target</div>\n</div>\n\n<div class=\"kpi-card kpi-press\">\n<div class=\"kpi-header\">\n<span>Active Press IP Codes</span>\n<span>⚡</span>\n</div>\n<div class=\"kpi-val val-press-text\">{{lookup this \"Active Press IP Codes\"}}</div>\n<div class=\"kpi-sub\">IP Codes running on presses</div>\n</div>\n\n<div class=\"kpi-card kpi-stop\">\n<div class=\"kpi-header\">\n<span>STOP Alerts Count</span>\n<span>🛑</span>\n</div>\n<div class=\"kpi-val val-stop-text\">{{lookup this \"STOP Alerts Count\"}}</div>\n<div class=\"kpi-sub\">IP Codes reaching delivery target</div>\n</div>\n\n<div class=\"kpi-card kpi-queue\">\n<div class=\"kpi-header\">\n<span>Inspection Queue</span>\n<span>📦</span>\n</div>\n<div class=\"kpi-val val-queue-text\">{{lookup this \"Total Inspection Queue\"}}</div>\n<div class=\"kpi-sub\">Cured tires pending delivery</div>\n</div>\n{{/each}}\n</div>\n</div>",
+          "defaultContent": "No KPI summary data.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "allRows",
+          "styles": "",
+          "wrap": true
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \n    COUNT(DISTINCT \"p\".\"IP5\") AS \"Total IP Codes\",\n    CAST(ROUND(SUM(COALESCE(\"p\".\"plan_qty\", 0))) AS INT) AS \"Total Plan\",\n    SUM(COALESCE(\"c\".\"cured_qty\", 0)) AS \"Total Curing\",\n    CASE \n        WHEN SUM(COALESCE(\"p\".\"plan_qty\", 0)) > 0 \n        THEN ROUND((CAST(SUM(LEAST(CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT), GREATEST(0, COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)))) AS DOUBLE) / SUM(COALESCE(\"p\".\"plan_qty\", 0))) * 100.0, 1)\n        ELSE 0 \n    END AS \"Plant Curing CI\",\n    CASE \n        WHEN SUM(COALESCE(\"p\".\"plan_qty\", 0)) > 0 \n        THEN ROUND((CAST(SUM(LEAST(CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT), COALESCE(\"d\".\"delivered_qty\", 0))) AS DOUBLE) / SUM(COALESCE(\"p\".\"plan_qty\", 0))) * 100.0, 1)\n        ELSE 0 \n    END AS \"Plant Delivery CI\",\n    COUNT(DISTINCT CASE WHEN COALESCE(\"sch\".\"in_curing\", 'FALSE') = 'TRUE' THEN \"p\".\"IP5\" END) AS \"Active Press IP Codes\",\n    COUNT(DISTINCT CASE WHEN COALESCE(\"d\".\"delivered_qty\", 0) >= CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) AND CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) > 0 THEN \"p\".\"IP5\" END) AS \"STOP Alerts Count\",\n    SUM(GREATEST(0, (COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) - COALESCE(\"d\".\"delivered_qty\", 0))) AS \"Total Inspection Queue\"\nFROM (\n    SELECT \n        \"all_ip\".\"IP5\",\n        SUM(\n  CASE WHEN CAST('${day}' AS INT) > 1 THEN COALESCE(\"pt\".\"Day1\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 2 THEN COALESCE(\"pt\".\"Day2\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 3 THEN COALESCE(\"pt\".\"Day3\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 4 THEN COALESCE(\"pt\".\"Day4\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 5 THEN COALESCE(\"pt\".\"Day5\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 6 THEN COALESCE(\"pt\".\"Day6\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 7 THEN COALESCE(\"pt\".\"Day7\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 8 THEN COALESCE(\"pt\".\"Day8\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 9 THEN COALESCE(\"pt\".\"Day9\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 10 THEN COALESCE(\"pt\".\"Day10\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 11 THEN COALESCE(\"pt\".\"Day11\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 12 THEN COALESCE(\"pt\".\"Day12\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 13 THEN COALESCE(\"pt\".\"Day13\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 14 THEN COALESCE(\"pt\".\"Day14\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 15 THEN COALESCE(\"pt\".\"Day15\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 16 THEN COALESCE(\"pt\".\"Day16\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 17 THEN COALESCE(\"pt\".\"Day17\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 18 THEN COALESCE(\"pt\".\"Day18\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 19 THEN COALESCE(\"pt\".\"Day19\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 20 THEN COALESCE(\"pt\".\"Day20\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 21 THEN COALESCE(\"pt\".\"Day21\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 22 THEN COALESCE(\"pt\".\"Day22\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 23 THEN COALESCE(\"pt\".\"Day23\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 24 THEN COALESCE(\"pt\".\"Day24\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 25 THEN COALESCE(\"pt\".\"Day25\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 26 THEN COALESCE(\"pt\".\"Day26\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 27 THEN COALESCE(\"pt\".\"Day27\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 28 THEN COALESCE(\"pt\".\"Day28\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 29 THEN COALESCE(\"pt\".\"Day29\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 30 THEN COALESCE(\"pt\".\"Day30\", 0) ELSE 0 END +\n  (CASE CAST('${day}' AS INT)\n    WHEN 1 THEN COALESCE(\"pt\".\"Day1\", 0) WHEN 2 THEN COALESCE(\"pt\".\"Day2\", 0) WHEN 3 THEN COALESCE(\"pt\".\"Day3\", 0) WHEN 4 THEN COALESCE(\"pt\".\"Day4\", 0) WHEN 5 THEN COALESCE(\"pt\".\"Day5\", 0)\n    WHEN 6 THEN COALESCE(\"pt\".\"Day6\", 0) WHEN 7 THEN COALESCE(\"pt\".\"Day7\", 0) WHEN 8 THEN COALESCE(\"pt\".\"Day8\", 0) WHEN 9 THEN COALESCE(\"pt\".\"Day9\", 0) WHEN 10 THEN COALESCE(\"pt\".\"Day10\", 0)\n    WHEN 11 THEN COALESCE(\"pt\".\"Day11\", 0) WHEN 12 THEN COALESCE(\"pt\".\"Day12\", 0) WHEN 13 THEN COALESCE(\"pt\".\"Day13\", 0) WHEN 14 THEN COALESCE(\"pt\".\"Day14\", 0) WHEN 15 THEN COALESCE(\"pt\".\"Day15\", 0)\n    WHEN 16 THEN COALESCE(\"pt\".\"Day16\", 0) WHEN 17 THEN COALESCE(\"pt\".\"Day17\", 0) WHEN 18 THEN COALESCE(\"pt\".\"Day18\", 0) WHEN 19 THEN COALESCE(\"pt\".\"Day19\", 0) WHEN 20 THEN COALESCE(\"pt\".\"Day20\", 0)\n    WHEN 21 THEN COALESCE(\"pt\".\"Day21\", 0) WHEN 22 THEN COALESCE(\"pt\".\"Day22\", 0) WHEN 23 THEN COALESCE(\"pt\".\"Day23\", 0) WHEN 24 THEN COALESCE(\"pt\".\"Day24\", 0) WHEN 25 THEN COALESCE(\"pt\".\"Day25\", 0)\n    WHEN 26 THEN COALESCE(\"pt\".\"Day26\", 0) WHEN 27 THEN COALESCE(\"pt\".\"Day27\", 0) WHEN 28 THEN COALESCE(\"pt\".\"Day28\", 0) WHEN 29 THEN COALESCE(\"pt\".\"Day29\", 0) WHEN 30 THEN COALESCE(\"pt\".\"Day30\", 0)\n    WHEN 31 THEN COALESCE(\"pt\".\"Day31\", 0)\n    ELSE 0\n  END) * (\n    CASE \n      WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN (1.0 / 3.0)\n      WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN (2.0 / 3.0)\n      ELSE 1.0\n    END\n  )\n) AS \"plan_qty\",\n        SUM(\n          COALESCE(\"pt\".\"Day1\", 0) + COALESCE(\"pt\".\"Day2\", 0) + COALESCE(\"pt\".\"Day3\", 0) + COALESCE(\"pt\".\"Day4\", 0) + COALESCE(\"pt\".\"Day5\", 0) +\n          COALESCE(\"pt\".\"Day6\", 0) + COALESCE(\"pt\".\"Day7\", 0) + COALESCE(\"pt\".\"Day8\", 0) + COALESCE(\"pt\".\"Day9\", 0) + COALESCE(\"pt\".\"Day10\", 0) +\n          COALESCE(\"pt\".\"Day11\", 0) + COALESCE(\"pt\".\"Day12\", 0) + COALESCE(\"pt\".\"Day13\", 0) + COALESCE(\"pt\".\"Day14\", 0) + COALESCE(\"pt\".\"Day15\", 0) +\n          COALESCE(\"pt\".\"Day16\", 0) + COALESCE(\"pt\".\"Day17\", 0) + COALESCE(\"pt\".\"Day18\", 0) + COALESCE(\"pt\".\"Day19\", 0) + COALESCE(\"pt\".\"Day20\", 0) +\n          COALESCE(\"pt\".\"Day21\", 0) + COALESCE(\"pt\".\"Day22\", 0) + COALESCE(\"pt\".\"Day23\", 0) + COALESCE(\"pt\".\"Day24\", 0) + COALESCE(\"pt\".\"Day25\", 0) +\n          COALESCE(\"pt\".\"Day26\", 0) + COALESCE(\"pt\".\"Day27\", 0) + COALESCE(\"pt\".\"Day28\", 0) + COALESCE(\"pt\".\"Day29\", 0) + COALESCE(\"pt\".\"Day30\", 0) + COALESCE(\"pt\".\"Day31\", 0)\n        ) AS \"total_month_plan\"\n    FROM (\n        SELECT DISTINCT SUBSTRING(CAST(CAST(\"IP_code\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\n        WHERE \"month\" = CAST('${month}' AS INT) AND \"IP_code\" IS NOT NULL\n        UNION\n        SELECT DISTINCT SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n        JOIN (\n            SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n            UNION ALL\n            SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n        ) T ON D.DDC_BARCODE = T.BC\n        JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n        WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n          AND D.DDC_START_CYCLE >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n          AND D.DDC_START_CYCLE < (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP) + INTERVAL '1' MONTH)\n          AND M2.MAT_IP_CODE IS NOT NULL\n    ) \"all_ip\"\n    LEFT JOIN \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\" \"pt\"\n        ON \"all_ip\".\"IP5\" = CAST(\"pt\".\"IP5\" AS VARCHAR)\n       AND \"pt\".\"month\" = CAST('${month}' AS INT)\n    GROUP BY \"all_ip\".\"IP5\"\n) \"p\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        'TRUE' AS \"in_curing\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"SCH_MACHINE_PLAN\" S\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n        ON S.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE S.PP_CODE = 'CU1'\n      AND M2.MAT_IP_CODE IS NOT NULL\n      AND S.MPN_START_DATETIME >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n      AND S.MPN_START_DATETIME <  (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP) + INTERVAL '1' DAY)\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n) \"sch\" ON \"p\".\"IP5\" = \"sch\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        \"all_c\".\"IP5\",\n        SUM(\"all_c\".\"qty\") AS cured_qty\n    FROM (\nSELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT D.DDC_BARCODE) AS qty\n    FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n    JOIN (\n        SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n        UNION ALL\n        SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n    ) T ON D.DDC_BARCODE = T.BC\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n      AND D.DDC_START_CYCLE >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND D.DDC_START_CYCLE < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n        UNION ALL\n\n        SELECT \n            \"adj\".\"IP5\",\n            \"adj\".\"adj_qty\" AS qty\n        FROM (\n            VALUES \n            ('60476', 8),\n            ('31037', 6),\n            ('37528', 6),\n            ('23914', 5),\n            ('38648', 5),\n            ('60704', 5),\n            ('36205', 4),\n            ('37490', 4),\n            ('37537', 4),\n            ('39370', 4),\n            ('60331', 4),\n            ('19132', 3),\n            ('38647', 3),\n            ('60042', 3),\n            ('61099', 3),\n            ('31010', 2),\n            ('32659', 2),\n            ('35352', 2),\n            ('36091', 2),\n            ('36204', 2),\n            ('36550', 2),\n            ('36592', 2),\n            ('37449', 2),\n            ('37516', 2),\n            ('37523', 2),\n            ('37524', 2),\n            ('37526', 2),\n            ('38372', 2),\n            ('60099', 2),\n            ('60415', 2),\n            ('60328', 2),\n            ('60346', 2),\n            ('60536', 2),\n            ('60636', 2),\n            ('61285', 2),\n            ('61332', 2),\n            ('61316', 2),\n            ('36433', 1),\n            ('36435', 1),\n            ('36549', 1),\n            ('37489', 1),\n            ('37802', 1),\n            ('38922', 1),\n            ('38934', 1),\n            ('39964', 1),\n            ('41169', 1),\n            ('60329', 1),\n            ('60412', 1),\n            ('60413', 1),\n            ('60519', 1),\n            ('60502', 1),\n            ('60503', 1),\n            ('61280', 1),\n            ('61326', 1),\n            ('61333', 1),\n            ('61329', 1),\n            ('60872', 1),\n            ('60874', 1),\n            ('61159', 1),\n            ('61161', 1),\n            ('61162', 1),\n            ('61163', 1)\n        ) AS \"adj\"(\"IP5\", \"adj_qty\")\n        WHERE CAST('${year}' AS INT) = 2026 AND CAST('${month}' AS INT) = 9 AND (\n            CAST('${day}' AS INT) > 7 \n            OR (CAST('${day}' AS INT) = 7 AND '${shift}' NOT IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)'))\n        )\n    ) \"all_c\"\n    GROUP BY \"all_c\".\"IP5\"\n) \"c\" ON \"p\".\"IP5\" = \"c\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        SUM(\"QuantityTire\") AS \"delivered_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\n    WHERE \"ProductionDate\" >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND \"ProductionDate\" < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n    GROUP BY SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"d\" ON \"p\".\"IP5\" = \"d\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT \"F2\".\"FDD_BARCODE\") AS \"scrap_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"FIN_DEFECTS_DECLARED\" \"F2\"\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON \"F2\".\"MAT_SAP_CODE\" = M2.\"MAT_SAP_CODE\"\n    WHERE \"F2\".\"FDD_ACTIVE\" = 'T' AND \"F2\".\"FDS_SEVERITY\" = 'SC' AND CAST(\"F2\".\"CLA_CODE\" AS VARCHAR) = '00'\n      AND \"F2\".\"FDD_TIME_STAMP\" >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND \"F2\".\"FDD_TIME_STAMP\" < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + INTERVAL '1' DAY\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n) \"s\" ON \"p\".\"IP5\" = \"s\".\"IP5\"\nWHERE (COALESCE(\"p\".\"total_month_plan\", 0) > 0 OR COALESCE(\"c\".\"cured_qty\", 0) > 0)",
+            "refId": "A"
+          }
+        ],
+        "title": "📊 Executive KPI Summary — Plant Operational Performance (Month ${month} / Day ${day})",
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 5
+        },
+        "id": 12,
+        "options": {
+          "afterRender": "",
+          "content": "<style>\n.insights-container {\nwidth: 100%;\nheight: 100%;\nmax-height: 100%;\npadding: 8px 12px;\nbackground: #ffffff !important;\nbox-sizing: border-box;\nfont-family: 'Inter', -apple-system, sans-serif;\noverflow-y: auto;\nscroll-behavior: smooth;\n}\n\n.insights-container::-webkit-scrollbar {\nwidth: 6px;\n}\n.insights-container::-webkit-scrollbar-track {\nbackground: #f1f5f9;\nborder-radius: 4px;\n}\n.insights-container::-webkit-scrollbar-thumb {\nbackground: #cbd5e1;\nborder-radius: 4px;\n}\n.insights-container::-webkit-scrollbar-thumb:hover {\nbackground: #94a3b8;\n}\n\n.insights-grid {\ndisplay: grid;\ngrid-template-columns: repeat(auto-fill, minmax(340px, 1fr));\ngap: 12px;\nalign-content: start;\n}\n\n.insight-card {\nbackground: #ffffff !important;\nborder-radius: 8px;\npadding: 10px 14px;\nborder: 1.5px solid #cbd5e1;\nbox-shadow: 0 2px 8px rgba(0, 32, 91, 0.06);\ndisplay: flex;\nalign-items: flex-start;\ngap: 10px;\ntransition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);\ncursor: pointer;\n}\n\n.insight-card:hover {\ntransform: translateY(-3px);\nbox-shadow: 0 8px 20px rgba(0, 32, 91, 0.16) !important;\n}\n\n/* Green for Target Met */\n.card-stop { border-left: 4px solid #16a34a; background: #f0fdf4 !important; }\n.badge-stop { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }\n\n/* Orange for Curing Deficit */\n.card-deficit { border-left: 4px solid #b45309; background: #fffbeb !important; }\n.badge-deficit { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }\n\n/* Red for High Inspection Queue */\n.card-queue { border-left: 4px solid #dc2626; background: #fff5f5 !important; }\n.badge-queue { background: #fee2e2; color: #991b1b; border: 1px solid #f87171; }\n\n.insight-badge {\nfont-size: 10.5px;\nfont-weight: 800;\npadding: 2px 8px;\nborder-radius: 12px;\ntext-transform: uppercase;\nletter-spacing: 0.5px;\nwhite-space: nowrap;\n}\n\n.insight-body {\nflex: 1;\n}\n\n.insight-title {\nfont-size: 12.5px;\nfont-weight: 800;\ncolor: #00205b;\nmargin-bottom: 2px;\n}\n\n.insight-desc {\nfont-size: 11px;\ncolor: #334155;\nline-height: 1.35;\n}\n\n.highlight-code {\nfont-family: 'JetBrains Mono', monospace;\nfont-weight: 800;\ncolor: #00205b;\n}\n</style>\n\n<div class=\"insights-container\">\n<div class=\"insights-grid\">\n{{#each data}}\n{{#if (eq (lookup this \"Alert Type\") \"STOP\")}}\n<div class=\"insight-card card-stop\">\n<span class=\"insight-badge badge-stop\">✅ Target Met</span>\n<div class=\"insight-body\">\n<div class=\"insight-title\"><span class=\"highlight-code\">{{lookup this \"Short Code\"}}</span> — {{lookup this \"Description\"}}</div>\n<div class=\"insight-desc\">\nDelivered <b>{{lookup this \"Delivery\"}}</b> vs Plan <b>{{lookup this \"Plan\"}}</b> (100% Target Met). Recommend pausing press allocation.\n</div>\n</div>\n</div>\n{{/if}}\n\n{{#if (eq (lookup this \"Alert Type\") \"DEFICIT\")}}\n<div class=\"insight-card card-deficit\">\n<span class=\"insight-badge badge-deficit\">⚠️ Curing Deficit</span>\n<div class=\"insight-body\">\n<div class=\"insight-title\"><span class=\"highlight-code\">{{lookup this \"Short Code\"}}</span> — {{lookup this \"Description\"}}</div>\n<div class=\"insight-desc\">\nCuring CI is at <b>{{lookup this \"Curing CI Num\"}}%</b> ({{lookup this \"Curing\"}} cured vs {{lookup this \"Plan\"}} plan). Needs priority press loading.\n</div>\n</div>\n</div>\n{{/if}}\n\n{{#if (eq (lookup this \"Alert Type\") \"QUEUE_WARN\")}}\n<div class=\"insight-card card-queue\">\n<span class=\"insight-badge badge-queue\">🚨 High Queue</span>\n<div class=\"insight-body\">\n<div class=\"insight-title\"><span class=\"highlight-code\">{{lookup this \"Short Code\"}}</span> — {{lookup this \"Description\"}}</div>\n<div class=\"insight-desc\">\n<b>{{lookup this \"Inspection Queue\"}} tires</b> waiting in final inspection pending delivery. Quality/Logistics clearance required.\n</div>\n</div>\n</div>\n{{/if}}\n{{/each}}\n</div>\n</div>",
+          "defaultContent": "No priority alerts requiring immediate action.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "allRows",
+          "styles": "",
+          "wrap": true
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \n    \"p\".\"IP5\" AS \"IP Code\",\n    COALESCE(\"M\".\"MAT_CODE\", \"p\".\"IP5\") AS \"Short Code\",\n    COALESCE(\"p\".\"description\", \"i\".\"DESC\", '-') AS \"Description\",\n    CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) AS \"Plan\",\n    COALESCE(\"c\".\"cured_qty\", 0) AS \"Curing\",\n    COALESCE(\"d\".\"delivered_qty\", 0) AS \"Delivery\",\n    GREATEST(0, (COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) - COALESCE(\"d\".\"delivered_qty\", 0)) AS \"Inspection Queue\",\n    CASE \n        WHEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) > 0 \n        THEN ROUND((CAST(LEAST(CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT), GREATEST(0, COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0))) AS DOUBLE) / CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT)) * 100.0, 1)\n        ELSE 0 \n    END AS \"Curing CI Num\",\n    CASE \n        WHEN COALESCE(\"d\".\"delivered_qty\", 0) >= CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) AND CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) > 0 THEN 'STOP'\n        WHEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) > 0 AND (CAST(GREATEST(0, COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) AS DOUBLE) / CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT)) < 0.85 THEN 'DEFICIT'\n        WHEN ((COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) - COALESCE(\"d\".\"delivered_qty\", 0)) > 200 THEN 'QUEUE_WARN'\n        ELSE 'NORMAL'\n    END AS \"Alert Type\"\nFROM (\n    SELECT \n        \"all_ip\".\"IP5\",\n        MAX(\"pt\".\"Description\") AS \"description\",\n        SUM(\n          COALESCE(\"pt\".\"Day1\", 0) + COALESCE(\"pt\".\"Day2\", 0) + COALESCE(\"pt\".\"Day3\", 0) + COALESCE(\"pt\".\"Day4\", 0) + COALESCE(\"pt\".\"Day5\", 0) +\n          COALESCE(\"pt\".\"Day6\", 0) + COALESCE(\"pt\".\"Day7\", 0) + COALESCE(\"pt\".\"Day8\", 0) + COALESCE(\"pt\".\"Day9\", 0) + COALESCE(\"pt\".\"Day10\", 0) +\n          COALESCE(\"pt\".\"Day11\", 0) + COALESCE(\"pt\".\"Day12\", 0) + COALESCE(\"pt\".\"Day13\", 0) + COALESCE(\"pt\".\"Day14\", 0) + COALESCE(\"pt\".\"Day15\", 0) +\n          COALESCE(\"pt\".\"Day16\", 0) + COALESCE(\"pt\".\"Day17\", 0) + COALESCE(\"pt\".\"Day18\", 0) + COALESCE(\"pt\".\"Day19\", 0) + COALESCE(\"pt\".\"Day20\", 0) +\n          COALESCE(\"pt\".\"Day21\", 0) + COALESCE(\"pt\".\"Day22\", 0) + COALESCE(\"pt\".\"Day23\", 0) + COALESCE(\"pt\".\"Day24\", 0) + COALESCE(\"pt\".\"Day25\", 0) +\n          COALESCE(\"pt\".\"Day26\", 0) + COALESCE(\"pt\".\"Day27\", 0) + COALESCE(\"pt\".\"Day28\", 0) + COALESCE(\"pt\".\"Day29\", 0) + COALESCE(\"pt\".\"Day30\", 0) + COALESCE(\"pt\".\"Day31\", 0)\n        ) AS \"total_month_plan\",\n        SUM(\n          CASE WHEN CAST('${day}' AS INT) >= 1 THEN COALESCE(\"pt\".\"Day1\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 2 THEN COALESCE(\"pt\".\"Day2\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 3 THEN COALESCE(\"pt\".\"Day3\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 4 THEN COALESCE(\"pt\".\"Day4\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 5 THEN COALESCE(\"pt\".\"Day5\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 6 THEN COALESCE(\"pt\".\"Day6\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 7 THEN COALESCE(\"pt\".\"Day7\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 8 THEN COALESCE(\"pt\".\"Day8\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 9 THEN COALESCE(\"pt\".\"Day9\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 10 THEN COALESCE(\"pt\".\"Day10\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 11 THEN COALESCE(\"pt\".\"Day11\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 12 THEN COALESCE(\"pt\".\"Day12\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 13 THEN COALESCE(\"pt\".\"Day13\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 14 THEN COALESCE(\"pt\".\"Day14\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 15 THEN COALESCE(\"pt\".\"Day15\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 16 THEN COALESCE(\"pt\".\"Day16\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 17 THEN COALESCE(\"pt\".\"Day17\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 18 THEN COALESCE(\"pt\".\"Day18\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 19 THEN COALESCE(\"pt\".\"Day19\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 20 THEN COALESCE(\"pt\".\"Day20\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 21 THEN COALESCE(\"pt\".\"Day21\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 22 THEN COALESCE(\"pt\".\"Day22\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 23 THEN COALESCE(\"pt\".\"Day23\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 24 THEN COALESCE(\"pt\".\"Day24\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 25 THEN COALESCE(\"pt\".\"Day25\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 26 THEN COALESCE(\"pt\".\"Day26\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 27 THEN COALESCE(\"pt\".\"Day27\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 28 THEN COALESCE(\"pt\".\"Day28\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 29 THEN COALESCE(\"pt\".\"Day29\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 30 THEN COALESCE(\"pt\".\"Day30\", 0) ELSE 0 END +\n          CASE WHEN CAST('${day}' AS INT) >= 31 THEN COALESCE(\"pt\".\"Day31\", 0) ELSE 0 END\n        ) AS \"plan_qty\"\n    FROM (\n        SELECT DISTINCT SUBSTRING(CAST(CAST(\"IP_code\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\n        WHERE \"month\" = CAST('${month}' AS INT) AND \"IP_code\" IS NOT NULL\n        UNION\n        SELECT DISTINCT SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n        JOIN (\n            SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n            UNION ALL\n            SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n        ) T ON D.DDC_BARCODE = T.BC\n        JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n        WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n          AND D.DDC_START_CYCLE >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n          AND D.DDC_START_CYCLE < (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP) + INTERVAL '1' MONTH)\n          AND M2.MAT_IP_CODE IS NOT NULL\n    ) \"all_ip\"\n    LEFT JOIN \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\" \"pt\"\n        ON \"all_ip\".\"IP5\" = CAST(\"pt\".\"IP5\" AS VARCHAR)\n       AND \"pt\".\"month\" = CAST('${month}' AS INT)\n    GROUP BY \"all_ip\".\"IP5\"\n) \"p\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        MIN(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR)) AS \"IP_CODE\",\n        MAX(\"DESC\") AS \"DESC\",\n        MAX(\"TIER\") AS \"TIER\",\n        MAX(\"BRAND\") AS \"BRAND\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"INFO_TIER\"\n    WHERE \"IP_CODE\" IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"i\" ON \"p\".\"IP5\" = \"i\".\"IP5\"\nLEFT JOIN (\n    SELECT \"IP5\", \"MAT_CODE\"\n    FROM (\n        SELECT \n            SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n            CAST(\"MAT_CODE\" AS VARCHAR) AS \"MAT_CODE\",\n            ROW_NUMBER() OVER (\n                PARTITION BY SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) \n                ORDER BY \"MAT_IMPORT_TIMESTAMP\" DESC, \"MAT_CODE\" DESC\n            ) AS rn\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\n        WHERE \"MAT_IP_CODE\" IS NOT NULL AND \"MAT_CODE\" IS NOT NULL AND \"MAT_CODE\" <> ''\n    ) m_ranked\n    WHERE rn = 1\n) \"M\" ON \"p\".\"IP5\" = \"M\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        \"all_c\".\"IP5\",\n        SUM(\"all_c\".\"qty\") AS cured_qty\n    FROM (\nSELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT D.DDC_BARCODE) AS qty\n    FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n    JOIN (\n        SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n        UNION ALL\n        SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n    ) T ON D.DDC_BARCODE = T.BC\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n      AND D.DDC_START_CYCLE >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND D.DDC_START_CYCLE < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n        UNION ALL\n\n        SELECT \n            \"adj\".\"IP5\",\n            \"adj\".\"adj_qty\" AS qty\n        FROM (\n            VALUES \n            ('60476', 8),\n            ('31037', 6),\n            ('37528', 6),\n            ('23914', 5),\n            ('38648', 5),\n            ('60704', 5),\n            ('36205', 4),\n            ('37490', 4),\n            ('37537', 4),\n            ('39370', 4),\n            ('60331', 4),\n            ('19132', 3),\n            ('38647', 3),\n            ('60042', 3),\n            ('61099', 3),\n            ('31010', 2),\n            ('32659', 2),\n            ('35352', 2),\n            ('36091', 2),\n            ('36204', 2),\n            ('36550', 2),\n            ('36592', 2),\n            ('37449', 2),\n            ('37516', 2),\n            ('37523', 2),\n            ('37524', 2),\n            ('37526', 2),\n            ('38372', 2),\n            ('60099', 2),\n            ('60415', 2),\n            ('60328', 2),\n            ('60346', 2),\n            ('60536', 2),\n            ('60636', 2),\n            ('61285', 2),\n            ('61332', 2),\n            ('61316', 2),\n            ('36433', 1),\n            ('36435', 1),\n            ('36549', 1),\n            ('37489', 1),\n            ('37802', 1),\n            ('38922', 1),\n            ('38934', 1),\n            ('39964', 1),\n            ('41169', 1),\n            ('60329', 1),\n            ('60412', 1),\n            ('60413', 1),\n            ('60519', 1),\n            ('60502', 1),\n            ('60503', 1),\n            ('61280', 1),\n            ('61326', 1),\n            ('61333', 1),\n            ('61329', 1),\n            ('60872', 1),\n            ('60874', 1),\n            ('61159', 1),\n            ('61161', 1),\n            ('61162', 1),\n            ('61163', 1)\n        ) AS \"adj\"(\"IP5\", \"adj_qty\")\n        WHERE CAST('${year}' AS INT) = 2026 AND CAST('${month}' AS INT) = 9 AND (\n            CAST('${day}' AS INT) > 7 \n            OR (CAST('${day}' AS INT) = 7 AND '${shift}' NOT IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)'))\n        )\n    ) \"all_c\"\n    GROUP BY \"all_c\".\"IP5\"\n) \"c\" ON \"p\".\"IP5\" = \"c\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        SUM(\"QuantityTire\") AS \"delivered_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\n    WHERE \"ProductionDate\" >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND \"ProductionDate\" < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n    GROUP BY SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"d\" ON \"p\".\"IP5\" = \"d\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT \"F2\".\"FDD_BARCODE\") AS \"scrap_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"FIN_DEFECTS_DECLARED\" \"F2\"\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON \"F2\".\"MAT_SAP_CODE\" = M2.\"MAT_SAP_CODE\"\n    WHERE \"F2\".\"FDD_ACTIVE\" = 'T' AND \"F2\".\"FDS_SEVERITY\" = 'SC' AND CAST(\"F2\".\"CLA_CODE\" AS VARCHAR) = '00'\n      AND \"F2\".\"FDD_TIME_STAMP\" >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND \"F2\".\"FDD_TIME_STAMP\" < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + INTERVAL '1' DAY\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n) \"s\" ON \"p\".\"IP5\" = \"s\".\"IP5\"\nWHERE (COALESCE(\"p\".\"total_month_plan\", 0) > 0 OR COALESCE(\"c\".\"cured_qty\", 0) > 0)\n  AND (\n    (COALESCE(\"d\".\"delivered_qty\", 0) >= CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) AND CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) > 0)\n    OR (CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) > 0 AND (CAST(GREATEST(0, COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) AS DOUBLE) / CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT)) < 0.85)\n    OR ((COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) - COALESCE(\"d\".\"delivered_qty\", 0)) > 200\n  )\nORDER BY \n  CASE \n    WHEN (CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) > 0 AND (CAST(GREATEST(0, COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) AS DOUBLE) / CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT)) < 0.85) THEN 1\n    WHEN ((COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) - COALESCE(\"d\".\"delivered_qty\", 0)) > 200 THEN 2\n    ELSE 3\n  END ASC,\n  COALESCE(\"c\".\"cured_qty\", 0) DESC\nLIMIT 8;",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "🧠 Operational Action Needed — Priority IP Codes & Insights",
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 23,
+          "w": 24,
+          "x": 0,
+          "y": 14
+        },
+        "id": 9,
+        "options": {
+          "afterRender": "(function() {\nfunction getVal(row, attrName, cellIdx) {\n  let val = parseFloat(row.getAttribute(attrName));\n  if (isNaN(val) && row.cells && row.cells[cellIdx]) {\n    const txt = row.cells[cellIdx].innerText.trim().replace('+', '').replace(/,/g, '');\n    val = parseFloat(txt);\n  }\n  return isNaN(val) ? 0 : val;\n}\n\nfunction renderDeltaHTML(pos, neg) {\n  if (pos === 0 && neg === 0) return '<span class=\"delta-pill delta-zero\">0</span>';\n  let html = '<div style=\"display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: nowrap;\">';\n  if (pos > 0) html += '<span class=\"delta-pill delta-pos\">+' + Math.round(pos).toLocaleString() + '</span>';\n  if (neg < 0) html += '<span class=\"delta-pill delta-neg\">' + Math.round(neg).toLocaleString() + '</span>';\n  html += '</div>';\n  return html;\n}\n\nfunction recalculateMonthFooter(cnt) {\n  const visibleRows = cnt.querySelectorAll('tbody tr:not(.row-hidden)');\n  let sumMonthPlan = 0, sumPlan = 0, sumCuring = 0, sumScrap = 0, sumNet = 0, sumDel = 0, sumQueue = 0;\n  let posDeltaCur = 0, negDeltaCur = 0, posDeltaDel = 0, negDeltaDel = 0;\n\n  visibleRows.forEach(row => {\n    sumMonthPlan += getVal(row, 'data-month-plan', 6);\n    sumPlan += getVal(row, 'data-plan', 7);\n    sumCuring += getVal(row, 'data-curing', 8);\n\n    const dCur = getVal(row, 'data-delta-curing', 9);\n    if (dCur > 0) posDeltaCur += dCur;\n    if (dCur < 0) negDeltaCur += dCur;\n\n    sumScrap += getVal(row, 'data-scrap', 11);\n    sumNet += getVal(row, 'data-net', 12);\n    sumDel += getVal(row, 'data-delivery', 13);\n\n    const dDel = getVal(row, 'data-delta-del', 14);\n    if (dDel > 0) posDeltaDel += dDel;\n    if (dDel < 0) negDeltaDel += dDel;\n\n    sumQueue += getVal(row, 'data-queue', 16);\n  });\n\n  const foot = cnt.querySelector('tfoot');\n  if (foot) {\n    const totMonthPlan = foot.querySelector('.tot-month-plan');\n    if (totMonthPlan) totMonthPlan.innerText = sumMonthPlan > 0 ? Math.round(sumMonthPlan).toLocaleString() : '0';\n\n    const totPlan = foot.querySelector('.tot-plan');\n    if (totPlan) totPlan.innerText = sumPlan > 0 ? Math.round(sumPlan).toLocaleString() : '0';\n\n    const totCuring = foot.querySelector('.tot-curing');\n    if (totCuring) totCuring.innerText = sumCuring > 0 ? Math.round(sumCuring).toLocaleString() : '0';\n\n    const totScrap = foot.querySelector('.tot-scrap');\n    if (totScrap) totScrap.innerText = sumScrap > 0 ? Math.round(sumScrap).toLocaleString() : '0';\n\n    const totNet = foot.querySelector('.tot-net');\n    if (totNet) totNet.innerText = sumNet > 0 ? Math.round(sumNet).toLocaleString() : '0';\n\n    const totDel = foot.querySelector('.tot-del');\n    if (totDel) totDel.innerText = sumDel > 0 ? Math.round(sumDel).toLocaleString() : '0';\n\n    const totQueue = foot.querySelector('.tot-queue');\n    if (totQueue) totQueue.innerText = sumQueue > 0 ? Math.round(sumQueue).toLocaleString() : '0';\n\n    const totDCur = foot.querySelector('.tot-delta-curing');\n    if (totDCur) totDCur.innerHTML = renderDeltaHTML(posDeltaCur, negDeltaCur);\n\n    const totDDel = foot.querySelector('.tot-delta-del');\n    if (totDDel) totDDel.innerHTML = renderDeltaHTML(posDeltaDel, negDeltaDel);\n  }\n}\n\nfunction filterMonthRows(container) {\n  const activePills = Array.from(container.querySelectorAll('.fp-pill.active'));\n  const activeFilters = activePills.map(p => p.getAttribute('data-filter')).filter(f => f && f !== 'all');\n\n  const searchInput = container.querySelector('.row-search-input');\n  const query = searchInput ? searchInput.value.toLowerCase().trim() : '';\n\n  const rows = container.querySelectorAll('tbody tr');\n  let visibleCount = 0;\n\n  rows.forEach(row => {\n    let hide = false;\n    const planVal     = getVal(row, 'data-plan', 7);\n    const deltaCuring = getVal(row, 'data-delta-curing', 9);\n    const deltaDel    = getVal(row, 'data-delta-del', 14);\n    const queueVal    = getVal(row, 'data-queue', 16);\n    const alertVal    = (row.getAttribute('data-alert') || (row.cells && row.cells[17] ? row.cells[17].innerText.trim() : '')).toUpperCase();\n\n    if (activeFilters.length > 0) {\n      const isStop       = alertVal.includes('STOP');\n      const isProduce    = alertVal.includes('PRODUCE');\n      const isPlanned    = planVal > 0;\n      const isCurDeficit = deltaCuring < 0;\n      const isDelDeficit = deltaDel < 0;\n      const isQueuePos   = queueVal > 0;\n\n      // Strict AND (compound SQL/Excel condition):\n      // Alert column check (STOP / PRODUCE)\n      const hasStop = activeFilters.includes('stop');\n      const hasProduce = activeFilters.includes('produce');\n      if (hasStop && hasProduce) {\n        if (!isStop && !isProduce) hide = true;\n      } else if (hasStop) {\n        if (!isStop) hide = true;\n      } else if (hasProduce) {\n        if (!isProduce) hide = true;\n      }\n\n      // Planned column check (WHERE plan_qty > 0)\n      if (!hide && activeFilters.includes('planned')) {\n        if (!isPlanned) hide = true;\n      }\n\n      // Curing Deficit check (WHERE delta_curing < 0)\n      if (!hide && activeFilters.includes('cur-neg')) {\n        if (!isCurDeficit) hide = true;\n      }\n\n      // Delivery Deficit check (WHERE delta_delivery < 0)\n      if (!hide && activeFilters.includes('del-neg')) {\n        if (!isDelDeficit) hide = true;\n      }\n\n      // Inspection Queue check (WHERE inspection_queue > 0)\n      if (!hide && activeFilters.includes('insp-queue')) {\n        if (!isQueuePos) hide = true;\n      }\n    }\n\n    if (!hide && query) {\n      const text = row.innerText.toLowerCase();\n      if (!text.includes(query)) {\n        hide = true;\n      }\n    }\n\n    if (hide) {\n      row.classList.add('row-hidden');\n    } else {\n      row.classList.remove('row-hidden');\n      visibleCount++;\n    }\n  });\n\n  const countBadge = container.querySelector('.row-count-badge');\n  if (countBadge) {\n    countBadge.innerText = visibleCount + ' / ' + rows.length;\n  }\n\n  recalculateMonthFooter(container);\n}\n\nfunction bindMonthContainer(container) {\n  if (!container) return;\n\n  filterMonthRows(container);\n\n  container.onclick = function(e) {\n    const pill = e.target.closest('.fp-pill');\n    if (!pill) return;\n    e.stopPropagation();\n\n    const filterType = pill.getAttribute('data-filter');\n    const allPills = container.querySelectorAll('.fp-pill');\n    const allRowsPill = container.querySelector('.fp-pill[data-filter=\"all\"]');\n\n    if (filterType === 'all') {\n      allPills.forEach(p => p.classList.remove('active'));\n      pill.classList.add('active');\n    } else {\n      pill.classList.toggle('active');\n      if (allRowsPill) allRowsPill.classList.remove('active');\n\n      const anyActive = Array.from(allPills).some(p => p.getAttribute('data-filter') !== 'all' && p.classList.contains('active'));\n      if (!anyActive && allRowsPill) {\n        allRowsPill.classList.add('active');\n      }\n    }\n\n    filterMonthRows(container);\n  };\n\n  const searchInput = container.querySelector('.row-search-input');\n  if (searchInput) {\n    searchInput.oninput = function(e) {\n      e.stopPropagation();\n      filterMonthRows(container);\n    };\n    searchInput.onkeyup = function(e) {\n      e.stopPropagation();\n      filterMonthRows(container);\n    };\n  }\n}\n\nconst containers = document.querySelectorAll('.dt-container-month');\ncontainers.forEach(bindMonthContainer);\n})();",
+          "content": "<style>\n/* 🛡️ EXCLUDE DASHBOARD NAVBAR & VARIABLES TOOLBAR FROM WHITE BACKGROUND */\n.submenu-controls, \n[data-testid=\"dashboard-controls\"],\n.navbar,\n[data-testid=\"nav-toolbar\"],\n.css-1w4t2q1 {\nbackground: transparent !important;\n}\n\n/* 🏷️ VARIABLE LABELS - SOLID WHITE BADGES WITH NAVY TEXT */\nlabel, \n.gf-form-label, \n[data-testid*=\"variable-label\"], \n[data-testid*=\"variable-option\"] label,\nlabel[for^=\"var-\"] {\ncolor: #00205b !important;\nbackground: #ffffff !important;\nborder: 1.5px solid #00205b !important;\nborder-radius: 6px !important;\nfont-weight: 900 !important;\nfont-size: 12px !important;\ntext-transform: uppercase !important;\nletter-spacing: 0.8px !important;\npadding: 2px 6px !important;\nmargin-right: 6px !important;\ndisplay: inline-flex !important;\nalign-items: center !important;\nbox-shadow: 0 2px 6px rgba(0, 32, 91, 0.15) !important;\n}\n\n/* 🔘 VARIABLE DROPDOWN BUTTONS ONLY */\nbutton[data-testid*=\"variable\"], \na[data-testid*=\"variable\"], \nbutton[id^=\"var-\"], \n.variable-link {\nbackground: #00205b !important;\nborder: 1px solid #00205b !important;\nborder-radius: 6px !important;\nbox-shadow: 0 2px 8px rgba(0, 32, 91, 0.25) !important;\npadding: 2px 8px !important;\n}\n\nbutton[data-testid*=\"variable\"] *, \na[data-testid*=\"variable\"] *, \nbutton[id^=\"var-\"] *, \n.variable-link * {\ncolor: #ffffff !important;\nfill: #ffffff !important;\nfont-weight: 800 !important;\nfont-size: 13px !important;\n}\n\n/* 📦 PANEL CONTAINER: WHITE BODY WITH CYAN BORDER */\n.panel-container, \n[data-testid=\"panel-wrapper\"],\n[data-testid=\"panel-content\"] {\nbackground: transparent !important;\nborder: none !important;\nborder-radius: 8px !important;\noverflow: hidden !important;\nbox-shadow: 0 4px 16px rgba(0, 32, 91, 0.15) !important;\n}\n\n/* 🟦 PANEL HEADER: BLUE BACKGROUND */\n.panel-header, \n[data-testid=\"panel-header\"], \n.panel-title-container {\nbackground: #001540 !important;\nborder-bottom: none !important;\npadding: 6px 12px !important;\nmargin: 0 !important;\n}\n\n.panel-title, \n[data-testid=\"panel-title\"], \n.panel-title-text {\ncolor: #ffffff !important;\nfont-weight: 800 !important;\nfont-size: 13px !important;\nletter-spacing: 0.6px !important;\ntext-transform: uppercase !important;\n}\n\n/* Base Container Inside Panel 9 - Solid White */\n.dt-container-month {\nwidth: 100%;\npadding: 0px;\nbackground: transparent !important;\nfont-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\ncolor: #0f172a;\nfont-size: 13.5px;\nbox-sizing: border-box;\n}\n\n/* Clean White Table Wrapper */\n.dt-container-month .table-wrapper {\noverflow-x: auto;\nmax-height: calc(100vh - 160px);\nborder-radius: 8px;\nborder: 1px solid #cbd5e1;\nbackground: #ffffff !important;\nbox-shadow: 0 4px 16px rgba(0, 32, 91, 0.08);\n}\n\n.dt-table-month {\nwidth: 100%;\nborder-collapse: separate;\nborder-spacing: 0;\nwhite-space: nowrap;\n}\n\n/* Sticky Super Headers */\n.dt-table-month th.super-header {\nposition: sticky;\ntop: 0;\nz-index: 30;\nbackground: #001540 !important;\ncolor: #ffffff;\nfont-size: 13.5px;\nfont-weight: 800;\ntext-transform: uppercase;\nletter-spacing: 1.1px;\npadding: 6px 10px;\ntext-align: center;\nborder-bottom: 1px solid rgba(255, 255, 255, 0.15);\n}\n\n.dt-table-month th, .dt-table-month td {\nfont-size: 13.5px;\npadding: 8px 14px !important;\ntext-align: center !important;\nborder-left: none !important;\nborder-right: none !important;\n}\n\n.dt-table-month th.super-header {\nborder-right: 1px solid rgba(255, 255, 255, 0.15) !important;\n}\n.dt-table-month th.super-spec { border-bottom: 3px solid #0091da !important; }\n.dt-table-month th.super-plan { border-bottom: 3px solid #6366f1 !important; }\n.dt-table-month th.super-curing { border-bottom: 3px solid #0284c7 !important; }\n.dt-table-month th.super-delivery { border-bottom: 3px solid #059669 !important; }\n.dt-table-month th.super-status { border-bottom: 3px solid #dc2626 !important; }\n\n/* Category Neutral Slate Dividers for Panel 9 (Month Table: 7, 9, 14, 18) */\n.dt-table-month th:nth-child(6), .dt-table-month td:nth-child(6),\n.dt-table-month th:nth-child(8), .dt-table-month td:nth-child(8),\n.dt-table-month th:nth-child(13), .dt-table-month td:nth-child(13),\n.dt-table-month th:nth-child(17), .dt-table-month td:nth-child(17) {\nborder-right: 2px solid #cbd5e1 !important;\n}\n\n.dt-table-month th.sub-header {\ntext-align: center !important;\npadding: 8px 14px !important;\nposition: sticky;\ntop: 31px;\nz-index: 29;\nbackground: #00205b !important;\ncolor: #ffffff;\nfont-weight: 700;\nfont-size: 13.5px;\ntext-transform: uppercase;\nletter-spacing: 0.5px;\npadding: 6px 10px;\nborder-bottom: 2px solid #0091da;\nbox-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.12);\n}\n\n/* Table Body Rows */\n.dt-table-month tbody tr {\nposition: relative;\nz-index: 1;\ntransition: background 0.15s ease-in-out;\n}\n\n.dt-table-month td {\nfont-size: 13.5px;\npadding: 6px 10px;\nborder-bottom: 1px solid #e2e8f0;\n}\n\n.dt-table-month tr:nth-child(even) { background: #ffffff; }\n.dt-table-month tr:nth-child(odd) { background: #f8fafc; }\n.dt-table-month tr:hover { background: #e0f2fe !important; }\n\n/* Monospace Numbers & Typography */\n.num { \ntext-align: center !important; \nfont-family: 'JetBrains Mono', 'Consolas', monospace; \nfont-size: 13.5px;\n}\n.center { text-align: center; }\n\n.green-cover {\n  font-family: 'JetBrains Mono', 'Roboto Mono', monospace;\n  font-weight: 700;\n  color: #00205b;\n}\n\n.ip-code {\ncolor: #00205b;\nfont-weight: 800;\nfont-family: 'JetBrains Mono', 'Consolas', monospace;\n}\n\n.desc-text {\nmax-width: 320px;\noverflow: hidden;\ntext-overflow: ellipsis;\ncolor: #0f172a;\nfont-weight: 600;\n}\n\n/* Pill Badges */\n.pill {\ndisplay: inline-flex;\nalign-items: center;\ngap: 5px;\npadding: 2px 7px;\nborder-radius: 16px;\nfont-size: 11.5px;\nfont-weight: 700;\n}\n\n.pill-shortcode { background: #e0f2fe; color: #0284c7; border: 1px solid #7dd3fc; }\n.pill-tread { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }\n.pill-true { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }\n.pill-false { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }\n\n.led-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }\n.led-active { background: #16a34a; box-shadow: 0 0 6px #16a34a; }\n.led-inactive { background: #94a3b8; }\n\n.val-zero { color: #94a3b8; font-weight: 500; }\n.val-plan { color: #0f172a; font-weight: 800; }\n.val-active { color: #00205b; font-weight: 800; }\n.val-curing { color: #0284c7; font-weight: 800; }\n.val-delivery { color: #166534; font-weight: 800; }\n.val-queue { color: #7e22ce; font-weight: 700; }\n\n.scrap-warn { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; padding: 2px 6px; border-radius: 10px; font-weight: 800; }\n\n/* Delta Badges */\n.delta-pill {\ndisplay: inline-flex;\nalign-items: center;\njustify-content: center;\npadding: 4px 10px;\nborder-radius: 14px;\nfont-weight: 800;\nfont-family: 'JetBrains Mono', 'Consolas', monospace;\nfont-size: 13.5px;\nwhite-space: nowrap;\nmargin: 2px;\nbox-shadow: 0 1px 3px rgba(0,0,0,0.1);\n}\n.delta-pos { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }\n.delta-neg { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }\n.delta-zero { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }\n\n/* Delivery Alerts */\n.alert-stop {\nbackground: #fee2e2;\ncolor: #991b1b;\nborder: 1px solid #f87171;\npadding: 2px 8px;\nborder-radius: 16px;\nfont-weight: 800;\nfont-size: 11.5px;\n}\n\n.alert-produce {\nbackground: #dcfce7;\ncolor: #166534;\nborder: 1px solid #4ade80;\npadding: 2px 8px;\nborder-radius: 16px;\nfont-weight: 800;\nfont-size: 11.5px;\n}\n\n/* 🏁 TOTAL ROW STYLING */\ntfoot tr.total-row {\n  background: #001540 !important;\n  border-top: 3px solid #0091da !important;\n  font-weight: 900 !important;\n}\n\ntfoot td.total-label {\n  color: #0091da !important;\n  text-align: right !important;\n  padding-right: 15px !important;\n  font-size: 13px !important;\n  letter-spacing: 1px !important;\n  text-transform: uppercase !important;\n}\n\ntfoot td.total-val {\n  color: #ffffff !important;\n  font-size: 13px !important;\n  font-weight: 900 !important;\n  padding: 4px 6px !important;\n}\n\n/* Delta Columns Min-Width for non-overlapping dual totals */\n.dt-table-month th:nth-child(10), .dt-table-month td:nth-child(10),\n.dt-table-month th:nth-child(15), .dt-table-month td:nth-child(15) {\n  min-width: 145px !important;\n  text-align: center !important;\n}\n\n\n/* Search Bar Toolbar Styling */\n.row-filter-toolbar {\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  margin-bottom: 8px;\n  padding: 0 4px;\n}\n\n.search-box-group {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  background: #ffffff;\n  border: 1.5px solid #cbd5e1;\n  border-radius: 14px;\n  padding: 3px 12px;\n  transition: all 0.2s ease;\n  box-shadow: 0 2px 6px rgba(0, 32, 91, 0.05);\n}\n\n.search-box-group:focus-within {\n  border-color: #0091da;\n  box-shadow: 0 0 0 2px rgba(0, 145, 218, 0.15);\n}\n\n.search-icon {\n  font-size: 12px;\n  color: #64748b;\n}\n\n.row-search-input {\n  border: none;\n  outline: none;\n  background: transparent;\n  font-size: 12px;\n  font-weight: 600;\n  color: #0f172a;\n  width: 220px;\n}\n\n/* Bulletproof row hiding class */\n.dt-table-month tbody tr.row-hidden {\n  display: none !important;\n}\n\n\n/* Filter Toolbar & Pills Styling */\n.row-filter-toolbar {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 8px;\n  padding: 0 4px;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n\n.filter-group {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-wrap: wrap;\n}\n\n.toolbar-label {\n  font-size: 11px;\n  font-weight: 800;\n  color: #00205b;\n  letter-spacing: 0.5px;\n  margin-right: 2px;\n}\n\n.filter-pill {\n  padding: 3px 10px;\n  border-radius: 12px;\n  font-size: 11px;\n  font-weight: 700;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  border: 1.5px solid #cbd5e1;\n  background: #f8fafc;\n  color: #475569;\n}\n\n.filter-pill:hover {\n  border-color: #0091da;\n  color: #00205b;\n}\n\n.filter-pill.active {\n  background: #00205b;\n  border-color: #00205b;\n  color: #ffffff;\n  box-shadow: 0 2px 6px rgba(0, 32, 91, 0.2);\n}\n\n.filter-pill.pill-neg.active {\n  background: #b91c1c;\n  border-color: #b91c1c;\n  color: #ffffff;\n}\n\n.filter-pill.pill-pos.active {\n  background: #15803d;\n  border-color: #15803d;\n  color: #ffffff;\n}\n\n.filter-pill.pill-del-neg.active {\n  background: #c2410c;\n  border-color: #c2410c;\n  color: #ffffff;\n}\n\n.filter-pill.pill-del-pos.active {\n  background: #047857;\n  border-color: #047857;\n  color: #ffffff;\n}\n\n\n.filter-pill.pill-stop.active {\n  background: #dc2626;\n  border-color: #dc2626;\n  color: #ffffff;\n  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);\n}\n\n.filter-pill.pill-produce.active {\n  background: #16a34a;\n  border-color: #16a34a;\n  color: #ffffff;\n  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3);\n}\n\n\n.filter-mode-btn {\n  margin-left: 6px;\n  padding: 3px 8px;\n  border-radius: 6px;\n  font-size: 11px;\n  font-weight: 800;\n  cursor: pointer;\n  border: 1.5px solid #00205b;\n  background: #f8fafc;\n  color: #00205b;\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  transition: all 0.2s ease;\n  user-select: none;\n}\n.filter-mode-btn:hover {\n  background: #00205b;\n  color: #ffffff;\n}\n.filter-mode-btn .mode-val {\n  background: #00205b;\n  color: #ffffff;\n  padding: 1px 5px;\n  border-radius: 4px;\n  font-size: 10px;\n}\n.filter-mode-btn:hover .mode-val {\n  background: #ffffff;\n  color: #00205b;\n}\n.row-count-badge {\n  font-size: 11px;\n  font-weight: 700;\n  color: #475569;\n  background: #e2e8f0;\n  padding: 4px 8px;\n  border-radius: 12px;\n  border: 1px solid #cbd5e1;\n  white-space: nowrap;\n  margin-left: 6px;\n}\n\n\n/* Bulletproof multi-select pill styles */\n.fp-pill {\n  cursor: pointer !important;\n  user-select: none !important;\n  display: inline-flex !important;\n  align-items: center !important;\n  padding: 4px 10px !important;\n  border-radius: 20px !important;\n  font-size: 11px !important;\n  font-weight: 700 !important;\n  border: 1px solid #cbd5e1 !important;\n  background: #ffffff !important;\n  color: #475569 !important;\n  transition: all 0.2s ease !important;\n}\n.fp-pill:hover {\n  border-color: #00205b !important;\n  color: #00205b !important;\n}\n.fp-pill.active {\n  background: #00205b !important;\n  border-color: #00205b !important;\n  color: #ffffff !important;\n}\n.fp-pill.pill-stop.active {\n  background: #dc2626 !important;\n  border-color: #dc2626 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3) !important;\n}\n.fp-pill.pill-produce.active {\n  background: #16a34a !important;\n  border-color: #16a34a !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3) !important;\n}\n.fp-pill.pill-planned.active {\n  background: #0284c7 !important;\n  border-color: #0284c7 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3) !important;\n}\n.fp-pill.pill-neg.active {\n  background: #e11d48 !important;\n  border-color: #e11d48 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.3) !important;\n}\n.fp-pill.pill-del-neg.active {\n  background: #9333ea !important;\n  border-color: #9333ea !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(147, 51, 234, 0.3) !important;\n}\n.fp-pill.pill-queue.active {\n  background: #d97706 !important;\n  border-color: #d97706 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.3) !important;\n}\n.filter-mode-btn {\n  margin-left: 6px !important;\n  padding: 3px 8px !important;\n  border-radius: 6px !important;\n  font-size: 11px !important;\n  font-weight: 800 !important;\n  cursor: pointer !important;\n  border: 1.5px solid #00205b !important;\n  background: #f8fafc !important;\n  color: #00205b !important;\n  display: inline-flex !important;\n  align-items: center !important;\n  gap: 4px !important;\n  transition: all 0.2s ease !important;\n  user-select: none !important;\n}\n.filter-mode-btn:hover {\n  background: #00205b !important;\n  color: #ffffff !important;\n}\n.filter-mode-btn .mode-val {\n  background: #00205b !important;\n  color: #ffffff !important;\n  padding: 1px 5px !important;\n  border-radius: 4px !important;\n  font-size: 10px !important;\n}\n.filter-mode-btn:hover .mode-val {\n  background: #ffffff !important;\n  color: #00205b !important;\n}\n.row-count-badge {\n  font-size: 11px !important;\n  font-weight: 700 !important;\n  color: #475569 !important;\n  background: #e2e8f0 !important;\n  padding: 4px 8px !important;\n  border-radius: 12px !important;\n  border: 1px solid #cbd5e1 !important;\n  white-space: nowrap !important;\n  margin-left: 6px !important;\n}\n\n</style>\n\n<div class=\"dt-container-month\">\n<div class=\"row-filter-toolbar\">\n<div class=\"filter-group\">\n<span class=\"toolbar-label\">🎯 FILTER DELTAS:</span>\n<span class=\"fp-pill active\" data-filter=\"all\">All Rows</span>\n<span class=\"fp-pill pill-stop\" data-filter=\"stop\">🛑 STOP</span>\n<span class=\"fp-pill pill-produce\" data-filter=\"produce\">▶️ PRODUCE</span>\n<span class=\"fp-pill pill-planned\" data-filter=\"planned\">📋 Planned Only (&gt; 0 Plan)</span>\n<span class=\"fp-pill pill-neg\" data-filter=\"cur-neg\">🔴 Δ Curing Deficits (&lt; 0)</span>\n<span class=\"fp-pill pill-del-neg\" data-filter=\"del-neg\">🔴 Δ Delivery Deficits (&lt; 0)</span>\n<span class=\"fp-pill pill-queue\" data-filter=\"insp-queue\">⏳ Insp Queue (&gt; 0)</span>\n</div>\n<div class=\"search-box-group\">\n<span class=\"search-icon\">🔍</span>\n<input type=\"text\" class=\"row-search-input\" placeholder=\"Search green cover, shortcode, description...\" />\n<span class=\"row-count-badge\"></span>\n</div>\n</div>\n<div class=\"table-wrapper\">\n<table class=\"dt-table-month\">\n<thead>\n<tr data-alert=\"{{lookup this 'Delivery Alert'}}\" class=\"super-row\">\n<th colspan=\"6\" class=\"super-header super-spec\">Product Specifications</th>\n<th colspan=\"2\" class=\"super-header super-plan\">Plan Targets</th>\n<th colspan=\"5\" class=\"super-header super-curing\">Curing Performance</th>\n<th colspan=\"4\" class=\"super-header super-delivery\">Delivery</th>\n<th colspan=\"2\" class=\"super-header super-status\">Operational Status</th>\n</tr>\n<tr>\n<th class=\"sub-header\">Green Cover</th>\n<th class=\"sub-header\">IP Code</th>\n<th class=\"sub-header\">Short Code</th>\n<th class=\"sub-header\">Description</th>\n<th class=\"sub-header\">Size</th>\n<th class=\"sub-header center\">Uniformity</th>\n<th class=\"sub-header num\">Month Plan</th>\n<th class=\"sub-header num\">Plan</th>\n<th class=\"sub-header num\">Curing</th>\n<th class=\"sub-header num\">Δ Curing</th>\n<th class=\"sub-header num\">Curing CI</th>\n<th class=\"sub-header num\">Scrap</th>\n<th class=\"sub-header num\">Net Cured</th>\n<th class=\"sub-header num\">Delivery</th>\n<th class=\"sub-header num\">Δ Delivery</th>\n<th class=\"sub-header num\">Delivery CI</th>\n<th class=\"sub-header num\">Inspection Queue</th>\n<th class=\"sub-header center\">Delivery Alert</th>\n<th class=\"sub-header center\">In Curing</th>\n</tr>\n</thead>\n<tbody>\n{{#each data}}\n<tr data-alert=\"{{lookup this 'Delivery Alert'}}\" data-month-plan=\"{{lookup this 'Month Plan'}}\" data-plan=\"{{lookup this 'Accumulated Target Plan'}}\" data-curing=\"{{lookup this 'Cumulative Curing'}}\" data-delta-curing=\"{{lookup this 'Δ Curing'}}\" data-scrap=\"{{lookup this 'Cumulative Scrap'}}\" data-net=\"{{lookup this 'Cumulative Net Cured'}}\" data-delivery=\"{{lookup this 'Cumulative Delivery'}}\" data-delta-del=\"{{lookup this 'Δ Delivery'}}\" data-queue=\"{{lookup this 'Inspection Queue'}}\">\n<td class=\"green-cover\">{{lookup this \"Green Cover\"}}</td>\n<td class=\"ip-code\">{{lookup this \"IP Code\"}}</td>\n<td><span class=\"pill pill-shortcode\">{{lookup this \"Short Code\"}}</span></td>\n<td class=\"desc-text\" title=\"{{lookup this 'Description'}}\">{{lookup this \"Description\"}}</td>\n<td><span class=\"pill pill-tread\">{{lookup this \"Size\"}}</span></td>\n<td class=\"center\">{{lookup this \"Uniformity\"}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Month Plan\") 0)}}<span class=\"val-plan\">{{lookup this \"Month Plan\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Accumulated Target Plan\") 0)}}<span class=\"val-plan\">{{lookup this \"Accumulated Target Plan\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Cumulative Curing\") 0)}}<span class=\"val-curing\">{{lookup this \"Cumulative Curing\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Δ Curing\") 0)}}<span class=\"delta-pill delta-pos\">+{{lookup this \"Δ Curing\"}}</span>{{else}}{{#if (lt (lookup this \"Δ Curing\") 0)}}<span class=\"delta-pill delta-neg\">{{lookup this \"Δ Curing\"}}</span>{{else}}<span class=\"delta-pill delta-zero\">0</span>{{/if}}{{/if}}</td>\n<td class=\"num\" style=\"font-weight: 800; color: #0284c7;\">{{lookup this \"Curing CI\"}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Cumulative Scrap\") 0)}}<span class=\"scrap-warn\">{{lookup this \"Cumulative Scrap\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Cumulative Net Cured\") 0)}}<span class=\"val-active\">{{lookup this \"Cumulative Net Cured\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Cumulative Delivery\") 0)}}<span class=\"val-delivery\">{{lookup this \"Cumulative Delivery\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Δ Delivery\") 0)}}<span class=\"delta-pill delta-pos\">+{{lookup this \"Δ Delivery\"}}</span>{{else}}{{#if (lt (lookup this \"Δ Delivery\") 0)}}<span class=\"delta-pill delta-neg\">{{lookup this \"Δ Delivery\"}}</span>{{else}}<span class=\"delta-pill delta-zero\">0</span>{{/if}}{{/if}}</td>\n<td class=\"num\" style=\"font-weight: 800; color: #15803d;\">{{lookup this \"Delivery CI\"}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Inspection Queue\") 0)}}<span class=\"val-queue\">{{lookup this \"Inspection Queue\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"center\">\n{{#if (eq (lookup this \"Delivery Alert\") \"STOP\")}}\n<span class=\"alert-stop\">STOP</span>\n{{else}}\n<span class=\"alert-produce\">PRODUCE</span>\n{{/if}}\n</td>\n<td class=\"center\">\n{{#if (or (eq (lookup this \"In Curing\") \"TRUE\") (eq (lookup this \"In Curing\") \"True\") (eq (lookup this \"In Curing\") true))}}\n<span class=\"pill pill-true\"><span class=\"led-dot led-active\"></span>TRUE</span>\n{{else}}\n<span class=\"pill pill-false\"><span class=\"led-dot led-inactive\"></span>FALSE</span>\n{{/if}}\n</td>\n</tr>\n{{/each}}\n</tbody>\n<tfoot>\n<tr data-alert=\"{{lookup this 'Delivery Alert'}}\" class=\"total-row\">\n<td colspan=\"6\" class=\"total-label\">TOTAL</td>\n<td class=\"num total-val tot-month-plan\" style=\"color: #cbd5e1 !important;\">{{formatSum (sumField data \"Month Plan\")}}</td>\n<td class=\"num total-val tot-plan\" style=\"color: #6366f1 !important;\">{{formatSum (sumField data \"Accumulated Target Plan\")}}</td>\n<td class=\"num total-val val-curing tot-curing\" style=\"color: #38bdf8 !important;\">{{formatSum (sumField data \"Cumulative Curing\")}}</td>\n<td class=\"num total-val center tot-delta-curing\">{{renderDeltaSum data \"Δ Curing\"}}</td>\n<td class=\"num total-val center\">-</td>\n<td class=\"num total-val tot-scrap\" style=\"color: #fbbf24 !important;\">{{formatSum (sumField data \"Cumulative Scrap\")}}</td>\n<td class=\"num total-val val-active tot-net\" style=\"color: #4ade80 !important;\">{{formatSum (sumField data \"Cumulative Net Cured\")}}</td>\n<td class=\"num total-val val-delivery tot-del\" style=\"color: #34d399 !important;\">{{formatSum (sumField data \"Cumulative Delivery\")}}</td>\n<td class=\"num total-val center tot-delta-del\">{{renderDeltaSum data \"Δ Delivery\"}}</td>\n<td class=\"num total-val center\">-</td>\n<td class=\"num total-val val-queue tot-queue\" style=\"color: #c084fc !important;\">{{formatSum (sumField data \"Inspection Queue\")}}</td>\n<td class=\"center total-val\">-</td>\n<td class=\"center total-val\">-</td>\n</tr>\n</tfoot>>\n</table>\n</div>\n</div>",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "handlebars.registerHelper('sumField', function(data, fieldName) {\n  if (!Array.isArray(data)) return 0;\n  return data.reduce(function(acc, row) {\n    var val = parseFloat(row[fieldName]);\n    return acc + (isNaN(val) ? 0 : val);\n  }, 0);\n});\n\nhandlebars.registerHelper('formatSum', function(val) {\n  if (isNaN(val) || val === 0) return '0';\n  return Math.round(val).toLocaleString();\n});\n\nhandlebars.registerHelper('sumPositive', function(data, fieldName) {\n  if (!Array.isArray(data)) return 0;\n  return data.reduce(function(acc, row) {\n    var val = parseFloat(row[fieldName]);\n    return acc + (!isNaN(val) && val > 0 ? val : 0);\n  }, 0);\n});\n\nhandlebars.registerHelper('sumNegative', function(data, fieldName) {\n  if (!Array.isArray(data)) return 0;\n  return data.reduce(function(acc, row) {\n    var val = parseFloat(row[fieldName]);\n    return acc + (!isNaN(val) && val < 0 ? val : 0);\n  }, 0);\n});\n\nhandlebars.registerHelper('renderDeltaSum', function(data, fieldName) {\n  if (!Array.isArray(data)) return '-';\n  var pos = 0, neg = 0;\n  data.forEach(function(row) {\n    var val = parseFloat(row[fieldName]);\n    if (!isNaN(val)) {\n      if (val > 0) pos += val;\n      if (val < 0) neg += val;\n    }\n  });\n  if (pos === 0 && neg === 0) {\n    return new handlebars.SafeString('<span class=\"delta-pill delta-zero\">0</span>');\n  }\n  var html = '<div style=\"display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: nowrap;\">';\n  if (pos > 0) {\n    html += '<span class=\"delta-pill delta-pos\">+' + Math.round(pos).toLocaleString() + '</span>';\n  }\n  if (neg < 0) {\n    html += '<span class=\"delta-pill delta-neg\">' + Math.round(neg).toLocaleString() + '</span>';\n  }\n  html += '</div>';\n  return new handlebars.SafeString(html);\n});",
+          "renderMode": "allRows",
+          "styles": "",
+          "wrap": true
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \n    COALESCE(\"p\".\"green_cover\", '-') AS \"Green Cover\",\n    \"p\".\"IP5\" AS \"IP Code\",\n    COALESCE(\"M\".\"MAT_CODE\", \"p\".\"IP5\") AS \"Short Code\",\n    COALESCE(\"p\".\"description\",'-') AS \"Description\",\n    COALESCE(NULLIF(NULLIF(\"i\".\"SIZE_SUB_FAMILY\", ''), '-'), \"sz\".\"Size\", '-') AS \"Size\",\n    COALESCE(NULLIF(\"p\".\"uniformity\", '0'), '-') AS \"Uniformity\",\n    CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) AS \"Month Plan\",\n    CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) AS \"Accumulated Target Plan\",\n    COALESCE(\"c\".\"cured_qty\", 0) AS \"Cumulative Curing\",\n    (COALESCE(\"c\".\"cured_qty\", 0) - CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT)) AS \"Δ Curing\",\n    CASE \n        WHEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) > 0 \n        THEN ROUND((CAST(LEAST(CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT), GREATEST(0, COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0))) AS DOUBLE) / CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT)) * 100.0, 1) || '%'\n        ELSE '-' \n    END AS \"Curing CI\",\n    COALESCE(\"s\".\"scrap_qty\", 0) AS \"Cumulative Scrap\",\n    COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0) AS \"Cumulative Net Cured\",\n    COALESCE(\"d\".\"delivered_qty\", 0) AS \"Cumulative Delivery\",\n    (COALESCE(\"d\".\"delivered_qty\", 0) - CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT)) AS \"Δ Delivery\",\n    CASE \n        WHEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) > 0 \n        THEN ROUND((CAST(LEAST(CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT), COALESCE(\"d\".\"delivered_qty\", 0)) AS DOUBLE) / CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT)) * 100.0, 1) || '%'\n        ELSE '-' \n    END AS \"Delivery CI\",\n    GREATEST(0, (COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) - COALESCE(\"d\".\"delivered_qty\", 0)) AS \"Inspection Queue\",\n    CASE WHEN COALESCE(\"d\".\"delivered_qty\", 0) >= CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) AND CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) > 0 THEN 'STOP' ELSE 'PRODUCE' END AS \"Delivery Alert\",\n    COALESCE(\"sch\".\"in_curing\", 'FALSE') AS \"In Curing\"\nFROM (\n    SELECT \n        \"all_ip\".\"IP5\",\n        MAX(\"pt\".\"green_cover\") AS \"green_cover\",\n        MAX(\"pt\".\"Description\") AS \"description\",\n        MAX(\"pt\".\"Uniformity\") AS \"uniformity\",\n        SUM(\n          COALESCE(\"pt\".\"Day1\", 0) + COALESCE(\"pt\".\"Day2\", 0) + COALESCE(\"pt\".\"Day3\", 0) + COALESCE(\"pt\".\"Day4\", 0) + COALESCE(\"pt\".\"Day5\", 0) +\n          COALESCE(\"pt\".\"Day6\", 0) + COALESCE(\"pt\".\"Day7\", 0) + COALESCE(\"pt\".\"Day8\", 0) + COALESCE(\"pt\".\"Day9\", 0) + COALESCE(\"pt\".\"Day10\", 0) +\n          COALESCE(\"pt\".\"Day11\", 0) + COALESCE(\"pt\".\"Day12\", 0) + COALESCE(\"pt\".\"Day13\", 0) + COALESCE(\"pt\".\"Day14\", 0) + COALESCE(\"pt\".\"Day15\", 0) +\n          COALESCE(\"pt\".\"Day16\", 0) + COALESCE(\"pt\".\"Day17\", 0) + COALESCE(\"pt\".\"Day18\", 0) + COALESCE(\"pt\".\"Day19\", 0) + COALESCE(\"pt\".\"Day20\", 0) +\n          COALESCE(\"pt\".\"Day21\", 0) + COALESCE(\"pt\".\"Day22\", 0) + COALESCE(\"pt\".\"Day23\", 0) + COALESCE(\"pt\".\"Day24\", 0) + COALESCE(\"pt\".\"Day25\", 0) +\n          COALESCE(\"pt\".\"Day26\", 0) + COALESCE(\"pt\".\"Day27\", 0) + COALESCE(\"pt\".\"Day28\", 0) + COALESCE(\"pt\".\"Day29\", 0) + COALESCE(\"pt\".\"Day30\", 0) + COALESCE(\"pt\".\"Day31\", 0)\n        ) AS \"total_month_plan\",\n        SUM(\n  CASE WHEN CAST('${day}' AS INT) > 1 THEN COALESCE(\"pt\".\"Day1\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 2 THEN COALESCE(\"pt\".\"Day2\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 3 THEN COALESCE(\"pt\".\"Day3\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 4 THEN COALESCE(\"pt\".\"Day4\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 5 THEN COALESCE(\"pt\".\"Day5\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 6 THEN COALESCE(\"pt\".\"Day6\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 7 THEN COALESCE(\"pt\".\"Day7\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 8 THEN COALESCE(\"pt\".\"Day8\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 9 THEN COALESCE(\"pt\".\"Day9\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 10 THEN COALESCE(\"pt\".\"Day10\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 11 THEN COALESCE(\"pt\".\"Day11\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 12 THEN COALESCE(\"pt\".\"Day12\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 13 THEN COALESCE(\"pt\".\"Day13\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 14 THEN COALESCE(\"pt\".\"Day14\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 15 THEN COALESCE(\"pt\".\"Day15\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 16 THEN COALESCE(\"pt\".\"Day16\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 17 THEN COALESCE(\"pt\".\"Day17\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 18 THEN COALESCE(\"pt\".\"Day18\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 19 THEN COALESCE(\"pt\".\"Day19\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 20 THEN COALESCE(\"pt\".\"Day20\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 21 THEN COALESCE(\"pt\".\"Day21\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 22 THEN COALESCE(\"pt\".\"Day22\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 23 THEN COALESCE(\"pt\".\"Day23\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 24 THEN COALESCE(\"pt\".\"Day24\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 25 THEN COALESCE(\"pt\".\"Day25\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 26 THEN COALESCE(\"pt\".\"Day26\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 27 THEN COALESCE(\"pt\".\"Day27\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 28 THEN COALESCE(\"pt\".\"Day28\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 29 THEN COALESCE(\"pt\".\"Day29\", 0) ELSE 0 END +\n  CASE WHEN CAST('${day}' AS INT) > 30 THEN COALESCE(\"pt\".\"Day30\", 0) ELSE 0 END +\n  (CASE CAST('${day}' AS INT)\n    WHEN 1 THEN COALESCE(\"pt\".\"Day1\", 0) WHEN 2 THEN COALESCE(\"pt\".\"Day2\", 0) WHEN 3 THEN COALESCE(\"pt\".\"Day3\", 0) WHEN 4 THEN COALESCE(\"pt\".\"Day4\", 0) WHEN 5 THEN COALESCE(\"pt\".\"Day5\", 0)\n    WHEN 6 THEN COALESCE(\"pt\".\"Day6\", 0) WHEN 7 THEN COALESCE(\"pt\".\"Day7\", 0) WHEN 8 THEN COALESCE(\"pt\".\"Day8\", 0) WHEN 9 THEN COALESCE(\"pt\".\"Day9\", 0) WHEN 10 THEN COALESCE(\"pt\".\"Day10\", 0)\n    WHEN 11 THEN COALESCE(\"pt\".\"Day11\", 0) WHEN 12 THEN COALESCE(\"pt\".\"Day12\", 0) WHEN 13 THEN COALESCE(\"pt\".\"Day13\", 0) WHEN 14 THEN COALESCE(\"pt\".\"Day14\", 0) WHEN 15 THEN COALESCE(\"pt\".\"Day15\", 0)\n    WHEN 16 THEN COALESCE(\"pt\".\"Day16\", 0) WHEN 17 THEN COALESCE(\"pt\".\"Day17\", 0) WHEN 18 THEN COALESCE(\"pt\".\"Day18\", 0) WHEN 19 THEN COALESCE(\"pt\".\"Day19\", 0) WHEN 20 THEN COALESCE(\"pt\".\"Day20\", 0)\n    WHEN 21 THEN COALESCE(\"pt\".\"Day21\", 0) WHEN 22 THEN COALESCE(\"pt\".\"Day22\", 0) WHEN 23 THEN COALESCE(\"pt\".\"Day23\", 0) WHEN 24 THEN COALESCE(\"pt\".\"Day24\", 0) WHEN 25 THEN COALESCE(\"pt\".\"Day25\", 0)\n    WHEN 26 THEN COALESCE(\"pt\".\"Day26\", 0) WHEN 27 THEN COALESCE(\"pt\".\"Day27\", 0) WHEN 28 THEN COALESCE(\"pt\".\"Day28\", 0) WHEN 29 THEN COALESCE(\"pt\".\"Day29\", 0) WHEN 30 THEN COALESCE(\"pt\".\"Day30\", 0)\n    WHEN 31 THEN COALESCE(\"pt\".\"Day31\", 0)\n    ELSE 0\n  END) * (\n    CASE \n      WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN (1.0 / 3.0)\n      WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN (2.0 / 3.0)\n      ELSE 1.0\n    END\n  )\n) AS \"plan_qty\"\n    FROM (\n        SELECT DISTINCT SUBSTRING(CAST(CAST(\"IP_code\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\n        WHERE \"month\" = CAST('${month}' AS INT) AND \"IP_code\" IS NOT NULL\n        UNION\n        SELECT DISTINCT SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n        JOIN (\n            SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n            UNION ALL\n            SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n        ) T ON D.DDC_BARCODE = T.BC\n        JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n        WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n          AND D.DDC_START_CYCLE >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n          AND D.DDC_START_CYCLE < (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP) + INTERVAL '1' MONTH)\n          AND M2.MAT_IP_CODE IS NOT NULL\n    ) \"all_ip\"\n    LEFT JOIN \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\" \"pt\"\n        ON \"all_ip\".\"IP5\" = CAST(\"pt\".\"IP5\" AS VARCHAR)\n       AND \"pt\".\"month\" = CAST('${month}' AS INT)\n    GROUP BY \"all_ip\".\"IP5\"\n) \"p\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        MIN(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR)) AS \"IP_CODE\",\n        MAX(\"DESC\") AS \"DESC\",\n        MAX(\"TIER\") AS \"TIER\",\n        MAX(\"BRAND\") AS \"BRAND\",\n        MAX(\"SIZE_SUB_FAMILY\") AS \"SIZE_SUB_FAMILY\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"INFO_TIER\"\n    WHERE \"IP_CODE\" IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"i\" ON \"p\".\"IP5\" = \"i\".\"IP5\"\n\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        MAX(\"Size\") AS \"Size\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\n    WHERE \"Size\" IS NOT NULL AND \"Size\" <> ''\n    GROUP BY SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"sz\" ON \"p\".\"IP5\" = \"sz\".\"IP5\"\nLEFT JOIN (\n    SELECT \"IP5\", \"MAT_CODE\"\n    FROM (\n        SELECT \n            SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n            CAST(\"MAT_CODE\" AS VARCHAR) AS \"MAT_CODE\",\n            ROW_NUMBER() OVER (\n                PARTITION BY SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) \n                ORDER BY \"MAT_IMPORT_TIMESTAMP\" DESC, \"MAT_CODE\" DESC\n            ) AS rn\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\n        WHERE \"MAT_IP_CODE\" IS NOT NULL AND \"MAT_CODE\" IS NOT NULL AND \"MAT_CODE\" <> ''\n    ) m_ranked\n    WHERE rn = 1\n) \"M\" ON \"p\".\"IP5\" = \"M\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        'TRUE' AS \"in_curing\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"SCH_MACHINE_PLAN\" S\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n        ON S.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE S.PP_CODE = 'CU1'\n      AND M2.MAT_IP_CODE IS NOT NULL\n      AND S.MPN_START_DATETIME >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n      AND S.MPN_START_DATETIME <  (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP) + INTERVAL '1' DAY)\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n) \"sch\" ON \"p\".\"IP5\" = \"sch\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        \"all_c\".\"IP5\",\n        SUM(\"all_c\".\"qty\") AS cured_qty\n    FROM (\nSELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT D.DDC_BARCODE) AS qty\n    FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n    JOIN (\n        SELECT TRC_BARCODE AS BC, MAT_SAP_CODE\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\"\n        WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n        UNION ALL\n        SELECT TRC_ID AS BC, MAT_SAP_CODE\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\"\n        WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n    ) T ON D.DDC_BARCODE = T.BC\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n        ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE D.DDC_BARCODE IS NOT NULL\n      AND D.DDC_BARCODE NOT IN ('-', '0')\n      AND D.DDC_START_CYCLE >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND D.DDC_START_CYCLE < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n        UNION ALL\n\n        SELECT \n            \"adj\".\"IP5\",\n            \"adj\".\"adj_qty\" AS qty\n        FROM (\n            VALUES \n            ('60476', 8),\n            ('31037', 6),\n            ('37528', 6),\n            ('23914', 5),\n            ('38648', 5),\n            ('60704', 5),\n            ('36205', 4),\n            ('37490', 4),\n            ('37537', 4),\n            ('39370', 4),\n            ('60331', 4),\n            ('19132', 3),\n            ('38647', 3),\n            ('60042', 3),\n            ('61099', 3),\n            ('31010', 2),\n            ('32659', 2),\n            ('35352', 2),\n            ('36091', 2),\n            ('36204', 2),\n            ('36550', 2),\n            ('36592', 2),\n            ('37449', 2),\n            ('37516', 2),\n            ('37523', 2),\n            ('37524', 2),\n            ('37526', 2),\n            ('38372', 2),\n            ('60099', 2),\n            ('60415', 2),\n            ('60328', 2),\n            ('60346', 2),\n            ('60536', 2),\n            ('60636', 2),\n            ('61285', 2),\n            ('61332', 2),\n            ('61316', 2),\n            ('36433', 1),\n            ('36435', 1),\n            ('36549', 1),\n            ('37489', 1),\n            ('37802', 1),\n            ('38922', 1),\n            ('38934', 1),\n            ('39964', 1),\n            ('41169', 1),\n            ('60329', 1),\n            ('60412', 1),\n            ('60413', 1),\n            ('60519', 1),\n            ('60502', 1),\n            ('60503', 1),\n            ('61280', 1),\n            ('61326', 1),\n            ('61333', 1),\n            ('61329', 1),\n            ('60872', 1),\n            ('60874', 1),\n            ('61159', 1),\n            ('61161', 1),\n            ('61162', 1),\n            ('61163', 1)\n        ) AS \"adj\"(\"IP5\", \"adj_qty\")\n        WHERE CAST('${year}' AS INT) = 2026 AND CAST('${month}' AS INT) = 9 AND (\n            CAST('${day}' AS INT) > 7 \n            OR (CAST('${day}' AS INT) = 7 AND '${shift}' NOT IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)'))\n        )\n    ) \"all_c\"\n    GROUP BY \"all_c\".\"IP5\"\n) \"c\" ON \"p\".\"IP5\" = \"c\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        SUM(\"QuantityTire\") AS \"delivered_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\n    WHERE \"ProductionDate\" >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND \"ProductionDate\" < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n    GROUP BY SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"d\" ON \"p\".\"IP5\" = \"d\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT \"F2\".\"FDD_BARCODE\") AS \"scrap_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"FIN_DEFECTS_DECLARED\" \"F2\"\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n        ON \"F2\".\"MAT_SAP_CODE\" = M2.\"MAT_SAP_CODE\"\n    WHERE \"F2\".\"FDD_ACTIVE\" = 'T'\n      AND \"F2\".\"FDS_SEVERITY\" = 'SC'\n      AND CAST(\"F2\".\"CLA_CODE\" AS VARCHAR) = '00'\n      AND \"F2\".\"FDD_TIME_STAMP\" >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP)\n      AND \"F2\".\"FDD_TIME_STAMP\" < \n          CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          + INTERVAL '1' DAY\n          + CASE \n              WHEN '${shift}' IN ('1', 'Shift 1', 'Shift 1 (00:00 - 08:00)') THEN INTERVAL '8' HOUR\n              WHEN '${shift}' IN ('2', 'Shift 2', 'Shift 2 (08:00 - 16:00)') THEN INTERVAL '16' HOUR\n              ELSE INTERVAL '1' DAY\n            END\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n) \"s\" ON \"p\".\"IP5\" = \"s\".\"IP5\"\nWHERE (COALESCE(\"p\".\"total_month_plan\", 0) > 0 OR COALESCE(\"c\".\"cured_qty\", 0) > 0)\n  AND ('${shortcode:csv}' = 'All' OR 'All' IN (${shortcode:singlequote}) OR COALESCE(\"M\".\"MAT_CODE\", \"p\".\"IP5\") IN (${shortcode:singlequote}))\nORDER BY \"Green Cover\" asc",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Daily Mix - MTD Performance &Monitor (Month ${month} / Day ${day} | ${shift})",
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 25,
+          "w": 24,
+          "x": 0,
+          "y": 37
+        },
+        "id": 10,
+        "options": {
+          "afterRender": "(function() {\nfunction getVal(row, attrName, cellIdx) {\n  let val = parseFloat(row.getAttribute(attrName));\n  if (isNaN(val) && row.cells && row.cells[cellIdx]) {\n    const txt = row.cells[cellIdx].innerText.trim().replace('+', '').replace(/,/g, '');\n    val = parseFloat(txt);\n  }\n  return isNaN(val) ? 0 : val;\n}\n\nfunction renderDeltaHTML(pos, neg) {\n  if (pos === 0 && neg === 0) return '<span class=\"delta-pill delta-zero\">0</span>';\n  let html = '<div style=\"display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: nowrap;\">';\n  if (pos > 0) html += '<span class=\"delta-pill delta-pos\">+' + Math.round(pos).toLocaleString() + '</span>';\n  if (neg < 0) html += '<span class=\"delta-pill delta-neg\">' + Math.round(neg).toLocaleString() + '</span>';\n  html += '</div>';\n  return html;\n}\n\nfunction recalculateShiftFooter(cnt) {\n  const visibleRows = cnt.querySelectorAll('tbody tr:not(.row-hidden)');\n  let sumPlan = 0, sumCuring = 0, sumScrap = 0, sumNet = 0, sumDel = 0, sumQueue = 0;\n  let posDeltaCur = 0, negDeltaCur = 0, posDeltaDel = 0, negDeltaDel = 0;\n\n  visibleRows.forEach(row => {\n    sumPlan += getVal(row, 'data-target', 7);\n    sumCuring += getVal(row, 'data-curing', 8);\n\n    const dCur = getVal(row, 'data-delta-curing', 9);\n    if (dCur > 0) posDeltaCur += dCur;\n    if (dCur < 0) negDeltaCur += dCur;\n\n    sumScrap += getVal(row, 'data-scrap', 11);\n    sumNet += getVal(row, 'data-net', 12);\n    sumDel += getVal(row, 'data-delivery', 13);\n\n    const dDel = getVal(row, 'data-delta-del', 14);\n    if (dDel > 0) posDeltaDel += dDel;\n    if (dDel < 0) negDeltaDel += dDel;\n\n    sumQueue += getVal(row, 'data-queue', 16);\n  });\n\n  const foot = cnt.querySelector('tfoot');\n  if (foot) {\n    const totPlan = foot.querySelector('.tot-plan');\n    if (totPlan) totPlan.innerText = sumPlan > 0 ? Math.round(sumPlan).toLocaleString() : '0';\n\n    const totCuring = foot.querySelector('.tot-curing');\n    if (totCuring) totCuring.innerText = sumCuring > 0 ? Math.round(sumCuring).toLocaleString() : '0';\n\n    const totScrap = foot.querySelector('.tot-scrap');\n    if (totScrap) totScrap.innerText = sumScrap > 0 ? Math.round(sumScrap).toLocaleString() : '0';\n\n    const totNet = foot.querySelector('.tot-net');\n    if (totNet) totNet.innerText = sumNet > 0 ? Math.round(sumNet).toLocaleString() : '0';\n\n    const totDel = foot.querySelector('.tot-del');\n    if (totDel) totDel.innerText = sumDel > 0 ? Math.round(sumDel).toLocaleString() : '0';\n\n    const totQueue = foot.querySelector('.tot-queue');\n    if (totQueue) totQueue.innerText = sumQueue > 0 ? Math.round(sumQueue).toLocaleString() : '0';\n\n    const totDCur = foot.querySelector('.tot-delta-curing');\n    if (totDCur) totDCur.innerHTML = renderDeltaHTML(posDeltaCur, negDeltaCur);\n\n    const totDDel = foot.querySelector('.tot-delta-del');\n    if (totDDel) totDDel.innerHTML = renderDeltaHTML(posDeltaDel, negDeltaDel);\n  }\n}\n\nfunction getActiveShifts(container) {\n  const activeShiftPills = Array.from(container.querySelectorAll('.shift-pill.active'));\n  const vals = activeShiftPills.map(p => p.getAttribute('data-shift'));\n  if (vals.includes('all') || vals.length === 0 || vals.length === 3) {\n    return ['1', '2', '3'];\n  }\n  return vals;\n}\n\nfunction recomputeShiftMetrics(container, activeShifts) {\n  const isAll = activeShifts.length === 3;\n  const numActive = isAll ? 3 : activeShifts.length;\n  const ratio = numActive / 3.0;\n\n  const rows = container.querySelectorAll('tbody tr');\n  rows.forEach(row => {\n    const dayPlan = parseFloat(row.getAttribute('data-day-plan')) || 0;\n    const dayDel = parseFloat(row.getAttribute('data-day-del')) || 0;\n\n    // Shift Target\n    const target = Math.round(dayPlan * ratio);\n\n    // Shift Curing\n    let curing = 0;\n    if (isAll || activeShifts.includes('1')) curing += (parseFloat(row.getAttribute('data-cured-s1')) || 0);\n    if (isAll || activeShifts.includes('2')) curing += (parseFloat(row.getAttribute('data-cured-s2')) || 0);\n    if (isAll || activeShifts.includes('3')) curing += (parseFloat(row.getAttribute('data-cured-s3')) || 0);\n\n    // Shift Scrap\n    let scrap = 0;\n    if (isAll || activeShifts.includes('1')) scrap += (parseFloat(row.getAttribute('data-scrap-s1')) || 0);\n    if (isAll || activeShifts.includes('2')) scrap += (parseFloat(row.getAttribute('data-scrap-s2')) || 0);\n    if (isAll || activeShifts.includes('3')) scrap += (parseFloat(row.getAttribute('data-scrap-s3')) || 0);\n\n    // Net Cured\n    const net = curing - scrap;\n\n    // Shift Delivery\n    const del = Math.round(dayDel * ratio);\n\n    // Deltas\n    const deltaCur = curing - target;\n    const deltaDel = del - target;\n\n    // CI\n    let ciCur = '-';\n    if (target > 0) {\n      const pct = Math.min(100, Math.round((Math.max(0, net) / target) * 1000) / 10).toFixed(1);\n      ciCur = pct + '%';\n    }\n\n    let ciDel = '-';\n    if (target > 0) {\n      const pct = Math.min(100, Math.round((del / target) * 1000) / 10).toFixed(1);\n      ciDel = pct + '%';\n    }\n\n    // Inspection Queue\n    const queue = Math.max(0, net - del);\n\n    // Update row attributes\n    row.setAttribute('data-target', target);\n    row.setAttribute('data-plan', target);\n    row.setAttribute('data-curing', curing);\n    row.setAttribute('data-delta-curing', deltaCur);\n    row.setAttribute('data-scrap', scrap);\n    row.setAttribute('data-net', net);\n    row.setAttribute('data-delivery', del);\n    row.setAttribute('data-delta-del', deltaDel);\n    row.setAttribute('data-queue', queue);\n\n    // Update cell elements\n    if (row.cells && row.cells[7]) {\n      row.cells[7].innerHTML = target > 0 ? '<span class=\"val-plan\">' + target.toLocaleString() + '</span>' : '<span class=\"val-zero\">0</span>';\n    }\n    if (row.cells && row.cells[8]) {\n      row.cells[8].innerHTML = curing > 0 ? '<span class=\"val-curing\">' + curing.toLocaleString() + '</span>' : '<span class=\"val-zero\">0</span>';\n    }\n    if (row.cells && row.cells[9]) {\n      if (deltaCur > 0) {\n        row.cells[9].innerHTML = '<span class=\"delta-pill delta-pos\">+' + deltaCur.toLocaleString() + '</span>';\n      } else if (deltaCur < 0) {\n        row.cells[9].innerHTML = '<span class=\"delta-pill delta-neg\">' + deltaCur.toLocaleString() + '</span>';\n      } else {\n        row.cells[9].innerHTML = '<span class=\"delta-pill delta-zero\">0</span>';\n      }\n    }\n    if (row.cells && row.cells[10]) {\n      row.cells[10].innerText = ciCur;\n    }\n    if (row.cells && row.cells[11]) {\n      row.cells[11].innerHTML = scrap > 0 ? '<span class=\"scrap-warn\">' + scrap.toLocaleString() + '</span>' : '<span class=\"val-zero\">0</span>';\n    }\n    if (row.cells && row.cells[12]) {\n      row.cells[12].innerHTML = net > 0 ? '<span class=\"val-active\">' + net.toLocaleString() + '</span>' : '<span class=\"val-zero\">0</span>';\n    }\n    if (row.cells && row.cells[13]) {\n      row.cells[13].innerHTML = del > 0 ? '<span class=\"val-delivery\">' + del.toLocaleString() + '</span>' : '<span class=\"val-zero\">0</span>';\n    }\n    if (row.cells && row.cells[14]) {\n      if (deltaDel > 0) {\n        row.cells[14].innerHTML = '<span class=\"delta-pill delta-pos\">+' + deltaDel.toLocaleString() + '</span>';\n      } else if (deltaDel < 0) {\n        row.cells[14].innerHTML = '<span class=\"delta-pill delta-neg\">' + deltaDel.toLocaleString() + '</span>';\n      } else {\n        row.cells[14].innerHTML = '<span class=\"delta-pill delta-zero\">0</span>';\n      }\n    }\n    if (row.cells && row.cells[15]) {\n      row.cells[15].innerText = ciDel;\n    }\n    if (row.cells && row.cells[16]) {\n      row.cells[16].innerHTML = queue > 0 ? '<span class=\"val-queue\">' + queue.toLocaleString() + '</span>' : '<span class=\"val-zero\">0</span>';\n    }\n  });\n}\n\nfunction filterShiftRows(container) {\n  const activeDeltaPills = Array.from(container.querySelectorAll('.fp-pill:not(.shift-pill).active'));\n  const activeFilters = activeDeltaPills.map(p => p.getAttribute('data-filter')).filter(f => f && f !== 'all');\n\n  const searchInput = container.querySelector('.row-search-input');\n  const query = searchInput ? searchInput.value.toLowerCase().trim() : '';\n\n  const rows = container.querySelectorAll('tbody tr');\n  let visibleCount = 0;\n\n  rows.forEach(row => {\n    let hide = false;\n    const planVal     = getVal(row, 'data-target', 7);\n    const deltaCuring = getVal(row, 'data-delta-curing', 9);\n    const deltaDel    = getVal(row, 'data-delta-del', 14);\n    const queueVal    = getVal(row, 'data-queue', 16);\n    const alertVal    = (row.getAttribute('data-alert') || (row.cells && row.cells[17] ? row.cells[17].innerText.trim() : '')).toUpperCase();\n\n    if (activeFilters.length > 0) {\n      const isStop       = alertVal.includes('STOP');\n      const isProduce    = alertVal.includes('PRODUCE');\n      const isPlanned    = planVal > 0;\n      const isCurDeficit = deltaCuring < 0;\n      const isDelDeficit = deltaDel < 0;\n      const isQueuePos   = queueVal > 0;\n\n      const hasStop = activeFilters.includes('stop');\n      const hasProduce = activeFilters.includes('produce');\n      if (hasStop && hasProduce) {\n        if (!isStop && !isProduce) hide = true;\n      } else if (hasStop) {\n        if (!isStop) hide = true;\n      } else if (hasProduce) {\n        if (!isProduce) hide = true;\n      }\n\n      if (!hide && activeFilters.includes('planned')) {\n        if (!isPlanned) hide = true;\n      }\n\n      if (!hide && activeFilters.includes('cur-neg')) {\n        if (!isCurDeficit) hide = true;\n      }\n\n      if (!hide && activeFilters.includes('del-neg')) {\n        if (!isDelDeficit) hide = true;\n      }\n\n      // Inspection Queue check (WHERE inspection_queue > 0)\n      if (!hide && activeFilters.includes('insp-queue')) {\n        if (!isQueuePos) hide = true;\n      }\n    }\n\n    if (!hide && query) {\n      const text = row.innerText.toLowerCase();\n      if (!text.includes(query)) {\n        hide = true;\n      }\n    }\n\n    if (hide) {\n      row.classList.add('row-hidden');\n    } else {\n      row.classList.remove('row-hidden');\n      visibleCount++;\n    }\n  });\n\n  const countBadge = container.querySelector('.row-count-badge');\n  if (countBadge) {\n    countBadge.innerText = visibleCount + ' / ' + rows.length;\n  }\n\n  recalculateShiftFooter(container);\n}\n\nfunction bindShiftContainer(container) {\n  if (!container) return;\n\n  filterShiftRows(container);\n\n  container.onclick = function(e) {\n    const pill = e.target.closest('.fp-pill');\n    if (!pill) return;\n    e.stopPropagation();\n\n    // 1. Shift Pill Click Handler (Multi-Select)\n    if (pill.classList.contains('shift-pill')) {\n      const shiftVal = pill.getAttribute('data-shift');\n      const allShiftPills = container.querySelectorAll('.shift-pill');\n      const allPill = container.querySelector('.shift-pill[data-shift=\"all\"]');\n\n      if (shiftVal === 'all') {\n        allShiftPills.forEach(p => p.classList.remove('active'));\n        pill.classList.add('active');\n      } else {\n        pill.classList.toggle('active');\n        if (allPill) allPill.classList.remove('active');\n\n        const activeSpecific = Array.from(allShiftPills).filter(p => p.getAttribute('data-shift') !== 'all' && p.classList.contains('active'));\n        if (activeSpecific.length === 0 || activeSpecific.length === 3) {\n          allShiftPills.forEach(p => p.classList.remove('active'));\n          if (allPill) allPill.classList.add('active');\n        }\n      }\n\n      const activeShifts = getActiveShifts(container);\n      recomputeShiftMetrics(container, activeShifts);\n      filterShiftRows(container);\n      return;\n    }\n\n    // 2. Delta Filter Pill Click Handler (Existing Multi-Select)\n    const filterType = pill.getAttribute('data-filter');\n    const allDeltaPills = container.querySelectorAll('.fp-pill:not(.shift-pill)');\n    const allRowsPill = container.querySelector('.fp-pill[data-filter=\"all\"]');\n\n    if (filterType === 'all') {\n      allDeltaPills.forEach(p => p.classList.remove('active'));\n      pill.classList.add('active');\n    } else {\n      pill.classList.toggle('active');\n      if (allRowsPill) allRowsPill.classList.remove('active');\n\n      const anyActive = Array.from(allDeltaPills).some(p => p.getAttribute('data-filter') !== 'all' && p.classList.contains('active'));\n      if (!anyActive && allRowsPill) {\n        allRowsPill.classList.add('active');\n      }\n    }\n\n    filterShiftRows(container);\n  };\n\n  const searchInput = container.querySelector('.row-search-input');\n  if (searchInput) {\n    searchInput.oninput = function(e) {\n      e.stopPropagation();\n      filterShiftRows(container);\n    };\n    searchInput.onkeyup = function(e) {\n      e.stopPropagation();\n      filterShiftRows(container);\n    };\n  }\n}\n\nconst containers = document.querySelectorAll('.dt-container-shift');\ncontainers.forEach(bindShiftContainer);\n})();",
+          "content": "<style>\n/* Base Container Inside Panel 10 - Solid White */\n.dt-container-shift {\nwidth: 100%;\npadding: 0px;\nbackground: transparent !important;\nfont-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\ncolor: #0f172a;\nfont-size: 13.5px;\nbox-sizing: border-box;\n}\n\n/* Clean White Table Wrapper */\n.dt-container-shift .table-wrapper {\noverflow-x: auto;\nmax-height: calc(100vh - 160px);\nborder-radius: 8px;\nborder: 1px solid #cbd5e1;\nbackground: #ffffff !important;\nbox-shadow: 0 4px 16px rgba(0, 32, 91, 0.08);\n}\n\n.dt-table-shift {\nwidth: 100%;\nborder-collapse: separate;\nborder-spacing: 0;\nwhite-space: nowrap;\n}\n\n/* Sticky Super Headers */\n.dt-table-shift th.super-header {\nposition: sticky;\ntop: 0;\nz-index: 30;\nbackground: #001540 !important;\ncolor: #ffffff;\nfont-size: 13.5px;\nfont-weight: 800;\ntext-transform: uppercase;\nletter-spacing: 1.1px;\npadding: 6px 10px;\ntext-align: center;\nborder-bottom: 1px solid rgba(255, 255, 255, 0.15);\n}\n\n.dt-table-shift th, .dt-table-shift td {\nfont-size: 13.5px;\npadding: 8px 14px !important;\ntext-align: center !important;\nborder-left: none !important;\nborder-right: none !important;\n}\n\n.dt-table-shift th.super-header {\nborder-right: 1px solid rgba(255, 255, 255, 0.15) !important;\n}\n.dt-table-shift th.super-spec { border-bottom: 3px solid #0091da !important; }\n.dt-table-shift th.super-plan { border-bottom: 3px solid #6366f1 !important; }\n.dt-table-shift th.super-curing { border-bottom: 3px solid #0284c7 !important; }\n.dt-table-shift th.super-delivery { border-bottom: 3px solid #059669 !important; }\n.dt-table-shift th.super-status { border-bottom: 3px solid #dc2626 !important; }\n\n/* Category Neutral Slate Dividers for Panel 10 (Shift Table: 7, 8, 13, 17) */\n.dt-table-shift th:nth-child(7), .dt-table-shift td:nth-child(7),\n.dt-table-shift th:nth-child(8), .dt-table-shift td:nth-child(8),\n.dt-table-shift th:nth-child(13), .dt-table-shift td:nth-child(13),\n.dt-table-shift th:nth-child(17), .dt-table-shift td:nth-child(17) {\nborder-right: 2px solid #cbd5e1 !important;\n}\n\n.dt-table-shift th.sub-header {\ntext-align: center !important;\npadding: 8px 14px !important;\nposition: sticky;\ntop: 31px;\nz-index: 29;\nbackground: #00205b !important;\ncolor: #ffffff;\nfont-weight: 700;\nfont-size: 13.5px;\ntext-transform: uppercase;\nletter-spacing: 0.5px;\npadding: 6px 10px;\nborder-bottom: 2px solid #0091da;\nbox-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.12);\n}\n\n/* Table Body Rows */\n.dt-table-shift tbody tr {\nposition: relative;\nz-index: 1;\ntransition: background 0.15s ease-in-out;\n}\n\n.dt-table-shift td {\nfont-size: 13.5px;\npadding: 6px 10px;\nborder-bottom: 1px solid #e2e8f0;\n}\n\n.dt-table-shift tr:nth-child(even) { background: #ffffff; }\n.dt-table-shift tr:nth-child(odd) { background: #f8fafc; }\n.dt-table-shift tr:hover { background: #e0f2fe !important; }\n\n/* Monospace Numbers & Typography */\n.num { \ntext-align: center !important; \nfont-family: 'JetBrains Mono', 'Consolas', monospace; \nfont-size: 13.5px;\n}\n.center { text-align: center; }\n\n.green-cover {\n  font-family: 'JetBrains Mono', 'Roboto Mono', monospace;\n  font-weight: 700;\n  color: #00205b;\n}\n\n.ip-code {\ncolor: #00205b;\nfont-weight: 800;\nfont-family: 'JetBrains Mono', 'Consolas', monospace;\n}\n\n.desc-text {\nmax-width: 320px;\noverflow: hidden;\ntext-overflow: ellipsis;\ncolor: #0f172a;\nfont-weight: 600;\n}\n\n/* Pill Badges */\n.pill {\ndisplay: inline-flex;\nalign-items: center;\ngap: 5px;\npadding: 2px 7px;\nborder-radius: 16px;\nfont-size: 11.5px;\nfont-weight: 700;\n}\n\n.pill-shortcode { background: #e0f2fe; color: #0284c7; border: 1px solid #7dd3fc; }\n.pill-tread { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }\n.pill-true { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }\n.pill-false { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }\n\n.led-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }\n.led-active { background: #16a34a; box-shadow: 0 0 6px #16a34a; }\n.led-inactive { background: #94a3b8; }\n\n.val-zero { color: #94a3b8; font-weight: 500; }\n.val-plan { color: #0f172a; font-weight: 800; }\n.val-active { color: #00205b; font-weight: 800; }\n.val-curing { color: #0284c7; font-weight: 800; }\n.val-delivery { color: #166534; font-weight: 800; }\n.val-queue { color: #7e22ce; font-weight: 700; }\n\n.scrap-warn { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; padding: 2px 6px; border-radius: 10px; font-weight: 800; }\n\n/* Delta Badges */\n.delta-pill {\ndisplay: inline-flex;\nalign-items: center;\njustify-content: center;\npadding: 4px 10px;\nborder-radius: 14px;\nfont-weight: 800;\nfont-family: 'JetBrains Mono', 'Consolas', monospace;\nfont-size: 13.5px;\nwhite-space: nowrap;\nmargin: 2px;\nbox-shadow: 0 1px 3px rgba(0,0,0,0.1);\n}\n.delta-pos { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }\n.delta-neg { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }\n.delta-zero { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }\n\n/* Delivery Alerts */\n.alert-stop {\nbackground: #fee2e2;\ncolor: #991b1b;\nborder: 1px solid #f87171;\npadding: 2px 8px;\nborder-radius: 16px;\nfont-weight: 800;\nfont-size: 11.5px;\n}\n\n.alert-produce {\nbackground: #dcfce7;\ncolor: #166534;\nborder: 1px solid #4ade80;\npadding: 2px 8px;\nborder-radius: 16px;\nfont-weight: 800;\nfont-size: 11.5px;\n}\n\n/* 🏁 TOTAL ROW STYLING */\ntfoot tr.total-row {\n  background: #001540 !important;\n  border-top: 3px solid #0091da !important;\n  font-weight: 900 !important;\n}\n\ntfoot td.total-label {\n  color: #0091da !important;\n  text-align: right !important;\n  padding-right: 15px !important;\n  font-size: 13px !important;\n  letter-spacing: 1px !important;\n  text-transform: uppercase !important;\n}\n\ntfoot td.total-val {\n  color: #ffffff !important;\n  font-size: 13px !important;\n  font-weight: 900 !important;\n  padding: 4px 6px !important;\n}\n\n/* Delta Columns Min-Width for non-overlapping dual totals */\n.dt-table-shift th:nth-child(10), .dt-table-shift td:nth-child(10),\n.dt-table-shift th:nth-child(15), .dt-table-shift td:nth-child(15) {\n  min-width: 145px !important;\n  text-align: center !important;\n}\n\n\n/* Column Filter Toolbar Styling */\n.col-filter-toolbar {\ndisplay: flex;\nalign-items: center;\ngap: 10px;\nmargin-bottom: 8px;\npadding: 6px 12px;\nbackground: #f8fafc;\nborder: 1px solid #cbd5e1;\nborder-radius: 8px;\nbox-shadow: 0 2px 6px rgba(0, 32, 91, 0.05);\nflex-wrap: wrap;\n}\n\n.toolbar-label {\nfont-size: 11px;\nfont-weight: 800;\ncolor: #00205b;\nletter-spacing: 0.5px;\ntext-transform: uppercase;\n}\n\n.toolbar-buttons {\ndisplay: flex;\nalign-items: center;\ngap: 6px;\nflex-wrap: wrap;\n}\n\n.col-btn {\nbackground: #ffffff;\nborder: 1.5px solid #cbd5e1;\ncolor: #64748b;\npadding: 3px 10px;\nborder-radius: 14px;\nfont-size: 11.5px;\nfont-weight: 700;\ncursor: pointer;\ntransition: all 0.2s ease-in-out;\ndisplay: inline-flex;\nalign-items: center;\ngap: 4px;\n}\n\n.col-btn:hover {\nborder-color: #0091da;\ncolor: #00205b;\n}\n\n.col-btn.active {\nbackground: #00205b;\nborder-color: #00205b;\ncolor: #ffffff;\nbox-shadow: 0 2px 6px rgba(0, 32, 91, 0.2);\n}\n\n.col-btn.reset-btn {\nbackground: #f1f5f9;\nborder-color: #cbd5e1;\ncolor: #334155;\nmargin-left: 6px;\n}\n\n.col-btn.reset-btn:hover {\nbackground: #e2e8f0;\ncolor: #0f172a;\n}\n\n/* CSS Hiding Rules for Column Groups */\n.hide-spec .col-spec { display: none !important; }\n.hide-scrap .col-scrap { display: none !important; }\n.hide-delivery .col-delivery { display: none !important; }\n.hide-status .col-status { display: none !important; }\n\n\n/* Row & Value Filter Bar Styling */\n.row-filter-toolbar {\ndisplay: flex;\nalign-items: center;\njustify-content: space-between;\ngap: 12px;\nmargin-bottom: 8px;\npadding: 6px 12px;\nbackground: #f8fafc;\nborder: 1px solid #cbd5e1;\nborder-radius: 8px;\nbox-shadow: 0 2px 6px rgba(0, 32, 91, 0.05);\nflex-wrap: wrap;\n}\n\n.filter-group {\ndisplay: flex;\nalign-items: center;\ngap: 6px;\nflex-wrap: wrap;\n}\n\n.toolbar-label {\nfont-size: 11px;\nfont-weight: 800;\ncolor: #00205b;\nletter-spacing: 0.5px;\ntext-transform: uppercase;\nmargin-right: 4px;\n}\n\n.filter-pill {\nbackground: #ffffff;\nborder: 1.5px solid #cbd5e1;\ncolor: #475569;\npadding: 3px 10px;\nborder-radius: 14px;\nfont-size: 11.5px;\nfont-weight: 700;\ncursor: pointer;\ntransition: all 0.2s ease-in-out;\ndisplay: inline-flex;\nalign-items: center;\ngap: 4px;\n}\n\n.filter-pill:hover {\nborder-color: #0091da;\ncolor: #00205b;\n}\n\n.filter-pill.active {\nbackground: #00205b;\nborder-color: #00205b;\ncolor: #ffffff;\nbox-shadow: 0 2px 6px rgba(0, 32, 91, 0.2);\n}\n\n.filter-pill.pill-neg.active {\nbackground: #b91c1c;\nborder-color: #b91c1c;\ncolor: #ffffff;\n}\n\n.filter-pill.pill-pos.active {\nbackground: #15803d;\nborder-color: #15803d;\ncolor: #ffffff;\n}\n\n.filter-pill.pill-scrap.active {\nbackground: #b45309;\nborder-color: #b45309;\ncolor: #ffffff;\n}\n\n.filter-pill.pill-queue.active {\nbackground: #7e22ce;\nborder-color: #7e22ce;\ncolor: #ffffff;\n}\n\n.search-box-group {\ndisplay: flex;\nalign-items: center;\ngap: 6px;\nbackground: #ffffff;\nborder: 1.5px solid #cbd5e1;\nborder-radius: 14px;\npadding: 2px 10px;\ntransition: all 0.2s ease;\n}\n\n.search-box-group:focus-within {\nborder-color: #0091da;\nbox-shadow: 0 0 0 2px rgba(0, 145, 218, 0.15);\n}\n\n.search-icon {\nfont-size: 11px;\ncolor: #64748b;\n}\n\n.row-search-input {\nborder: none;\noutline: none;\nbackground: transparent;\nfont-size: 11.5px;\nfont-weight: 600;\ncolor: #0f172a;\nwidth: 180px;\n}\n\n\n/* Row & Value Filter Bar Styling */\n.row-filter-toolbar {\ndisplay: flex;\nalign-items: center;\njustify-content: space-between;\ngap: 12px;\nmargin-bottom: 8px;\npadding: 6px 12px;\nbackground: #f8fafc;\nborder: 1px solid #cbd5e1;\nborder-radius: 8px;\nbox-shadow: 0 2px 6px rgba(0, 32, 91, 0.05);\nflex-wrap: wrap;\n}\n\n.filter-group {\ndisplay: flex;\nalign-items: center;\ngap: 6px;\nflex-wrap: wrap;\n}\n\n.toolbar-label {\nfont-size: 11px;\nfont-weight: 800;\ncolor: #00205b;\nletter-spacing: 0.5px;\ntext-transform: uppercase;\nmargin-right: 4px;\n}\n\n.filter-pill {\nbackground: #ffffff;\nborder: 1.5px solid #cbd5e1;\ncolor: #475569;\npadding: 3px 10px;\nborder-radius: 14px;\nfont-size: 11.5px;\nfont-weight: 700;\ncursor: pointer;\ntransition: all 0.2s ease-in-out;\ndisplay: inline-flex;\nalign-items: center;\ngap: 4px;\n}\n\n.filter-pill:hover {\nborder-color: #0091da;\ncolor: #00205b;\n}\n\n.filter-pill.active {\nbackground: #00205b;\nborder-color: #00205b;\ncolor: #ffffff;\nbox-shadow: 0 2px 6px rgba(0, 32, 91, 0.2);\n}\n\n.filter-pill.pill-neg.active {\nbackground: #b91c1c;\nborder-color: #b91c1c;\ncolor: #ffffff;\n}\n\n.filter-pill.pill-pos.active {\nbackground: #15803d;\nborder-color: #15803d;\ncolor: #ffffff;\n}\n\n.filter-pill.pill-scrap.active {\nbackground: #b45309;\nborder-color: #b45309;\ncolor: #ffffff;\n}\n\n.filter-pill.pill-queue.active {\nbackground: #7e22ce;\nborder-color: #7e22ce;\ncolor: #ffffff;\n}\n\n.search-box-group {\ndisplay: flex;\nalign-items: center;\ngap: 6px;\nbackground: #ffffff;\nborder: 1.5px solid #cbd5e1;\nborder-radius: 14px;\npadding: 2px 10px;\ntransition: all 0.2s ease;\n}\n\n.search-box-group:focus-within {\nborder-color: #0091da;\nbox-shadow: 0 0 0 2px rgba(0, 145, 218, 0.15);\n}\n\n.search-icon {\nfont-size: 11px;\ncolor: #64748b;\n}\n\n.row-search-input {\nborder: none;\noutline: none;\nbackground: transparent;\nfont-size: 11.5px;\nfont-weight: 600;\ncolor: #0f172a;\nwidth: 180px;\n}\n\n/* Bulletproof row hiding class */\n.dt-table-shift tbody tr.row-hidden {\ndisplay: none !important;\n}\n\n\n.filter-pill.pill-stop.active {\n  background: #dc2626;\n  border-color: #dc2626;\n  color: #ffffff;\n  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);\n}\n\n.filter-pill.pill-produce.active {\n  background: #16a34a;\n  border-color: #16a34a;\n  color: #ffffff;\n  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3);\n}\n\n\n.filter-mode-btn {\n  margin-left: 6px;\n  padding: 3px 8px;\n  border-radius: 6px;\n  font-size: 11px;\n  font-weight: 800;\n  cursor: pointer;\n  border: 1.5px solid #00205b;\n  background: #f8fafc;\n  color: #00205b;\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  transition: all 0.2s ease;\n  user-select: none;\n}\n.filter-mode-btn:hover {\n  background: #00205b;\n  color: #ffffff;\n}\n.filter-mode-btn .mode-val {\n  background: #00205b;\n  color: #ffffff;\n  padding: 1px 5px;\n  border-radius: 4px;\n  font-size: 10px;\n}\n.filter-mode-btn:hover .mode-val {\n  background: #ffffff;\n  color: #00205b;\n}\n.row-count-badge {\n  font-size: 11px;\n  font-weight: 700;\n  color: #475569;\n  background: #e2e8f0;\n  padding: 4px 8px;\n  border-radius: 12px;\n  border: 1px solid #cbd5e1;\n  white-space: nowrap;\n  margin-left: 6px;\n}\n\n\n/* Bulletproof multi-select pill styles */\n.fp-pill {\n  cursor: pointer !important;\n  user-select: none !important;\n  display: inline-flex !important;\n  align-items: center !important;\n  padding: 4px 10px !important;\n  border-radius: 20px !important;\n  font-size: 11px !important;\n  font-weight: 700 !important;\n  border: 1px solid #cbd5e1 !important;\n  background: #ffffff !important;\n  color: #475569 !important;\n  transition: all 0.2s ease !important;\n}\n.fp-pill:hover {\n  border-color: #00205b !important;\n  color: #00205b !important;\n}\n.fp-pill.active {\n  background: #00205b !important;\n  border-color: #00205b !important;\n  color: #ffffff !important;\n}\n.fp-pill.pill-stop.active {\n  background: #dc2626 !important;\n  border-color: #dc2626 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3) !important;\n}\n.fp-pill.pill-produce.active {\n  background: #16a34a !important;\n  border-color: #16a34a !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3) !important;\n}\n.fp-pill.pill-planned.active {\n  background: #0284c7 !important;\n  border-color: #0284c7 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3) !important;\n}\n.fp-pill.pill-neg.active {\n  background: #e11d48 !important;\n  border-color: #e11d48 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.3) !important;\n}\n.fp-pill.pill-del-neg.active {\n  background: #9333ea !important;\n  border-color: #9333ea !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(147, 51, 234, 0.3) !important;\n}\n.fp-pill.pill-queue.active {\n  background: #d97706 !important;\n  border-color: #d97706 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.3) !important;\n}\n.filter-mode-btn {\n  margin-left: 6px !important;\n  padding: 3px 8px !important;\n  border-radius: 6px !important;\n  font-size: 11px !important;\n  font-weight: 800 !important;\n  cursor: pointer !important;\n  border: 1.5px solid #00205b !important;\n  background: #f8fafc !important;\n  color: #00205b !important;\n  display: inline-flex !important;\n  align-items: center !important;\n  gap: 4px !important;\n  transition: all 0.2s ease !important;\n  user-select: none !important;\n}\n.filter-mode-btn:hover {\n  background: #00205b !important;\n  color: #ffffff !important;\n}\n.filter-mode-btn .mode-val {\n  background: #00205b !important;\n  color: #ffffff !important;\n  padding: 1px 5px !important;\n  border-radius: 4px !important;\n  font-size: 10px !important;\n}\n.filter-mode-btn:hover .mode-val {\n  background: #ffffff !important;\n  color: #00205b !important;\n}\n.row-count-badge {\n  font-size: 11px !important;\n  font-weight: 700 !important;\n  color: #475569 !important;\n  background: #e2e8f0 !important;\n  padding: 4px 8px !important;\n  border-radius: 12px !important;\n  border: 1px solid #cbd5e1 !important;\n  white-space: nowrap !important;\n  margin-left: 6px !important;\n}\n\n\n.shift-pill-group {\n  margin-right: 14px !important;\n  padding-right: 14px !important;\n  border-right: 1px solid #e2e8f0 !important;\n}\n.fp-pill.shift-pill.active {\n  background: #0284c7 !important;\n  border-color: #0284c7 !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35) !important;\n}\n.fp-pill.shift-pill[data-shift=\"all\"].active {\n  background: #00205b !important;\n  border-color: #00205b !important;\n  color: #ffffff !important;\n  box-shadow: 0 2px 6px rgba(0, 32, 91, 0.3) !important;\n}\n\n</style>\n\n<div class=\"dt-container-shift\">\n<div class=\"row-filter-toolbar\">\n<div class=\"filter-group shift-pill-group\">\n<span class=\"toolbar-label\">⏱️ SHIFTS:</span>\n<span class=\"fp-pill shift-pill active\" data-shift=\"all\">All Shifts</span>\n<span class=\"fp-pill shift-pill\" data-shift=\"1\">Shift 1</span>\n<span class=\"fp-pill shift-pill\" data-shift=\"2\">Shift 2</span>\n<span class=\"fp-pill shift-pill\" data-shift=\"3\">Shift 3</span>\n</div>\n<div class=\"filter-group\">\n<span class=\"toolbar-label\">🎯 FILTER DELTAS:</span>\n<span class=\"fp-pill active\" data-filter=\"all\">All Rows</span>\n<span class=\"fp-pill pill-stop\" data-filter=\"stop\">🛑 STOP</span>\n<span class=\"fp-pill pill-produce\" data-filter=\"produce\">▶️ PRODUCE</span>\n<span class=\"fp-pill pill-planned\" data-filter=\"planned\">📋 Planned Only (&gt; 0 Plan)</span>\n<span class=\"fp-pill pill-neg\" data-filter=\"cur-neg\">🔴 Δ Curing Deficits (&lt; 0)</span>\n<span class=\"fp-pill pill-del-neg\" data-filter=\"del-neg\">🔴 Δ Delivery Deficits (&lt; 0)</span>\n<span class=\"fp-pill pill-queue\" data-filter=\"insp-queue\">⏳ Insp Queue (&gt; 0)</span>\n</div>\n<div class=\"search-box-group\">\n<span class=\"search-icon\">🔍</span>\n<input type=\"text\" class=\"row-search-input\" placeholder=\"Search green cover, shortcode, description...\" />\n<span class=\"row-count-badge\"></span>\n</div>\n</div>\n<div class=\"table-wrapper\">\n<table class=\"dt-table-shift\">\n<thead>\n<tr data-alert=\"{{lookup this 'Delivery Alert'}}\" class=\"super-row\">\n<th colspan=\"7\" class=\"super-header super-spec\">Product Specifications</th>\n<th colspan=\"1\" class=\"super-header super-plan\">Shift Target</th>\n<th colspan=\"5\" class=\"super-header super-curing\">Shift Curing Performance</th>\n<th colspan=\"4\" class=\"super-header super-delivery\">Shift Delivery & Logistics</th>\n<th colspan=\"2\" class=\"super-header super-status\">Operational Status</th>\n</tr>\n<tr>\n<th class=\"sub-header\">Green Cover</th>\n<th class=\"sub-header\">IP Code</th>\n<th class=\"sub-header\">Short Code</th>\n<th class=\"sub-header\">Description</th>\n<th class=\"sub-header\">Size</th>\n<th class=\"sub-header\">Tread</th>\n<th class=\"sub-header center\">Uniformity</th>\n<th class=\"sub-header num\">Shift Target</th>\n<th class=\"sub-header num\">Shift Curing</th>\n<th class=\"sub-header num\">Δ Shift Curing</th>\n<th class=\"sub-header num\">Shift Curing CI</th>\n<th class=\"sub-header num\">Shift Scrap</th>\n<th class=\"sub-header num\">Shift Net Cured</th>\n<th class=\"sub-header num\">Shift Delivery</th>\n<th class=\"sub-header num\">Δ Shift Delivery</th>\n<th class=\"sub-header num\">Shift Delivery CI</th>\n<th class=\"sub-header num\">Inspection Queue</th>\n<th class=\"sub-header center\">Delivery Alert</th>\n<th class=\"sub-header center\">In Curing</th>\n</tr>\n</thead>\n<tbody>\n{{#each data}}\n<tr data-alert=\"{{lookup this 'Delivery Alert'}}\" data-target=\"{{lookup this 'Shift Target'}}\" data-plan=\"{{lookup this 'Shift Target'}}\" data-curing=\"{{lookup this 'Shift Curing'}}\" data-delta-curing=\"{{lookup this 'Δ Shift Curing'}}\" data-scrap=\"{{lookup this 'Shift Scrap'}}\" data-net=\"{{lookup this 'Shift Net Cured'}}\" data-delivery=\"{{lookup this 'Shift Delivery'}}\" data-delta-del=\"{{lookup this 'Δ Shift Delivery'}}\" data-queue=\"{{lookup this 'Inspection Queue'}}\" data-month-plan=\"{{lookup this 'Month Plan'}}\" data-day-plan=\"{{lookup this 'day_plan'}}\" data-day-del=\"{{lookup this 'day_del'}}\" data-cured-s1=\"{{lookup this 'cured_s1'}}\" data-cured-s2=\"{{lookup this 'cured_s2'}}\" data-cured-s3=\"{{lookup this 'cured_s3'}}\" data-scrap-s1=\"{{lookup this 'scrap_s1'}}\" data-scrap-s2=\"{{lookup this 'scrap_s2'}}\" data-scrap-s3=\"{{lookup this 'scrap_s3'}}\">\n<td class=\"green-cover\">{{lookup this \"Green Cover\"}}</td>\n<td class=\"ip-code\">{{lookup this \"IP Code\"}}</td>\n<td><span class=\"pill pill-shortcode\">{{lookup this \"Short Code\"}}</span></td>\n<td class=\"desc-text\" title=\"{{lookup this 'Description'}}\">{{lookup this \"Description\"}}</td>\n<td>{{lookup this \"Size\"}}</td>\n<td><span class=\"pill pill-tread\">{{lookup this \"Tread\"}}</span></td>\n<td class=\"center\">{{lookup this \"Uniformity\"}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Shift Target\") 0)}}<span class=\"val-plan\">{{lookup this \"Shift Target\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Shift Curing\") 0)}}<span class=\"val-curing\">{{lookup this \"Shift Curing\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Δ Shift Curing\") 0)}}<span class=\"delta-pill delta-pos\">+{{lookup this \"Δ Shift Curing\"}}</span>{{else}}{{#if (lt (lookup this \"Δ Shift Curing\") 0)}}<span class=\"delta-pill delta-neg\">{{lookup this \"Δ Shift Curing\"}}</span>{{else}}<span class=\"delta-pill delta-zero\">0</span>{{/if}}{{/if}}</td>\n<td class=\"num\" style=\"font-weight: 800; color: #0284c7;\">{{lookup this \"Shift Curing CI\"}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Shift Scrap\") 0)}}<span class=\"scrap-warn\">{{lookup this \"Shift Scrap\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Shift Net Cured\") 0)}}<span class=\"val-active\">{{lookup this \"Shift Net Cured\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Shift Delivery\") 0)}}<span class=\"val-delivery\">{{lookup this \"Shift Delivery\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Δ Shift Delivery\") 0)}}<span class=\"delta-pill delta-pos\">+{{lookup this \"Δ Shift Delivery\"}}</span>{{else}}{{#if (lt (lookup this \"Δ Shift Delivery\") 0)}}<span class=\"delta-pill delta-neg\">{{lookup this \"Δ Shift Delivery\"}}</span>{{else}}<span class=\"delta-pill delta-zero\">0</span>{{/if}}{{/if}}</td>\n<td class=\"num\" style=\"font-weight: 800; color: #15803d;\">{{lookup this \"Shift Delivery CI\"}}</td>\n<td class=\"num\">{{#if (gt (lookup this \"Inspection Queue\") 0)}}<span class=\"val-queue\">{{lookup this \"Inspection Queue\"}}</span>{{else}}<span class=\"val-zero\">0</span>{{/if}}</td>\n<td class=\"center\">\n{{#if (eq (lookup this \"Delivery Alert\") \"STOP\")}}\n<span class=\"alert-stop\">STOP</span>\n{{else}}\n<span class=\"alert-produce\">PRODUCE</span>\n{{/if}}\n</td>\n<td class=\"center\">\n{{#if (or (eq (lookup this \"In Curing\") \"TRUE\") (eq (lookup this \"In Curing\") \"True\") (eq (lookup this \"In Curing\") true))}}\n<span class=\"pill pill-true\"><span class=\"led-dot led-active\"></span>TRUE</span>\n{{else}}\n<span class=\"pill pill-false\"><span class=\"led-dot led-inactive\"></span>FALSE</span>\n{{/if}}\n</td>\n</tr>\n{{/each}}\n</tbody>\n<tfoot>\n<tr class=\"total-row\">\n<td colspan=\"7\" class=\"total-label\">TOTAL</td>\n<td class=\"num total-val tot-plan tot-target\" style=\"color: #6366f1 !important;\">{{formatSum (sumField data \"Shift Target\")}}</td>\n<td class=\"num total-val val-curing tot-curing\" style=\"color: #38bdf8 !important;\">{{formatSum (sumField data \"Shift Curing\")}}</td>\n<td class=\"num total-val center tot-delta-curing\">{{renderDeltaSum data \"Δ Shift Curing\"}}</td>\n<td class=\"num total-val center tot-ci-curing\">-</td>\n<td class=\"num total-val tot-scrap\" style=\"color: #fbbf24 !important;\">{{formatSum (sumField data \"Shift Scrap\")}}</td>\n<td class=\"num total-val val-active tot-net\" style=\"color: #4ade80 !important;\">{{formatSum (sumField data \"Shift Net Cured\")}}</td>\n<td class=\"num total-val val-delivery tot-del\" style=\"color: #34d399 !important;\">{{formatSum (sumField data \"Shift Delivery\")}}</td>\n<td class=\"num total-val center tot-delta-del\">{{renderDeltaSum data \"Δ Shift Delivery\"}}</td>\n<td class=\"num total-val center tot-ci-del\">-</td>\n<td class=\"num total-val val-queue tot-queue\" style=\"color: #c084fc !important;\">{{formatSum (sumField data \"Inspection Queue\")}}</td>\n<td class=\"center total-val\">-</td>\n<td class=\"center total-val\">-</td>\n</tr>\n</tfoot>\n</table>\n</div>\n</div>",
+          "defaultContent": "The query didn't return any results for the selected day and shift.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "handlebars.registerHelper('sumField', function(data, fieldName) {\n  if (!Array.isArray(data)) return 0;\n  return data.reduce(function(acc, row) {\n    var val = parseFloat(row[fieldName]);\n    return acc + (isNaN(val) ? 0 : val);\n  }, 0);\n});\n\nhandlebars.registerHelper('formatSum', function(val) {\n  if (isNaN(val) || val === 0) return '0';\n  return Math.round(val).toLocaleString();\n});\n\nhandlebars.registerHelper('sumPositive', function(data, fieldName) {\n  if (!Array.isArray(data)) return 0;\n  return data.reduce(function(acc, row) {\n    var val = parseFloat(row[fieldName]);\n    return acc + (!isNaN(val) && val > 0 ? val : 0);\n  }, 0);\n});\n\nhandlebars.registerHelper('sumNegative', function(data, fieldName) {\n  if (!Array.isArray(data)) return 0;\n  return data.reduce(function(acc, row) {\n    var val = parseFloat(row[fieldName]);\n    return acc + (!isNaN(val) && val < 0 ? val : 0);\n  }, 0);\n});\n\nhandlebars.registerHelper('renderDeltaSum', function(data, fieldName) {\n  if (!Array.isArray(data)) return '-';\n  var pos = 0, neg = 0;\n  data.forEach(function(row) {\n    var val = parseFloat(row[fieldName]);\n    if (!isNaN(val)) {\n      if (val > 0) pos += val;\n      if (val < 0) neg += val;\n    }\n  });\n  if (pos === 0 && neg === 0) {\n    return new handlebars.SafeString('<span class=\"delta-pill delta-zero\">0</span>');\n  }\n  var html = '<div style=\"display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: nowrap;\">';\n  if (pos > 0) {\n    html += '<span class=\"delta-pill delta-pos\">+' + Math.round(pos).toLocaleString() + '</span>';\n  }\n  if (neg < 0) {\n    html += '<span class=\"delta-pill delta-neg\">' + Math.round(neg).toLocaleString() + '</span>';\n  }\n  html += '</div>';\n  return new handlebars.SafeString(html);\n});",
+          "renderMode": "allRows",
+          "styles": "",
+          "wrap": true
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "\nSELECT \n    COALESCE(\"p\".\"green_cover\", '-') AS \"Green Cover\",\n    \"p\".\"IP5\" AS \"IP Code\",\n    COALESCE(\"M\".\"MAT_CODE\", \"p\".\"IP5\") AS \"Short Code\",\n    COALESCE(\"p\".\"description\", '-') AS \"Description\",\n    COALESCE(NULLIF(NULLIF(\"i\".\"SIZE_SUB_FAMILY\", ''), '-'), \"sz\".\"Size\", '-') AS \"Size\",\n    COALESCE(\"pat\".\"Pattern\", '-') AS \"Tread\",\n    COALESCE(NULLIF(\"p\".\"uniformity\", '0'), '-') AS \"Uniformity\",\n    ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS \"Month Plan\",\n    CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) AS \"day_plan\",\n    CAST(ROUND(COALESCE(\"d\".\"delivered_qty\", 0)) AS INT) AS \"day_del\",\n    CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) AS \"month_plan\",\n    COALESCE(\"c\".\"cured_s1\", 0) AS \"cured_s1\",\n    COALESCE(\"c\".\"cured_s2\", 0) AS \"cured_s2\",\n    COALESCE(\"c\".\"cured_s3\", 0) AS \"cured_s3\",\n    COALESCE(\"s\".\"scrap_s1\", 0) AS \"scrap_s1\",\n    COALESCE(\"s\".\"scrap_s2\", 0) AS \"scrap_s2\",\n    COALESCE(\"s\".\"scrap_s3\", 0) AS \"scrap_s3\",\n    CASE WHEN '${shift}' = 'All' THEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) ELSE CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0) / 3.0) AS INT) END AS \"Shift Target\",\n    COALESCE(\"c\".\"cured_qty\", 0) AS \"Shift Curing\",\n    COALESCE(\"c\".\"cured_qty\", 0) - (CASE WHEN '${shift}' = 'All' THEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) ELSE CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0) / 3.0) AS INT) END) AS \"Δ Shift Curing\",\n    CASE \n        WHEN (CASE WHEN '${shift}' = 'All' THEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) ELSE CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0) / 3.0) AS INT) END) > 0 \n        THEN CONCAT(CAST(ROUND(LEAST(1.0, CAST(GREATEST(0, COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) AS DOUBLE) / (CASE WHEN '${shift}' = 'All' THEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) ELSE CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0) / 3.0) AS INT) END)) * 100.0, 1) AS VARCHAR), '%')\n        ELSE '-' \n    END AS \"Shift Curing CI\",\n    COALESCE(\"s\".\"scrap_qty\", 0) AS \"Shift Scrap\",\n    COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0) AS \"Shift Net Cured\",\n    (CASE WHEN '${shift}' = 'All' THEN COALESCE(\"d\".\"delivered_qty\", 0) ELSE CAST(ROUND(COALESCE(\"d\".\"delivered_qty\", 0) / 3.0) AS INT) END) AS \"Shift Delivery\",\n    (CASE WHEN '${shift}' = 'All' THEN COALESCE(\"d\".\"delivered_qty\", 0) ELSE CAST(ROUND(COALESCE(\"d\".\"delivered_qty\", 0) / 3.0) AS INT) END) - (CASE WHEN '${shift}' = 'All' THEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) ELSE CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0) / 3.0) AS INT) END) AS \"Δ Shift Delivery\",\n    CASE \n        WHEN (CASE WHEN '${shift}' = 'All' THEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) ELSE CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0) / 3.0) AS INT) END) > 0 \n        THEN CONCAT(CAST(ROUND(LEAST(1.0, CAST((CASE WHEN '${shift}' = 'All' THEN COALESCE(\"d\".\"delivered_qty\", 0) ELSE CAST(ROUND(COALESCE(\"d\".\"delivered_qty\", 0) / 3.0) AS INT) END) AS DOUBLE) / (CASE WHEN '${shift}' = 'All' THEN CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) ELSE CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0) / 3.0) AS INT) END)) * 100.0, 1) AS VARCHAR), '%')\n        ELSE '-' \n    END AS \"Shift Delivery CI\",\n    GREATEST(0, (COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) - (CASE WHEN '${shift}' = 'All' THEN COALESCE(\"d\".\"delivered_qty\", 0) ELSE CAST(ROUND(COALESCE(\"d\".\"delivered_qty\", 0) / 3.0) AS INT) END)) AS \"Inspection Queue\",\n    CASE WHEN COALESCE(\"d\".\"delivered_qty\", 0) >= CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) AND CAST(ROUND(COALESCE(\"p\".\"total_month_plan\", 0)) AS INT) > 0 THEN 'STOP' ELSE 'PRODUCE' END AS \"Delivery Alert\",\n    COALESCE(\"sch\".\"in_curing\", 'FALSE') AS \"In Curing\"\nFROM (\n    SELECT \n        \"all_ip\".\"IP5\",\n        MAX(\"pt\".\"green_cover\") AS \"green_cover\",\n        MAX(\"pt\".\"Description\") AS \"description\",\n        MAX(\"pt\".\"Uniformity\") AS \"uniformity\",\n        SUM(\n          COALESCE(\"pt\".\"Day1\", 0) + COALESCE(\"pt\".\"Day2\", 0) + COALESCE(\"pt\".\"Day3\", 0) + COALESCE(\"pt\".\"Day4\", 0) + COALESCE(\"pt\".\"Day5\", 0) +\n          COALESCE(\"pt\".\"Day6\", 0) + COALESCE(\"pt\".\"Day7\", 0) + COALESCE(\"pt\".\"Day8\", 0) + COALESCE(\"pt\".\"Day9\", 0) + COALESCE(\"pt\".\"Day10\", 0) +\n          COALESCE(\"pt\".\"Day11\", 0) + COALESCE(\"pt\".\"Day12\", 0) + COALESCE(\"pt\".\"Day13\", 0) + COALESCE(\"pt\".\"Day14\", 0) + COALESCE(\"pt\".\"Day15\", 0) +\n          COALESCE(\"pt\".\"Day16\", 0) + COALESCE(\"pt\".\"Day17\", 0) + COALESCE(\"pt\".\"Day18\", 0) + COALESCE(\"pt\".\"Day19\", 0) + COALESCE(\"pt\".\"Day20\", 0) +\n          COALESCE(\"pt\".\"Day21\", 0) + COALESCE(\"pt\".\"Day22\", 0) + COALESCE(\"pt\".\"Day23\", 0) + COALESCE(\"pt\".\"Day24\", 0) + COALESCE(\"pt\".\"Day25\", 0) +\n          COALESCE(\"pt\".\"Day26\", 0) + COALESCE(\"pt\".\"Day27\", 0) + COALESCE(\"pt\".\"Day28\", 0) + COALESCE(\"pt\".\"Day29\", 0) + COALESCE(\"pt\".\"Day30\", 0) + COALESCE(\"pt\".\"Day31\", 0)\n        ) AS \"total_month_plan\",\n        SUM(\n          CASE CAST('${day}' AS INT)\n            WHEN 1 THEN COALESCE(\"pt\".\"Day1\", 0) WHEN 2 THEN COALESCE(\"pt\".\"Day2\", 0) WHEN 3 THEN COALESCE(\"pt\".\"Day3\", 0) WHEN 4 THEN COALESCE(\"pt\".\"Day4\", 0) WHEN 5 THEN COALESCE(\"pt\".\"Day5\", 0)\n            WHEN 6 THEN COALESCE(\"pt\".\"Day6\", 0) WHEN 7 THEN COALESCE(\"pt\".\"Day7\", 0) WHEN 8 THEN COALESCE(\"pt\".\"Day8\", 0) WHEN 9 THEN COALESCE(\"pt\".\"Day9\", 0) WHEN 10 THEN COALESCE(\"pt\".\"Day10\", 0)\n            WHEN 11 THEN COALESCE(\"pt\".\"Day11\", 0) WHEN 12 THEN COALESCE(\"pt\".\"Day12\", 0) WHEN 13 THEN COALESCE(\"pt\".\"Day13\", 0) WHEN 14 THEN COALESCE(\"pt\".\"Day14\", 0) WHEN 15 THEN COALESCE(\"pt\".\"Day15\", 0)\n            WHEN 16 THEN COALESCE(\"pt\".\"Day16\", 0) WHEN 17 THEN COALESCE(\"pt\".\"Day17\", 0) WHEN 18 THEN COALESCE(\"pt\".\"Day18\", 0) WHEN 19 THEN COALESCE(\"pt\".\"Day19\", 0) WHEN 20 THEN COALESCE(\"pt\".\"Day20\", 0)\n            WHEN 21 THEN COALESCE(\"pt\".\"Day21\", 0) WHEN 22 THEN COALESCE(\"pt\".\"Day22\", 0) WHEN 23 THEN COALESCE(\"pt\".\"Day23\", 0) WHEN 24 THEN COALESCE(\"pt\".\"Day24\", 0) WHEN 25 THEN COALESCE(\"pt\".\"Day25\", 0)\n            WHEN 26 THEN COALESCE(\"pt\".\"Day26\", 0) WHEN 27 THEN COALESCE(\"pt\".\"Day27\", 0) WHEN 28 THEN COALESCE(\"pt\".\"Day28\", 0) WHEN 29 THEN COALESCE(\"pt\".\"Day29\", 0) WHEN 30 THEN COALESCE(\"pt\".\"Day30\", 0)\n            WHEN 31 THEN COALESCE(\"pt\".\"Day31\", 0)\n            ELSE 0\n          END\n        ) AS \"plan_qty\"\n    FROM (\n        SELECT DISTINCT SUBSTRING(CAST(CAST(\"IP_code\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\n        WHERE \"month\" = CAST('${month}' AS INT) AND \"IP_code\" IS NOT NULL\n        UNION\n        SELECT DISTINCT SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n        JOIN (\n            SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n            UNION ALL\n            SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n        ) T ON D.DDC_BARCODE = T.BC\n        JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n        WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n          AND D.DDC_START_CYCLE >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          AND D.DDC_START_CYCLE <  (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP) + INTERVAL '1' DAY)\n          AND M2.MAT_IP_CODE IS NOT NULL\n    ) \"all_ip\"\n    LEFT JOIN \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\" \"pt\"\n        ON \"all_ip\".\"IP5\" = CAST(\"pt\".\"IP5\" AS VARCHAR)\n       AND \"pt\".\"month\" = CAST('${month}' AS INT)\n    GROUP BY \"all_ip\".\"IP5\"\n) \"p\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        MIN(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR)) AS \"IP_CODE\",\n        MAX(\"DESC\") AS \"DESC\",\n        MAX(\"TIER\") AS \"TIER\",\n        MAX(\"BRAND\") AS \"BRAND\",\n        MAX(\"SIZE_SUB_FAMILY\") AS \"SIZE_SUB_FAMILY\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"INFO_TIER\"\n    WHERE \"IP_CODE\" IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"i\" ON \"p\".\"IP5\" = \"i\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        MAX(\"Size\") AS \"Size\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\n    WHERE \"Size\" IS NOT NULL AND \"Size\" <> ''\n    GROUP BY SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"sz\" ON \"p\".\"IP5\" = \"sz\".\"IP5\"\nLEFT JOIN (\n    SELECT \"IP5\", \"MAT_CODE\"\n    FROM (\n        SELECT \n            SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n            CAST(\"MAT_CODE\" AS VARCHAR) AS \"MAT_CODE\",\n            ROW_NUMBER() OVER (\n                PARTITION BY SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) \n                ORDER BY \"MAT_IMPORT_TIMESTAMP\" DESC, \"MAT_CODE\" DESC\n            ) AS rn\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\n        WHERE \"MAT_IP_CODE\" IS NOT NULL AND \"MAT_CODE\" IS NOT NULL AND \"MAT_CODE\" <> ''\n    ) m_ranked\n    WHERE rn = 1\n) \"M\" ON \"p\".\"IP5\" = \"M\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        MAX(\"Pattern\") AS \"Pattern\",\n        MAX(\"Size\") AS \"Size\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\n    WHERE \"Pattern\" IS NOT NULL AND \"Pattern\" <> ''\n    GROUP BY SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"pat\" ON \"p\".\"IP5\" = \"pat\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        'TRUE' AS \"in_curing\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"SCH_MACHINE_PLAN\" S\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n        ON S.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE S.PP_CODE = 'CU1'\n      AND M2.MAT_IP_CODE IS NOT NULL\n      AND S.MPN_START_DATETIME >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n      AND S.MPN_START_DATETIME <  (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP) + INTERVAL '1' DAY)\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n) \"sch\" ON \"p\".\"IP5\" = \"sch\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        \"all_c\".\"IP5\",\n        SUM(\"all_c\".\"cured_s1\") AS cured_s1,\n        SUM(\"all_c\".\"cured_s2\") AS cured_s2,\n        SUM(\"all_c\".\"cured_s3\") AS cured_s3,\n        SUM(\"all_c\".\"cured_s1\" + \"all_c\".\"cured_s2\" + \"all_c\".\"cured_s3\") AS cured_qty\n    FROM (\n        SELECT \n            SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n            COUNT(DISTINCT CASE WHEN EXTRACT(HOUR FROM D.DDC_START_CYCLE) >= 0 AND EXTRACT(HOUR FROM D.DDC_START_CYCLE) < 8 THEN D.DDC_BARCODE END) AS cured_s1,\n            COUNT(DISTINCT CASE WHEN EXTRACT(HOUR FROM D.DDC_START_CYCLE) >= 8 AND EXTRACT(HOUR FROM D.DDC_START_CYCLE) < 16 THEN D.DDC_BARCODE END) AS cured_s2,\n            COUNT(DISTINCT CASE WHEN EXTRACT(HOUR FROM D.DDC_START_CYCLE) >= 16 AND EXTRACT(HOUR FROM D.DDC_START_CYCLE) < 24 THEN D.DDC_BARCODE END) AS cured_s3\n        FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n        JOIN (\n            SELECT TRC_BARCODE AS BC, MAT_SAP_CODE\n            FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\"\n            WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n            UNION ALL\n            SELECT TRC_ID AS BC, MAT_SAP_CODE\n            FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\"\n            WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n        ) T ON D.DDC_BARCODE = T.BC\n        JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n            ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n        WHERE D.DDC_BARCODE IS NOT NULL\n          AND D.DDC_BARCODE NOT IN ('-', '0')\n          AND D.DDC_START_CYCLE >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n          AND D.DDC_START_CYCLE <  (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP) + INTERVAL '1' DAY)\n          AND M2.MAT_IP_CODE IS NOT NULL\n        GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n\n        UNION ALL\n\n        SELECT \n            \"adj\".\"IP5\",\n            0 AS cured_s1,\n            \"adj\".\"adj_qty\" AS cured_s2,\n            0 AS cured_s3\n        FROM (\n            VALUES \n            ('60476', 8),\n            ('31037', 6),\n            ('37528', 6),\n            ('23914', 5),\n            ('38648', 5),\n            ('60704', 5),\n            ('36205', 4),\n            ('37490', 4),\n            ('37537', 4),\n            ('39370', 4),\n            ('60331', 4),\n            ('19132', 3),\n            ('38647', 3),\n            ('60042', 3),\n            ('61099', 3),\n            ('31010', 2),\n            ('32659', 2),\n            ('35352', 2),\n            ('36091', 2),\n            ('36204', 2),\n            ('36550', 2),\n            ('36592', 2),\n            ('37449', 2),\n            ('37516', 2),\n            ('37523', 2),\n            ('37524', 2),\n            ('37526', 2),\n            ('38372', 2),\n            ('60099', 2),\n            ('60415', 2),\n            ('60328', 2),\n            ('60346', 2),\n            ('60536', 2),\n            ('60636', 2),\n            ('61285', 2),\n            ('61332', 2),\n            ('61316', 2),\n            ('36433', 1),\n            ('36435', 1),\n            ('36549', 1),\n            ('37489', 1),\n            ('37802', 1),\n            ('38922', 1),\n            ('38934', 1),\n            ('39964', 1),\n            ('41169', 1),\n            ('60329', 1),\n            ('60412', 1),\n            ('60413', 1),\n            ('60519', 1),\n            ('60502', 1),\n            ('60503', 1),\n            ('61280', 1),\n            ('61326', 1),\n            ('61333', 1),\n            ('61329', 1),\n            ('60872', 1),\n            ('60874', 1),\n            ('61159', 1),\n            ('61161', 1),\n            ('61162', 1),\n            ('61163', 1)\n        ) AS \"adj\"(\"IP5\", \"adj_qty\")\n        WHERE CAST('${year}' AS INT) = 2026 AND CAST('${month}' AS INT) = 9 AND CAST('${day}' AS INT) = 7\n    ) \"all_c\"\n    GROUP BY \"all_c\".\"IP5\"\n) \"c\" ON \"p\".\"IP5\" = \"c\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        SUM(\"QuantityTire\") AS \"delivered_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\n    WHERE \"ProductionDate\" >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP)\n      AND \"ProductionDate\" <  (CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-' || LPAD(CAST('${day}' AS VARCHAR), 2, '0') || ' 00:00:00' AS TIMESTAMP) + INTERVAL '1' DAY)\n    GROUP BY SUBSTRING(CAST(CAST(\"IPCode\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"d\" ON \"p\".\"IP5\" = \"d\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT CASE WHEN CAST(\"F2\".\"FDD_SHF_CODE\" AS VARCHAR) = '1' THEN \"F2\".\"FDD_BARCODE\" END) AS \"scrap_s1\",\n        COUNT(DISTINCT CASE WHEN CAST(\"F2\".\"FDD_SHF_CODE\" AS VARCHAR) = '2' THEN \"F2\".\"FDD_BARCODE\" END) AS \"scrap_s2\",\n        COUNT(DISTINCT CASE WHEN CAST(\"F2\".\"FDD_SHF_CODE\" AS VARCHAR) = '3' THEN \"F2\".\"FDD_BARCODE\" END) AS \"scrap_s3\",\n        COUNT(DISTINCT \"F2\".\"FDD_BARCODE\") AS \"scrap_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"FIN_DEFECTS_DECLARED\" \"F2\"\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n        ON \"F2\".\"MAT_SAP_CODE\" = M2.\"MAT_SAP_CODE\"\n    WHERE \"F2\".\"FDD_ACTIVE\" = 'T'\n      AND \"F2\".\"FDS_SEVERITY\" = 'SC'\n      AND CAST(\"F2\".\"CLA_CODE\" AS VARCHAR) = '00'\n      AND \"F2\".\"FDD_TIME_STAMP\" >= CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP) + INTERVAL '${day}' DAY\n      AND \"F2\".\"FDD_TIME_STAMP\" < CAST(CAST('${year}' AS VARCHAR) || '-' || LPAD(CAST('${month}' AS VARCHAR), 2, '0') || '-01 00:00:00' AS TIMESTAMP) + INTERVAL '${day}' DAY + INTERVAL '1' DAY\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n) \"s\" ON \"p\".\"IP5\" = \"s\".\"IP5\"\nWHERE (COALESCE(\"p\".\"total_month_plan\", 0) > 0 OR COALESCE(\"c\".\"cured_qty\", 0) > 0)\n  AND ('${shortcode:csv}' = 'All' OR 'All' IN (${shortcode:singlequote}) OR COALESCE(\"M\".\"MAT_CODE\", \"p\".\"IP5\") IN (${shortcode:singlequote}))\nORDER BY \"Green Cover\" asc\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Daily Mix - Single-Day Shift Performance Monitor (Day ${day} | ${shift})",
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 62
+        },
+        "id": 4,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Day1"
+            }
+          ]
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    \"IP_code\" AS \"IP Code\",\r\n    \"IP5\" AS \"Short Code\",\r\n    \"Description\",\r\n    \"green_cover\" AS \"Green Cover\",\r\n    \"month\" AS \"Month\",\r\n    \"Day1\", \"Day2\", \"Day3\", \"Day4\", \"Day5\", \"Day6\", \"Day7\", \"Day8\", \"Day9\", \"Day10\",\r\n    \"Day11\", \"Day12\", \"Day13\", \"Day14\", \"Day15\", \"Day16\", \"Day17\", \"Day18\", \"Day19\", \"Day20\",\r\n    \"Day21\", \"Day22\", \"Day23\", \"Day24\", \"Day25\", \"Day26\", \"Day27\", \"Day28\", \"Day29\", \"Day30\", \"Day31\"\r\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\r\nORDER BY \"IP_code\";\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Panel Title",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 62
+        },
+        "id": 6,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Day1"
+            }
+          ]
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "\r\nSELECT *\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\";\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Panel Title",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Description"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 381
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 24,
+          "x": 0,
+          "y": 70
+        },
+        "id": 2,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Curing"
+            }
+          ]
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \n    \"p\".\"IP5\" AS \"IP Code\",\n    COALESCE(\"M\".\"MAT_CODE\", \"p\".\"IP5\") AS \"Short Code\",\n    COALESCE(\"p\".\"description\", \"i\".\"DESC\", '-') AS \"Description\",\n    COALESCE(\"i\".\"TIER\", '-') AS \"Tier\",\n    COALESCE(\"i\".\"BRAND\", '-') AS \"Brand\",\n    CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) AS \"Plan\",\n    COALESCE(\"c\".\"cured_qty\", 0) AS \"Curing\",\n    COALESCE(\"c\".\"cured_qty\", 0) - CAST(ROUND(COALESCE(\"p\".\"plan_qty\", 0)) AS INT) AS \"Δ Curing\"\nFROM (\n    SELECT \n        \"all_ip\".\"IP5\",\n        MAX(\"pt\".\"Description\") AS \"description\",\n        SUM(COALESCE(\"pt\".\"Day1\", 0)) AS \"plan_qty\"\n    FROM (\n        SELECT DISTINCT SUBSTRING(CAST(CAST(\"IP_code\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\n        WHERE \"month\" = CAST('${month}' AS INT) AND \"IP_code\" IS NOT NULL\n        UNION\n        SELECT DISTINCT SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n        FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n        JOIN (\n            SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n            UNION ALL\n            SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n        ) T ON D.DDC_BARCODE = T.BC\n        JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n        WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n          AND EXTRACT(MONTH FROM D.DDC_START_CYCLE) = CAST('${month}' AS INT)\n          AND EXTRACT(YEAR FROM D.DDC_START_CYCLE) = CAST('${year}' AS INT)\n          AND M2.MAT_IP_CODE IS NOT NULL\n    ) \"all_ip\"\n    LEFT JOIN \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\" \"pt\"\n        ON \"all_ip\".\"IP5\" = CAST(\"pt\".\"IP5\" AS VARCHAR)\n       AND \"pt\".\"month\" = CAST('${month}' AS INT)\n    GROUP BY \"all_ip\".\"IP5\"\n) \"p\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        MAX(\"DESC\") AS \"DESC\", MAX(\"TIER\") AS \"TIER\", MAX(\"BRAND\") AS \"BRAND\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"INFO_TIER\"\n    WHERE \"IP_CODE\" IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5)\n) \"i\" ON \"p\".\"IP5\" = \"i\".\"IP5\"\nLEFT JOIN (\n    SELECT \"IP5\", \"MAT_CODE\"\n    FROM (\n        SELECT \n            SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n            CAST(\"MAT_CODE\" AS VARCHAR) AS \"MAT_CODE\",\n            ROW_NUMBER() OVER (PARTITION BY SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) ORDER BY \"MAT_IMPORT_TIMESTAMP\" DESC, \"MAT_CODE\" DESC) AS rn\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\n        WHERE \"MAT_IP_CODE\" IS NOT NULL AND \"MAT_CODE\" IS NOT NULL AND \"MAT_CODE\" <> ''\n    ) m_ranked\n    WHERE rn = 1\n) \"M\" ON \"p\".\"IP5\" = \"M\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT D.DDC_BARCODE) AS cured_qty\n    FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n    JOIN (\n        SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n        UNION ALL\n        SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n    ) T ON D.DDC_BARCODE = T.BC\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n      AND EXTRACT(MONTH FROM D.DDC_START_CYCLE) = CAST('${month}' AS INT)\n      AND EXTRACT(YEAR FROM D.DDC_START_CYCLE) = CAST('${year}' AS INT)\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5)\n) \"c\" ON \"p\".\"IP5\" = \"c\".\"IP5\"\nWHERE (COALESCE(\"p\".\"plan_qty\", 0) > 0 OR COALESCE(\"c\".\"cured_qty\", 0) > 0)\nORDER BY COALESCE(\"c\".\"cured_qty\", 0) DESC;",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Panel Title",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Description"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 381
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 24,
+          "x": 0,
+          "y": 85
+        },
+        "id": 5,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Plan"
+            }
+          ]
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \r\n    \"i\".\"IP_CODE\" AS \"IP Code\",\r\n    COALESCE(\"M\".\"MAT_CODE\", CAST(CAST(\"i\".\"IP_CODE\" AS BIGINT) AS VARCHAR)) AS \"Short Code\",\r\n    \"i\".\"DESC\" AS \"Description\",\r\n    \"i\".\"TIER\" AS \"Tier\",\r\n    \"i\".\"BRAND\" AS \"Brand\",\r\n    REGEXP_EXTRACT(\"i\".\"DESC\", '([A-Za-z0-9\\.]+?\\s?[0-9]{2,}|[A-Za-z]\\.[A-Za-z]+)$') AS \"Tread\",\r\n    CASE WHEN \"i\".\"DESC\" LIKE '%TT%' THEN 'No' ELSE 'Yes' END AS \"Uniformity\",\r\n    COALESCE(\"p\".\"plan_qty\", 0) AS \"Plan\",\r\n    COALESCE(\"d\".\"delivered_qty\", 0) AS \"Delivery\",\r\n    COALESCE(\"d\".\"delivered_qty\", 0) - COALESCE(\"p\".\"plan_qty\", 0) AS \"Δ Delivery\",\r\n    CASE WHEN \"p\".\"plan_qty\" > 0 THEN LEAST(1.0, CAST(\"d\".\"delivered_qty\" AS DOUBLE) / \"p\".\"plan_qty\") ELSE NULL END AS \"Delivery CI\",\r\n    CASE WHEN COALESCE(\"d\".\"delivered_qty\", 0) >= COALESCE(\"p\".\"plan_qty\", 0) THEN 'STOP' ELSE 'PRODUCE' END AS \"Delivery Alert\"\r\nFROM (\r\n    SELECT \r\n        \"IP_CODE\",\r\n        \"DESC\",\r\n        \"TIER\",\r\n        \"BRAND\",\r\n        SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\r\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"INFO_TIER\"\r\n) \"i\"\r\nLEFT JOIN (\r\n    SELECT \r\n        SUBSTRING(CAST(\"MAT_CODE\" AS VARCHAR), 1, 5) AS \"IP5\",\r\n        MAX(CAST(\"MAT_CODE\" AS VARCHAR)) AS \"MAT_CODE\"\r\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\r\n    WHERE \"MAT_CODE\" IS NOT NULL\r\n    GROUP BY SUBSTRING(CAST(\"MAT_CODE\" AS VARCHAR), 1, 5)\r\n) \"M\" ON \"i\".\"IP5\" = \"M\".\"IP5\"\r\nLEFT JOIN (\r\n    SELECT \r\n        SUBSTRING(CAST(\"pt\".\"IP_code\" AS VARCHAR), 1, 5) AS \"IP5\",\r\n        SUM(\r\n          CASE EXTRACT(DAY FROM TO_TIMESTAMP($__unixEpochFrom()))\r\n            WHEN 1 THEN \"pt\".\"Day1\" WHEN 2 THEN \"pt\".\"Day2\" WHEN 3 THEN \"pt\".\"Day3\" WHEN 4 THEN \"pt\".\"Day4\" WHEN 5 THEN \"pt\".\"Day5\"\r\n            WHEN 6 THEN \"pt\".\"Day6\" WHEN 7 THEN \"pt\".\"Day7\" WHEN 8 THEN \"pt\".\"Day8\" WHEN 9 THEN \"pt\".\"Day9\" WHEN 10 THEN \"pt\".\"Day10\"\r\n            WHEN 11 THEN \"pt\".\"Day11\" WHEN 12 THEN \"pt\".\"Day12\" WHEN 13 THEN \"pt\".\"Day13\" WHEN 14 THEN \"pt\".\"Day14\" WHEN 15 THEN \"pt\".\"Day15\"\r\n            WHEN 16 THEN \"pt\".\"Day16\" WHEN 17 THEN \"pt\".\"Day17\" WHEN 18 THEN \"pt\".\"Day18\" WHEN 19 THEN \"pt\".\"Day19\" WHEN 20 THEN \"pt\".\"Day20\"\r\n            WHEN 21 THEN \"pt\".\"Day21\" WHEN 22 THEN \"pt\".\"Day22\" WHEN 23 THEN \"pt\".\"Day23\" WHEN 24 THEN \"pt\".\"Day24\" WHEN 25 THEN \"pt\".\"Day25\"\r\n            WHEN 26 THEN \"pt\".\"Day26\" WHEN 27 THEN \"pt\".\"Day27\" WHEN 28 THEN \"pt\".\"Day28\" WHEN 29 THEN \"pt\".\"Day29\" WHEN 30 THEN \"pt\".\"Day30\"\r\n            WHEN 31 THEN \"pt\".\"Day31\"\r\n            ELSE 0\r\n          END\r\n        ) AS \"plan_qty\"\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\" \"pt\"\r\n    WHERE \"pt\".\"month\" = 4 -- 👈 Using April baseline target\r\n    GROUP BY SUBSTRING(CAST(\"pt\".\"IP_code\" AS VARCHAR), 1, 5)\r\n) \"p\" ON \"i\".\"IP5\" = \"p\".\"IP5\"\r\nLEFT JOIN (\r\n    SELECT \r\n        SUBSTRING(CAST(\"IPCode\" AS VARCHAR), 1, 5) AS \"IP5\",\r\n        SUM(\"QuantityTire\") AS \"delivered_qty\"\r\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\r\n    WHERE \"ProductionDate\" BETWEEN TO_TIMESTAMP($__unixEpochFrom()) AND TO_TIMESTAMP($__unixEpochTo())\r\n    GROUP BY SUBSTRING(CAST(\"IPCode\" AS VARCHAR), 1, 5)\r\n) \"d\" ON \"i\".\"IP5\" = \"d\".\"IP5\"\r\nORDER BY \"i\".\"IP_CODE\";\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Panel Title",
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto",
+              "filterable": true,
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Description"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 381
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 15,
+          "w": 24,
+          "x": 0,
+          "y": 100
+        },
+        "id": 7,
+        "options": {
+          "footer": {
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Plan"
+            }
+          ]
+        },
+        "pluginVersion": "9.1.6",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT \n    \"i\".\"IP_CODE\" AS \"IP Code\",\n    COALESCE(\"M\".\"MAT_CODE\", CAST(CAST(\"i\".\"IP_CODE\" AS BIGINT) AS VARCHAR)) AS \"Short Code\",\n    \"i\".\"DESC\" AS \"Description\",\n    \"i\".\"TIER\" AS \"Tier\",\n    \"i\".\"BRAND\" AS \"Brand\",\n    REGEXP_EXTRACT(\"i\".\"DESC\", '([A-Za-z0-9\\.]+?\\s?[0-9]{2,}|[A-Za-z]\\.[A-Za-z]+)$') AS \"Tread\",\n    CASE WHEN \"i\".\"DESC\" LIKE '%TT%' THEN 'No' ELSE 'Yes' END AS \"Uniformity\",\n    COALESCE(\"c\".\"cured_qty\", 0) AS \"Curing\",\n    COALESCE(\"s\".\"scrap_qty\", 0) AS \"Scrap\",\n    COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0) AS \"Net Cured\",\n    COALESCE(\"d\".\"delivered_qty\", 0) AS \"Delivery\",\n    (COALESCE(\"c\".\"cured_qty\", 0) - COALESCE(\"s\".\"scrap_qty\", 0)) - COALESCE(\"d\".\"delivered_qty\", 0) AS \"Inspection Tires\"\nFROM (\n    SELECT \n        \"IP_CODE\",\n        \"DESC\",\n        \"TIER\",\n        \"BRAND\",\n        SUBSTRING(CAST(CAST(\"IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"INFO_TIER\"\n) \"i\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(\"MAT_CODE\" AS VARCHAR), 1, 5) AS \"IP5\",\n        MAX(CAST(\"MAT_CODE\" AS VARCHAR)) AS \"MAT_CODE\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\n    WHERE \"MAT_CODE\" IS NOT NULL\n    GROUP BY SUBSTRING(CAST(\"MAT_CODE\" AS VARCHAR), 1, 5)\n) \"M\" ON \"i\".\"IP5\" = \"M\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(M2.MAT_IP_CODE AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT D.DDC_BARCODE) AS cured_qty\n    FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n    JOIN (\n        SELECT TRC_BARCODE AS BC, MAT_SAP_CODE\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\"\n        WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n        UNION ALL\n        SELECT TRC_ID AS BC, MAT_SAP_CODE\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE\"\n        WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n    ) T ON D.DDC_BARCODE = T.BC\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n        ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE D.DDC_BARCODE IS NOT NULL\n      AND D.DDC_BARCODE NOT IN ('-', '0')\n      AND D.DDC_START_CYCLE BETWEEN TO_TIMESTAMP($__unixEpochFrom()) AND TO_TIMESTAMP($__unixEpochTo())\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(M2.MAT_IP_CODE AS VARCHAR), 1, 5)\n) \"c\" ON \"i\".\"IP5\" = \"c\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(\"IPCode\" AS VARCHAR), 1, 5) AS \"IP5\",\n        SUM(\"QuantityTire\") AS \"delivered_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"Business\".\"GetIPCODEProductionYDA\"\n    WHERE \"ProductionDate\" BETWEEN TO_TIMESTAMP($__unixEpochFrom()) AND TO_TIMESTAMP($__unixEpochTo())\n    GROUP BY SUBSTRING(CAST(\"IPCode\" AS VARCHAR), 1, 5)\n) \"d\" ON \"i\".\"IP5\" = \"d\".\"IP5\"\nLEFT JOIN (\n    SELECT \n        SUBSTRING(CAST(M2.MAT_IP_CODE AS VARCHAR), 1, 5) AS \"IP5\",\n        COUNT(DISTINCT \"F2\".\"FDD_BARCODE\") AS \"scrap_qty\"\n    FROM \"EG_CA_TRU_FAC_PCS02\".\"FIN_DEFECTS_DECLARED\" \"F2\"\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2\n        ON \"F2\".\"MAT_SAP_CODE\" = M2.\"MAT_SAP_CODE\"\n    WHERE \"F2\".\"FDD_ACTIVE\" = 'T'\n      AND \"F2\".\"FDS_SEVERITY\" = 'SC'\n      AND CAST(\"F2\".\"CLA_CODE\" AS VARCHAR) = '00'\n      AND \"F2\".\"FDD_TIME_STAMP\" BETWEEN TO_TIMESTAMP($__unixEpochFrom()) AND TO_TIMESTAMP($__unixEpochTo())\n      AND M2.MAT_IP_CODE IS NOT NULL\n    GROUP BY SUBSTRING(CAST(M2.MAT_IP_CODE AS VARCHAR), 1, 5)\n) \"s\" ON \"i\".\"IP5\" = \"s\".\"IP5\"\nORDER BY COALESCE(\"c\".\"cured_qty\", 0) DESC, \"i\".\"IP_CODE\";",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "title": "Panel Title",
+        "type": "table"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "2026",
+            "value": "2026"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": "Year",
+          "multi": false,
+          "name": "year",
+          "options": [
+            {
+              "selected": true,
+              "text": "2026",
+              "value": "2026"
+            },
+            {
+              "selected": false,
+              "text": "2025",
+              "value": "2025"
+            },
+            {
+              "selected": false,
+              "text": "2024",
+              "value": "2024"
+            }
+          ],
+          "query": "2026, 2025, 2024",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "4",
+            "value": "4"
+          },
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "definition": "SELECT DISTINCT \"month\"\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\nORDER BY \"month\" ASC;\n",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Month",
+          "multi": false,
+          "name": "month",
+          "options": [],
+          "query": "SELECT DISTINCT \"month\"\nFROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\nORDER BY \"month\" ASC;\n",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "30",
+            "value": "30"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": "Day",
+          "multi": false,
+          "name": "day",
+          "options": [
+            {
+              "selected": false,
+              "text": "1",
+              "value": "1"
+            },
+            {
+              "selected": false,
+              "text": "2",
+              "value": "2"
+            },
+            {
+              "selected": false,
+              "text": "3",
+              "value": "3"
+            },
+            {
+              "selected": false,
+              "text": "4",
+              "value": "4"
+            },
+            {
+              "selected": false,
+              "text": "5",
+              "value": "5"
+            },
+            {
+              "selected": false,
+              "text": "6",
+              "value": "6"
+            },
+            {
+              "selected": true,
+              "text": "7",
+              "value": "7"
+            },
+            {
+              "selected": false,
+              "text": "8",
+              "value": "8"
+            },
+            {
+              "selected": false,
+              "text": "9",
+              "value": "9"
+            },
+            {
+              "selected": false,
+              "text": "10",
+              "value": "10"
+            },
+            {
+              "selected": false,
+              "text": "11",
+              "value": "11"
+            },
+            {
+              "selected": false,
+              "text": "12",
+              "value": "12"
+            },
+            {
+              "selected": false,
+              "text": "13",
+              "value": "13"
+            },
+            {
+              "selected": false,
+              "text": "14",
+              "value": "14"
+            },
+            {
+              "selected": false,
+              "text": "15",
+              "value": "15"
+            },
+            {
+              "selected": false,
+              "text": "16",
+              "value": "16"
+            },
+            {
+              "selected": false,
+              "text": "17",
+              "value": "17"
+            },
+            {
+              "selected": false,
+              "text": "18",
+              "value": "18"
+            },
+            {
+              "selected": false,
+              "text": "19",
+              "value": "19"
+            },
+            {
+              "selected": false,
+              "text": "20",
+              "value": "20"
+            },
+            {
+              "selected": false,
+              "text": "21",
+              "value": "21"
+            },
+            {
+              "selected": false,
+              "text": "22",
+              "value": "22"
+            },
+            {
+              "selected": false,
+              "text": "23",
+              "value": "23"
+            },
+            {
+              "selected": false,
+              "text": "24",
+              "value": "24"
+            },
+            {
+              "selected": false,
+              "text": "25",
+              "value": "25"
+            },
+            {
+              "selected": false,
+              "text": "26",
+              "value": "26"
+            },
+            {
+              "selected": false,
+              "text": "27",
+              "value": "27"
+            },
+            {
+              "selected": false,
+              "text": "28",
+              "value": "28"
+            },
+            {
+              "selected": false,
+              "text": "29",
+              "value": "29"
+            },
+            {
+              "selected": false,
+              "text": "30",
+              "value": "30"
+            },
+            {
+              "selected": false,
+              "text": "31",
+              "value": "31"
+            }
+          ],
+          "query": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31\n",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "All",
+            "value": "All"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": "Shift",
+          "multi": false,
+          "name": "shift",
+          "options": [
+            {
+              "selected": true,
+              "text": "All",
+              "value": "All"
+            },
+            {
+              "selected": false,
+              "text": "Shift 1",
+              "value": "1"
+            },
+            {
+              "selected": false,
+              "text": "Shift 2",
+              "value": "2"
+            },
+            {
+              "selected": false,
+              "text": "Shift 3",
+              "value": "3"
+            }
+          ],
+          "query": "All : All, Shift 1 : 1, Shift 2 : 2, Shift 3 : 3",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "definition": "SELECT DISTINCT COALESCE(\"M\".\"MAT_CODE\", \"all_ip\".\"IP5\") AS \"shortcode\"\nFROM (\n    SELECT DISTINCT SUBSTRING(CAST(CAST(\"IP_code\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\n    WHERE \"month\" = CAST('${month}' AS INT) AND \"IP_code\" IS NOT NULL\n    UNION\n    SELECT DISTINCT SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n    FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n    JOIN (\n        SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n        UNION ALL\n        SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n    ) T ON D.DDC_BARCODE = T.BC\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n      AND EXTRACT(MONTH FROM D.DDC_START_CYCLE) = CAST('${month}' AS INT)\n      AND EXTRACT(YEAR FROM D.DDC_START_CYCLE) = CAST('${year}' AS INT)\n      AND M2.MAT_IP_CODE IS NOT NULL\n) \"all_ip\"\nLEFT JOIN (\n    SELECT \"IP5\", \"MAT_CODE\"\n    FROM (\n        SELECT \n            SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n            CAST(\"MAT_CODE\" AS VARCHAR) AS \"MAT_CODE\",\n            ROW_NUMBER() OVER (PARTITION BY SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) ORDER BY \"MAT_IMPORT_TIMESTAMP\" DESC, \"MAT_CODE\" DESC) AS rn\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\n        WHERE \"MAT_IP_CODE\" IS NOT NULL AND \"MAT_CODE\" IS NOT NULL AND \"MAT_CODE\" <> ''\n    ) m_ranked\n    WHERE rn = 1\n) \"M\" ON \"all_ip\".\"IP5\" = \"M\".\"IP5\"\nORDER BY 1 ASC",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Short Code",
+          "multi": true,
+          "name": "shortcode",
+          "options": [],
+          "query": "SELECT DISTINCT COALESCE(\"M\".\"MAT_CODE\", \"all_ip\".\"IP5\") AS \"shortcode\"\nFROM (\n    SELECT DISTINCT SUBSTRING(CAST(CAST(\"IP_code\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n    FROM \"EG_CA_TRU_FAC_LOC01\".\"TPL\".\"ProductionData\"\n    WHERE \"month\" = CAST('${month}' AS INT) AND \"IP_code\" IS NOT NULL\n    UNION\n    SELECT DISTINCT SUBSTRING(CAST(CAST(M2.MAT_IP_CODE AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\"\n    FROM \"EG_CA_TRU_CUR_CMA03\".\"DC_DYNAMIC_CURING_PROCESSED\" D\n    JOIN (\n        SELECT TRC_BARCODE AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_BARCODE IS NOT NULL AND TRC_BARCODE NOT IN ('-', '0', '')\n        UNION ALL\n        SELECT TRC_ID AS BC, MAT_SAP_CODE FROM \"EG_CA_TRU_FAC_PCS02\".\"TRC_BASIC_TABLE_WITH_HIS\" WHERE PP_CODE = 'CU1' AND TRC_ID IS NOT NULL AND TRC_ID NOT IN ('-', '0', '') AND (TRC_BARCODE IS NULL OR TRC_ID <> TRC_BARCODE)\n    ) T ON D.DDC_BARCODE = T.BC\n    JOIN \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\" M2 ON T.MAT_SAP_CODE = M2.MAT_SAP_CODE\n    WHERE D.DDC_BARCODE IS NOT NULL AND D.DDC_BARCODE NOT IN ('-', '0')\n      AND EXTRACT(MONTH FROM D.DDC_START_CYCLE) = CAST('${month}' AS INT)\n      AND EXTRACT(YEAR FROM D.DDC_START_CYCLE) = CAST('${year}' AS INT)\n      AND M2.MAT_IP_CODE IS NOT NULL\n) \"all_ip\"\nLEFT JOIN (\n    SELECT \"IP5\", \"MAT_CODE\"\n    FROM (\n        SELECT \n            SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) AS \"IP5\",\n            CAST(\"MAT_CODE\" AS VARCHAR) AS \"MAT_CODE\",\n            ROW_NUMBER() OVER (PARTITION BY SUBSTRING(CAST(CAST(\"MAT_IP_CODE\" AS BIGINT) AS VARCHAR), 1, 5) ORDER BY \"MAT_IMPORT_TIMESTAMP\" DESC, \"MAT_CODE\" DESC) AS rn\n        FROM \"EG_CA_TRU_FAC_PCS02\".\"MD_MATERIALS\"\n        WHERE \"MAT_IP_CODE\" IS NOT NULL AND \"MAT_CODE\" IS NOT NULL AND \"MAT_CODE\" <> ''\n    ) m_ranked\n    WHERE rn = 1\n) \"M\" ON \"all_ip\".\"IP5\" = \"M\".\"IP5\"\nORDER BY 1 ASC",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "utc",
+    "title": "Daily Mix Monitoring",
+    "uid": "V7Q3D6Yvk",
+    "version": 211,
+    "weekStart": ""
+  }
+}

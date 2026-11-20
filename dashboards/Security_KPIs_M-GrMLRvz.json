@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "security-kpis",
+    "url": "/d/M-GrMLRvz/security-kpis",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2025-10-27T11:30:04+03:00",
+    "updated": "2025-12-16T11:51:27+02:00",
+    "updatedBy": "st1mohamna",
+    "createdBy": "st1mohamna",
+    "version": 7,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 267,
+    "folderUid": "_joRgLRvz",
+    "folderTitle": "HR",
+    "folderUrl": "/dashboards/f/_joRgLRvz/hr",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    },
+    "publicDashboardAccessToken": "",
+    "publicDashboardEnabled": false
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 270,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "postgres",
+          "uid": "xrAPxuEnz"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 21,
+          "x": 3,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "afterRender": "",
+          "content": "<div id=\"hr-transportation-security-panel\"\n  style=\"background-color:transparent;color:#f8fafc;font-family:'Inter',sans-serif;height:100%;\">\n  <style>\n    #hr-transportation-security-panel .dashboard-grid {\n      display: grid;\n      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n      gap: 1.5rem;\n      height: 100%;\n      max-width: 1400px;\n      margin: 0 auto;\n      padding: .2rem;\n    }\n\n    #hr-transportation-security-panel .card {\n      background: linear-gradient(145deg, #1f2937, #162029);\n      border-radius: 16px;\n      padding: 1rem 1.7rem;\n      border: 1px solid #334155;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;\n      cursor: default;\n      position: relative;\n      overflow: hidden;\n    }\n\n    #hr-transportation-security-panel .card::before {\n      content: '';\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      height: 4px;\n      background: linear-gradient(90deg, #3b82f6, #8b5cf6);\n      opacity: 0;\n      transition: opacity 0.3s ease;\n    }\n\n    #hr-transportation-security-panel .card:hover {\n      transform: translateY(-6px);\n      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8),\n        -6px -6px 12px rgba(40, 50, 70, 0.9);\n      border-color: #475569;\n    }\n\n    #hr-transportation-security-panel .card:hover::before {\n      opacity: 1;\n    }\n\n    #hr-transportation-security-panel .card-title {\n      font-size: 1.15rem;\n      font-weight: 800;\n      margin-bottom: 1rem;\n      color: #e0e7ff;\n      text-transform: uppercase;\n      letter-spacing: 1.2px;\n      text-align: center;\n    }\n\n    #hr-transportation-security-panel .metric-value {\n      font-size: 2.1rem;\n      font-weight: 900;\n      margin-top: 0.5rem;\n      color: #f8fafc;\n      display: flex;\n      align-items: center;\n      gap: 0.6rem;\n      position: relative;\n    }\n\n    #hr-transportation-security-panel .metric-label {\n      font-size: 0.9rem;\n      font-weight: 600;\n      color: #94a3b8;\n      margin-top: 0.3rem;\n      letter-spacing: 0.05em;\n      text-align: center;\n    }\n\n    @keyframes pulse {\n      0%, 100% {\n        opacity: 1;\n        transform: translateY(0) scale(1);\n      }\n      50% {\n        opacity: 0.8;\n        transform: translateY(-4px) scale(1.05);\n      }\n    }\n\n    #hr-transportation-security-panel .icon {\n      display: inline-block;\n      user-select: none;\n      animation: pulse 2s infinite;\n    }\n\n    @media (max-width: 768px) {\n      #hr-transportation-security-panel .dashboard-grid {\n        grid-template-columns: 1fr;\n        max-width: 100%;\n      }\n    }\n  </style>\n\n  <div class=\"dashboard-grid\">\n    <!-- Security Violations per Month -->\n    <div class=\"card\" title=\"Security Violations per Month\">\n      <h2 class=\"card-title\">Security Violations</h2>\n      <div class=\"metric-value\">\n        {{#if (or Security_Violations_per_Month (eq Security_Violations_per_Month 0))}}{{Security_Violations_per_Month}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Security and safety\" style=\"color: #ef4444; font-size: 1.8rem; line-height: 1;\">🛡️</span>\n      </div>\n      <div class=\"metric-label\">Avg. Security Violations per Month</div>\n    </div>\n\n    <!-- Transportation Complaints per Month -->\n    <div class=\"card\" title=\"Transportation Complaints per Month\">\n      <h2 class=\"card-title\">Transport Complaints</h2>\n      <div class=\"metric-value\">\n        {{#if (or Transportation_Complaints_per_Month (eq Transportation_Complaints_per_Month 0))}}{{Transportation_Complaints_per_Month}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Complaints and feedback\" style=\"color: #f59e0b; font-size: 1.8rem; line-height: 1;\">📞</span>\n      </div>\n      <div class=\"metric-label\">Avg. Transportation Complaints per Month</div>\n    </div>\n\n    <!-- Annual Transportation Cost -->\n    <div class=\"card\" title=\"Annual Transportation Cost\">\n      <h2 class=\"card-title\">Annual Transport Cost</h2>\n      <div class=\"metric-value\">\n        {{#if (or Annual_Transportation_Cost (eq Annual_Transportation_Cost 0))}}{{Annual_Transportation_Cost}}M EGP{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Financial cost\" style=\"color: #10b981; font-size: 1.8rem; line-height: 1;\">💰</span>\n      </div>\n      <div class=\"metric-label\">Total Annual Transportation Cost</div>\n    </div>\n\n    <!-- Annual Trips Count -->\n    <div class=\"card\" title=\"Annual Trips Count\">\n      <h2 class=\"card-title\">Annual Trips</h2>\n      <div class=\"metric-value\">\n        {{#if (or Annual_Trips_Count (eq Annual_Trips_Count 0))}}{{Annual_Trips_Count}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"Travel and trips\" style=\"color: #06b6d4; font-size: 1.8rem; line-height: 1;\">✈️</span>\n      </div>\n      <div class=\"metric-label\">Total Annual Trips Count</div>\n    </div>\n\n    <!-- Foreign Visitors Count -->\n    <div class=\"card\" title=\"Foreign Visitors Count\">\n      <h2 class=\"card-title\">Foreign Visitors</h2>\n      <div class=\"metric-value\">\n        {{#if (or Foreign_Visitors_Count (eq Foreign_Visitors_Count 0))}}{{Foreign_Visitors_Count}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"International visitors\" style=\"color: #8b5cf6; font-size: 1.8rem; line-height: 1;\">🌍</span>\n      </div>\n      <div class=\"metric-label\">Total Foreign Visitors Count</div>\n    </div>\n\n    <!-- Travellers Total -->\n    <div class=\"card\" title=\"Travellers Total\">\n      <h2 class=\"card-title\">Total Travellers</h2>\n      <div class=\"metric-value\">\n        {{#if (or Travellers_Total (eq Travellers_Total 0))}}{{Travellers_Total}}{{else}}-{{/if}}\n        <span class=\"icon\" aria-label=\"People traveling\" style=\"color: #ec4899; font-size: 1.8rem; line-height: 1;\">👥</span>\n      </div>\n      <div class=\"metric-label\">Total Number of Travellers</div>\n    </div>\n  </div>\n</div>\n",
+          "defaultContent": "The query didn't return any results.",
+          "editor": {
+            "format": "auto",
+            "language": "markdown"
+          },
+          "editors": [],
+          "externalScripts": [],
+          "externalStyles": [],
+          "helpers": "",
+          "renderMode": "everyRow",
+          "styles": "",
+          "wrap": false
+        },
+        "pluginVersion": "4.5.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "postgres",
+              "uid": "xrAPxuEnz"
+            },
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\r\n  MAX(CASE WHEN KPI = 'Number of security violations (Aver per month)'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Security_Violations_per_Month,\r\n\r\n  MAX(CASE WHEN KPI LIKE 'Number Of complains received \"transportation\"%'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Transportation_Complaints_per_Month,\r\n\r\n  MAX(CASE WHEN KPI = 'Transportation Cost \"Annualy \"'\r\n           AND Type = 'Actual' THEN \"Value\"/1000000 END) AS Annual_Transportation_Cost,\r\n\r\n  MAX(CASE WHEN KPI = 'Total Trips Transportation \" Annually\"'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Annual_Trips_Count,\r\n\r\n  MAX(CASE WHEN KPI = 'Total number of Visitors \"Foreign\"'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Foreign_Visitors_Count,\r\n\r\n  MAX(CASE WHEN KPI = 'Total number of Travellers'\r\n           AND Type = 'Actual' THEN \"Value\" END) AS Travellers_Total\r\n\r\nFROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\nWHERE TO_DATE(\"month\", 'Month') = (\r\n    SELECT MAX(TO_DATE(\"month\", 'Month'))\r\n    FROM \"EG_CA_TRU_FAC_LOC01\".HR.\"HR_KPI\"\r\n    WHERE \"year\" = Year(Current_date())\r\n    and Area = 'Security'\r\n);\r\n",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "transparent": true,
+        "type": "marcusolsson-dynamictext-panel"
+      }
+    ],
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Security KPIs",
+    "uid": "M-GrMLRvz",
+    "version": 7,
+    "weekStart": ""
+  }
+}

@@ -1,0 +1,679 @@
+{
+  "uid": "-ZGnalXHz",
+  "title": "Belts Stock Management",
+  "category": "Material & Inventory",
+  "folder": "General",
+  "folderUid": "",
+  "url": "https://pwwwappeg297-01.ptg.local:3000/d/-ZGnalXHz/belts-stock-management",
+  "version": 35,
+  "tags": [],
+  "time": {
+    "from": "2025-09-04T22:00:00.000Z",
+    "to": "now"
+  },
+  "refresh": false,
+  "total_panels": 30,
+  "variables": [],
+  "panels": [
+    {
+      "id": 33,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n  t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TT901' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 2
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TT902' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TT903' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TTAN' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 26
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'VMC9' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 26
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n    distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n        t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'CTBE' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 37
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 37
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 38
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n         t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'COPL' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 38
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 3)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'FISH' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 49
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 50
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '10' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '10' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'CAB1' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 62
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 64
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 64
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 65
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"LT Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TRC1' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 65
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'DXC4' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 77
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 12,
+        "y": 77
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 78
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"LT Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TRC4' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 78
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'TRC5' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Untitled Panel",
+      "type": "stat",
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 12,
+        "x": 0,
+        "y": 90
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "x2fXDwJ7k"
+          },
+          "rawSql": "SELECT  \r\n 111 as Semi_Finishing\r\n"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "title": "Untitled Panel",
+      "type": "table",
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 91
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "xrAPxuEnz"
+          },
+          "rawSql": "SELECT \r\n     distinct concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) as Card,\r\n      t.TRC_START_TIME + INTERVAL '7' day AS \"Exp Date\",\r\n\r\n    CASE \r\n      WHEN KB.BOBIN_BARCODE is NOT NULL\r\n       THEN BOBIN_BARCODE\r\n       ELSE 'Missing'\r\n       end as \"Bobbin Barcode\",\r\n    t.TRC_START_TIME as \"Prod Date\",\r\n    m.MAT_CODE as \"Short Code\",\r\n    CU.CU_GOOD_QTY AS Quantity,\r\n    CU.CU_REMANING_QTY AS \"Remaining Quantity\",\r\n    DATE_PART('day', (t.TRC_START_TIME + INTERVAL '7' day) - CURRENT_DATE) AS \"Days to Expire\",\r\n    CASE \r\n        WHEN (\"Days to Expire\" <= 0) \r\n            THEN 'Expired'\r\n        WHEN (\"Days to Expire\" <= 5)\r\n            THEN 'Critical'\r\n        ELSE 'Good'\r\n    END AS \"Status\"\r\n\r\nFROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" t\r\nleft JOIN EG_CA_TRU_FAC_PCS02.MD_MATERIALS m\r\n    ON t.TRC_MAT_SAP_CODE = m.MAT_SAP_CODE\r\nleft join \"EG_CA_TRU_FAC_LOC01\".TPL.\"tbl_KB_Kusak_Bobin\"  KB\r\n    on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR) = KB.\"PCS_BARCODE\"\r\nleft join \"EG_CA_TRU_FAC_PCS02\".\"DC_CONTAINMENT_UNITS\" CU \r\n   on concat(t.TRC_SO_CODE, t.TRC_CU_EXT_PROGR)=concat(CU.SO_CODE, CU.CU_EXT_PROGR)\r\nWHERE t.TRC_FL_PHASE = 'P' -- That Material has Production\r\n  AND t.TRC_MCH_CODE = 'RHC5' -- The machine you wanted\r\n  AND NOT EXISTS (\r\n      SELECT 1\r\n      FROM \"EG_CA_TRU_FAC_PCS02\".\"WMS_TRACEABILITY\" x\r\n      WHERE x.TRC_SO_CODE = t.TRC_SO_CODE\r\n        AND x.TRC_CU_EXT_PROGR = t.TRC_CU_EXT_PROGR\r\n        AND x.TRC_FL_PHASE = 'C' -- Don't have Consumption \r\n  )\r\n  AND $__timeFilter(t.TRC_START_TIME)\r\nORDER BY t.TRC_START_TIME ASC;\r\n"
+        }
+      ]
+    }
+  ]
+}
